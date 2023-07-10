@@ -65,6 +65,27 @@ Background: Professor Mark is a university professor in the computer science dep
 | ID                   | Primary Key                |   |
 | Course Id            | Reference -> Course table  |   |
 
+| Individual Flashcard Schema |                                   |   |
+|-----------------------------|-----------------------------------|---|
+| ID                          | Primary Key                       |   |
+| FlashCard set ID            | Reference -> FlashCard Set table  |   |
+| Questions (front)           | Varchar                           |   |
+| Answer (Back)               | Varchar                           |   |
+
+| Quiz Schema |                            |   |
+|-------------|----------------------------|---|
+| ID          | Primary Key                |   |
+| Course ID   | Reference -> Course table  |   |
+
+| Quiz Questions Schema |                          |   |
+|-----------------------|--------------------------|---|
+| ID                    | Primary Key              |   |
+| Quiz ID               | Reference -> Quiz table  |   |
+| Question              |                          |   |
+| Multiple choice       |                          |   |
+| Points                |                          |   |
+
+
 ## Endpoints
 
 1. "/user/register" -register user
