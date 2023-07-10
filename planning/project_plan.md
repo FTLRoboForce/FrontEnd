@@ -89,13 +89,17 @@ https://www.loom.com/share/1db84ed1e04b42889be6d0a6060b3838?sid=02d96faa-0561-43
 | ID          | Primary Key                |   |
 | Course ID   | Reference -> Course table  |   |
 
+
 | Quiz Questions Schema |                          |   |
 |-----------------------|--------------------------|---|
 | ID                    | Primary Key              |   |
 | Quiz ID               | Reference -> Quiz table  |   |
-| Question              |                          |   |
-| Multiple choice       |                          |   |
-| Points                |                          |   |
+| Question              | Varchar                  |   |
+| Multiple choice       | Varchar                  |   |
+| Answer                | Varchar                  |   |
+| Points                | Integer                  |   |
+| isCorrect             | Boolean(True or false)   |   |
+
 
 
 ## Endpoints
