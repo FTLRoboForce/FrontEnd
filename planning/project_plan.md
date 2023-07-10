@@ -42,11 +42,17 @@ Background: Professor Mark is a university professor in the computer science dep
 9. Leaderboard
     
 ## Data Model
-
-User Schema 
-[Username](#username "Goto heading-1")
-[First Name](#username "Goto heading-1")
-
+| User Schema      |                |   |
+|------------------|----------------|---|
+| ID               | Primary Key    |   |
+| Username         |                |   |
+| First Name       |                |   |
+| Last Name        |                |   |
+| Email            |                |   |
+| Password         |                |   |
+| Comfirm Password |                |   |
+| Confirm password |                |   |
+| Points           | Null at first  |   |
 - 
 
 ## Endpoints
