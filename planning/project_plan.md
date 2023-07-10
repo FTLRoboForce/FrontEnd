@@ -47,6 +47,14 @@ Describe your app's data model using diagrams or tables
 
 ## Endpoints
 
-List the API endpoints you will need to implement.
+1. "/user/register" -register user
+2. "/user/login" -login user and generate JWT
+3. "/user/profile" -decode JWT and return body
+4. "/quiz/list" -return list of all previous quizes
+5. "/quiz/:id" -return individual quiz
+6. "/flashcards/list" -return list of all previous flashcardsets
+7. "/flaschards/:id" -return specific flashcard set
+8. "/user/list" -return list of users points and usernames in accending order of points
 
+   
 ***Don't forget to set up your Issues, Milestones, and Project Board!***
