@@ -32,14 +32,26 @@ Background: Professor Mark is a university professor in the computer science dep
 ## Pages/Screens
 
 1. Landing Page
+
+<img width="800" alt="Screenshot 2023-07-10 at 1 56 06 PM" src="https://github.com/FTLRoboForce/RoboForce/assets/112723822/279a6bb1-893a-422f-87a8-5bbf7e97a07c"><br>
 2. Register
+
+<img width="800" alt="Screenshot 2023-07-10 at 2 08 39 PM" src="https://github.com/FTLRoboForce/RoboForce/assets/112723822/d6d71150-34b5-4ea5-9143-bac28c874449"><br>
 3. Login
+
+<img width="800" alt="Screenshot 2023-07-10 at 2 08 50 PM" src="https://github.com/FTLRoboForce/RoboForce/assets/112723822/ef00f74a-6cb0-473f-b189-118dd998f87f"><br>
 4. Create Course
+
+<img width="800" alt="Screenshot 2023-07-10 at 2 09 04 PM" src="https://github.com/FTLRoboForce/RoboForce/assets/112723822/bd384e3c-8f29-4a0a-bb0a-cd4bfd4f3ac3"><br>
+
 5. Flashcards
 6. Quiz
 7. Previous Flashcards
 8. Previous Quizes
 9. Leaderboard
+
+## Figma Video
+https://www.loom.com/share/1db84ed1e04b42889be6d0a6060b3838?sid=02d96faa-0561-43bb-9fbd-2b771a238775
     
 ## Data Model
 | User Schema      |                |   |
