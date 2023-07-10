@@ -8,7 +8,13 @@ The challenge presented by current study websites lies in the static nature of t
 
 ## User Roles and Personas
 
-Include the most up-to-date user roles and personas.
+Sarah the Student:
+
+Background: Sarah is a high school student passionate about STEM subjects, particularly physics and mathematics. She wants to excel in her exams and prepare for college admissions. Goals: Sarah wants a website that provides her with a wide range of AI-generated questions and answers to practice and improve her understanding of complex STEM concepts.
+
+Professor Mark the Teacher:
+
+Background: Professor Mark is a university professor in the computer science department. He wants to engage his students by incorporating AI-generated questions and answers into his coursework. Goals: Mark is looking for a website that offers a reliable platform to access AI-generated questions and answers aligned with the curriculum, enabling him to provide his students with valuable practice material.
 
 ## User Stories
 
