@@ -54,6 +54,11 @@ Background: Professor Mark is a university professor in the computer science dep
 | Confirm password |                |   |
 | Points           | Null at first  |   |
 - 
+| Course Schema |                                           |   |
+|---------------|-------------------------------------------|---|
+| ID            | Primary Key                               |   |
+| UserId        | Reference -> Users table                  |   |
+| Difficulty    | Difficulty ENUM('easy', 'medium', 'hard') |   |
 
 ## Endpoints
 
