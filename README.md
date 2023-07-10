@@ -2,7 +2,7 @@
 
 # SITE Capstone Project
 
-SITE Course Year: **20__**
+SITE Course Year: **2023**
 
 Cohort: **Codepath Cohort 2**
 
