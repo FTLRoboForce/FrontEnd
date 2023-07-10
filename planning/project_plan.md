@@ -43,7 +43,11 @@ Background: Professor Mark is a university professor in the computer science dep
     
 ## Data Model
 
-Describe your app's data model using diagrams or tables
+User Schema 
+[Username](#username "Goto heading-1")
+[First Name](#username "Goto heading-1")
+
+- 
 
 ## Endpoints
 
