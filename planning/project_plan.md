@@ -60,6 +60,11 @@ Background: Professor Mark is a university professor in the computer science dep
 | UserId        | Reference -> Users table                  |   |
 | Difficulty    | Difficulty ENUM('easy', 'medium', 'hard') |   |
 
+| FlashCard Set Schema |                            |   |
+|----------------------|----------------------------|---|
+| ID                   | Primary Key                |   |
+| Course Id            | Reference -> Course table  |   |
+
 ## Endpoints
 
 1. "/user/register" -register user
