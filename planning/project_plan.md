@@ -54,51 +54,60 @@ Background: Professor Mark is a university professor in the computer science dep
 https://www.loom.com/share/1db84ed1e04b42889be6d0a6060b3838?sid=02d96faa-0561-43bb-9fbd-2b771a238775
     
 ## Data Model
-| User Schema      |                |   |
-|------------------|----------------|---|
-| ID               | Primary Key    |   |
-| Username         |                |   |
-| First Name       |                |   |
-| Last Name        |                |   |
-| Email            |                |   |
-| Password         |                |   |
-| Comfirm Password |                |   |
-| Confirm password |                |   |
-| Points           | Null at first  |   |
+**User Schema**  
+| Column Name  | Type     | Description                                      |
+|--------------|----------|--------------------------------------------------|
+| user_id      | int      | Primary key                                      |
+| username     | varchar  | user username                                    |
+| firstName    | Varchar  | user's first name                                |
+| lastName     | Varchar  | user's last name                                 |
+| email        | Varchar  | user's email (unique)                            |
+| hashpassword | Integer  | user hashed password                             |
+| points       | int      | total of points user has (leaderboard purposes)  |
 - 
-| Course Schema |                                           |   |
-|---------------|-------------------------------------------|---|
-| ID            | Primary Key                               |   |
-| UserId        | Reference -> Users table                  |   |
-| Difficulty    | Difficulty ENUM('easy', 'medium', 'hard') |   |
-
-| FlashCard Set Schema |                            |   |
-|----------------------|----------------------------|---|
-| ID                   | Primary Key                |   |
-| Course Id            | Reference -> Course table  |   |
-
-| Individual Flashcard Schema |                                   |   |
-|-----------------------------|-----------------------------------|---|
-| ID                          | Primary Key                       |   |
-| FlashCard set ID            | Reference -> FlashCard Set table  |   |
-| Questions (front)           | Varchar                           |   |
-| Answer (Back)               | Varchar                           |   |
-
-| Quiz Schema |                            |   |
-|-------------|----------------------------|---|
-| ID          | Primary Key                |   |
-| Course ID   | Reference -> Course table  |   |
+**Course schema**
+| Column Name  | Type    | Description                           |
+|--------------|---------|---------------------------------------|
+| course_id    | int     | Primary key                           |
+| user_id      | varchar | FOREIGN KEY -> References (user (id)) |
+| difficulty   | enum    | easy, meduim , hard                   |
 
 
-| Quiz Questions Schema |                          |   |
-|-----------------------|--------------------------|---|
-| ID                    | Primary Key              |   |
-| Quiz ID               | Reference -> Quiz table  |   |
-| Question              | Varchar                  |   |
-| Multiple choice       | Varchar                  |   |
-| Answer                | Varchar                  |   |
-| Points                | Integer                  |   |
-| isCorrect             | Boolean(True or false)   |   |
+**FlashCard set schema**
+
+| Column Name      | Type | Description                             |
+|------------------|------|-----------------------------------------|
+| flashcard_set_id | int  | Primary key                             |
+| course_id        | int  | FOREIGN KEY -> References (course (id)) |
+
+**Individual FlashCard set schema**
+
+| Column Name      | Type    | Description                                   |
+|------------------|---------|-----------------------------------------------|
+| flashcard_id     | int     | Primary key                                   |
+| flashcard_set_id | varchar | FOREIGN KEY -> References (Flashcard set(id)) |
+| question         | Varchar | question front of the card                    |
+| answer           | Varchar | answer back of the card                       |
+
+**Quiz schema**
+
+| Column Name  | Type | Description                             |
+|--------------|------|-----------------------------------------|
+| quiz_id      | int  | Primary key                             |
+| course_id    | int  | FOREIGN KEY -> References (course (id)) |
+
+
+**Quiz Questions Schema**
+
+| Column Name  | Type                   | Description                        |
+|--------------|------------------------|------------------------------------|
+| ID           | int                    | Primary key                        |
+| Quiz ID      | int NOT NULL           | FOREIGN KEY -> References Quiz(id) |
+| Question     | Varchar                | Question generated by AI           |
+| choice       | Varchar                | Multiple choice for the questions  |
+| Answer       | Varchar                | Answer of the questions            |
+| Points       | Integer                | Points depending on difficulty     |
+| isCorrect    | Boolean(True or false) | If the user answered correctly     |
 
 
 
