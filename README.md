@@ -4,11 +4,12 @@
 
 SITE Course Year: **20__**
 
-Cohort: **Add Company Sponsor Name**
+Cohort: **Codepath Cohort 2**
 
-Team Member Names:**Insert Team Member Names**
+Team Member Names: **Khalid Abouelrous, Oyindamola Akanbi, Wissam Hassani**
 
-Mentors Names: **Insert Professional Mentor Names**
+
+Mentors Names: **Omar rahman(Oyindamola)*
 
 Project Code Repository Links
 
