@@ -1,10 +1,10 @@
 # Project Plan
 
-Pod Members: **Add Pod Members Names**
+Pod Members: **Khalid Abouelrous, Oyindamola Akanbi, Wissam Hassani**
 
 ## Problem Statement and Description
 
-Insert the latest summary of your problem statement and app description.
+The challenge presented by current study websites lies in the static nature of traditional study materials, as they often lack the ability to adapt to individual learning needs and offer repetitive content. Hence, there is a need for an innovative solution that can create diverse and engaging study resources, ensuring students can effectively retain knowledge by continuously presenting them with new and unique questions and flashcards tailored to their specific learning objectives.
 
 ## User Roles and Personas
 
