@@ -31,8 +31,16 @@ Background: Professor Mark is a university professor in the computer science dep
 
 ## Pages/Screens
 
-List all the pages and screens in the app. Include wireframes for at least 3 of them.
-
+1. Landing Page
+2. Register
+3. Login
+4. Create Course
+5. Flashcards
+6. Quiz
+7. Previous Flashcards
+8. Previous Quizes
+9. Leaderboard
+    
 ## Data Model
 
 Describe your app's data model using diagrams or tables
