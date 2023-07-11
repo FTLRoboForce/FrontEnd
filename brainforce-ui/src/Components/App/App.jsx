@@ -1,8 +1,12 @@
-import logo from "./logo.svg";
-import "./App.css";
+
+import { Navbar } from "../Navbar/Navbar";
+import './App.css';
 
 function App() {
-  return <div className="App">Hello</div>;
+  return (
+    <Navbar />
+
+  )
 }
 
 export default App;
