@@ -62,14 +62,14 @@ https://www.loom.com/share/1db84ed1e04b42889be6d0a6060b3838?sid=02d96faa-0561-43
 | firstName    | Varchar  | user's first name                                |
 | lastName     | Varchar  | user's last name                                 |
 | email        | Varchar  | user's email (unique)                            |
-| hashpassword | Integer  | user hashed password                             |
+| hashpassword | varchar  | user hashed password                             |
 | points       | int      | total of points user has (leaderboard purposes)  |
 - 
 **Course schema**
 | Column Name  | Type    | Description                           |
 |--------------|---------|---------------------------------------|
 | course_id    | int     | Primary key                           |
-| user_id      | varchar | FOREIGN KEY -> References (user (id)) |
+| user_id      | int     | FOREIGN KEY -> References (user (id)) |
 | difficulty   | enum    | easy, meduim , hard                   |
 
 
