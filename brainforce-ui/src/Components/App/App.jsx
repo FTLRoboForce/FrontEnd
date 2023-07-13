@@ -1,9 +1,6 @@
 import { Navbar } from "../Navbar/Navbar";
 import { Home } from '../Home/Home';
 import { Login } from '../Login/Login';
-import { Navbar } from "../Navbar/Navbar";
-import { Home } from '../Home/Home.jsx';
-import { Login } from '../Login/Login.jsx';
 import { Register } from '../Register/Register.jsx';
 import './App.css';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
