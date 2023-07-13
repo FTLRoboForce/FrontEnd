@@ -10,7 +10,7 @@ export function Navbar() {
         <div>
             <nav className='nav-container'>
                 <section className="logo-container">
-                    <img src={logo} alt="BrainForce Logo" />
+                    <img src={logo} alt="BrainForce Logo" onClick ={() => window.location = "/"} />
                     <h3>BrainForce</h3>
                 </section>
                <section className='nav-links-container'>
@@ -29,12 +29,12 @@ export function Navbar() {
                <section className='user-activity-container'>
                     <ul className="user-activity">
                         <section id="navbar-login-container">
-                        <button onClick={() => window.location = "login"}> Login</button>
+                        <button onClick={() => window.location = "/login"}> Login</button>
 
                         </section>
 
                         <section id="navbar-signup-container">
-                        <button> Sign Up</button>
+                        <button onClick={() => window.location = "/register"}> Sign Up</button>
                         </section>
                         
                         
