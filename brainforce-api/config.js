@@ -5,15 +5,7 @@ const PORT = process.env.PORT ? Number(process.env.PORT) : 3001;
 
 // Use dev database, testing database, or via env var, production database
 function getDatabaseUri() {
-  const dbUser = process.env.DATABASE_USER || "postgres";
-  const dbPass = process.env.DATABASE_PASS
-    ? encodeURI(process.env.DATABASE_PASS)
-    : "postgres";
-  const dbHost = process.env.DATABASE_HOST || "local";
-  const dbPort = process.env.DATABASE_PORT || 5432;
-  const dbProdName = "life_tracker";
-  const dbName = "life_tracker";
-  const dbURL = ""; //put the database URL here
+  const dbURL = process.env.dburl;
   return dbURL;
 }
 

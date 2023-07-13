@@ -36,13 +36,14 @@ class User {
    **/
 
   static async register(creds) {
-    const { email, password, firstname, lastname, username } = creds;
+    const { email, password, firstname, lastname, username, points } = creds;
     const requiredCreds = [
       "email",
       "password",
       "firstname",
       "lastname",
-      "username"
+      "username",
+      "points"
     ];
     try {
       validateFields({
@@ -67,16 +68,17 @@ class User {
           firstname,
           lastname,
           username,
-          email
+          email,
+          points
         )
-        VALUES ($1, $2, $3, $4, $5)
+        VALUES ($1, $2, $3, $4, $5, $6)
         RETURNING id,
                   email,            
                   firstname AS "firstname",
                   lastname AS "lastname",
                   username
                   `,
-      [hashedPassword, firstname, lastname, username, normalizedEmail]
+      [hashedPassword, firstname, lastname, username, normalizedEmail, points]
     );
 
     const user = result.rows[0];
