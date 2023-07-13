@@ -5,15 +5,106 @@
     align-items: center;
     width: 100%;
     height: 100vh;
-    background-color: #004D85;
+    background-color: var(--dakrblue);
 }
 
 .registration-container {
     display: flex;
     flex-direction: column;
+    align-items: center;
+    width: 50vw;
+    height: 60vh;
+  background-color: var(--lightgrey);
+  border-radius: 10px;
+  
+
+}
+
+.registration-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 10%;
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: var(--darkblue);
+    padding-left: 50px;
+}
+
+.registration-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    
+    padding: 10px;
+    width: 80%;
+}
+
+
+.registration-form-top{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    
+}
+
+.registration-form-top label {
+  font-weight: bold;
+  color: var(--darkblue);
+  padding: 5px;
+  width: 100%;
+}
+
+.registration-form-bottom{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-top: 50px;
+    
+}
+
+
+.registration-form-bottom label {
+    font-weight: bold;
+    color: var(--darkblue);
+    padding: 5px;
+    width: 100%;
+}
+
+input {
+  width: 30rem;
+  padding: 9px 6px;
+  box-sizing: border-box;
+}
+
+.registration-form-button {
+    display: flex;
     justify-content: center;
     align-items: center;
-    width: 50%;
-    height: 50%;
-  background-color: #D9D9D9;
+    width: 100%;
+    height: 10%;
+    margin-top: 20px;
+}
+
+.registration-form-button button {
+    width: 10rem;
+    height: 3rem;
+    border-radius: 5px;
+    background-color: var(--darkblue);
+    color: white;
+    font-size: 1.2rem;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+}
+
+.registration-form-button button:hover {
+    background-color: var( --ligtblue);
+    color: var(--darkblue);
 }
