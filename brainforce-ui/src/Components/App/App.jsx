@@ -4,7 +4,7 @@ import { Login } from "../Login/Login";
 import { Register } from "../Register/Register.jsx";
 import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Flashcard from "../Flashcard/Flashcard";
+import FlashcardPage from "../FlashcardPage/FlashcardPage";
 
 function App() {
   return (
@@ -15,7 +15,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/flashcard" element={<Flashcard />} />
+        <Route path="/flashcard" element={<FlashcardPage />} />
       </Routes>
     </BrowserRouter>
   );

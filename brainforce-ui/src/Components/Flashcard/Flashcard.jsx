@@ -1,5 +1,6 @@
 import React from "react";
 import { useState, useEffect } from "react";
+import "./Flashcard.css";
 
 export default function Flashcard() {
   const [isnotflipped, setisnotflipped] = useState();
@@ -17,9 +18,7 @@ export default function Flashcard() {
               setisnotflipped(false);
             }}
           >
-            <div className="flashcard__front__text">
-              <p>Front</p>
-            </div>
+            <p>Front</p>
           </button>
         </div>
       ) : (
@@ -29,9 +28,7 @@ export default function Flashcard() {
               setisnotflipped(true);
             }}
           >
-            <div className="flashcard__back__text">
-              <p>Back</p>
-            </div>
+            <p>Back</p>
           </button>
         </div>
       )}

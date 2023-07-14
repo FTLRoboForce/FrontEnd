@@ -1,0 +1,17 @@
+.flashcard{
+    height: 100%;
+    width: 50%;
+}
+
+.flashcard-front{
+    width: 100%;
+}
+
+.flashcard-back{
+    width: 100%;
+}   
+
+.flashcard button {
+    width: 100%;
+    height: 300px;
+}
