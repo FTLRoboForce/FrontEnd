@@ -46,6 +46,8 @@ export function Login() {
             // onChange={(event) => {
             //   handleOnChangeLoginEmail(event.target.value);
             // }}
+            placeholder="Enter your email"
+            className="form-input-login"
           />
         </div>
         <div className="form-group">
@@ -58,6 +60,8 @@ export function Login() {
             // onChange={(event) => {
             //   handleOnChangeLoginPassword(event.target.value);
             // }}
+            placeholder="Enter your password"
+            className="form-input-login"
           />
         </div>
         <button
