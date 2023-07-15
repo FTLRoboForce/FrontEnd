@@ -22,27 +22,29 @@
     margin-bottom: 5px;
     font-weight: bold;
   }
-  
-  input[type="email"],
-  input[type="password"]{
+.form-input-login{
     width: 100%;
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 4px;
   }
   
-button {
-    width: 100%;
-    padding: 10px;
-    background-color: #007edb;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    color: black;
+.submit-button {
+  width: 10rem;
+  height: 3rem;
+  border-radius: 5px;
+  background-color: var(--darkblue);
+  color: white;
+  font-size: 1.2rem;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+margin-left: 30%;
+   
   }
   
 button:hover {
-    background-color: #45a049;
-    color: #ffff
-  }
+  background-color: var( --ligtblue);
+  color: var(--darkblue);
+}
+  
