@@ -9,8 +9,12 @@ import MakeCourse from "../MakeCourse/MakeCourse";
 import Leaderboard from "../Leaderboard/Leaderboard";
 import Report from "../Report/Report";
 import Quiz from "../Quiz/Quiz";
+import { useState } from "react";
 
 function App() {
+  const [token, setToken] = useState();
+  const [userGlobal, setUserGlobal] = useState();
+
   const handleAnswer = (selectedOption) => {
     console.log("Selected Option:", selectedOption);
   };
@@ -21,7 +25,10 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/register" element={<Register />} />
-        <Route path="/login" element={<Login />} />
+        <Route
+          path="/login"
+          element={<Login setToken={setToken} setUserGlobal={setUserGlobal} />}
+        />
         <Route path="/flashcard" element={<FlashcardPage />} />
         <Route path="/makecourse" element={<MakeCourse />} />
         <Route path="/leaderboard" element={<Leaderboard />} />
