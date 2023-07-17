@@ -1,8 +1,7 @@
-/* QuizOptions.css */
 
 .course-options-container {
-    max-width: 400px;
-    margin: 0 auto;
+    max-width: 75%;
+    margin: 100px auto;
   }
   
   h2 {
@@ -14,22 +13,33 @@
     flex-direction: column;
   }
   
-  .form-group {
+  .option-row {
+    display: flex;
+    align-items: center;
     margin-bottom: 20px;
   }
   
-  label {
-    font-weight: bold;
-    margin-bottom: 5px;
+  .option-row label {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-right: 20px;
+    text-align: center;
+    width: 33%;
   }
   
-  select {
-    width: 100%;
-    padding: 10px;
-    font-size: 16px;
+  .option-row img {
+    width: 120px;
+    height: 120px;
+    margin-bottom: 10px;
   }
   
-  button {
+  input[type="radio"] {
+    margin-top: 5px;
+  }
+  
+.make-course-button{    
+    margin-top: 50px;
     padding: 10px 20px;
     font-size: 16px;
     background-color: #4caf50;
@@ -41,4 +51,3 @@
   button:hover {
     background-color: #45a049;
   }
-  

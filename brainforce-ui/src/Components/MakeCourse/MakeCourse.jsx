@@ -3,6 +3,16 @@
 import React, { useState } from "react";
 import "./MakeCourse.css";
 
+// Import images for subjects
+import mathImage from "./math.png";
+import scienceImage from "./science.png";
+import programmingImage from "./coding.png";
+
+// Import images for difficulty levels
+import easyImage from "./green.png";
+import mediumImage from "./yellow.png";
+import hardImage from "./red.png";
+
 export default function MakeCourse() {
   const [subject, setSubject] = useState("");
   const [difficulty, setDifficulty] = useState("");
@@ -30,37 +40,93 @@ export default function MakeCourse() {
     <div className="course-options-container">
       <h2>Choose Course Options</h2>
       <form onSubmit={handleSubmit}>
-        <div className="form-group">
-          <label htmlFor="subject">Select a subject:</label>
-          <select
-            id="subject"
-            value={subject}
-            onChange={handleSubjectChange}
-            required
-          >
-            <option value="">-- Select Subject --</option>
-            <option value="math">Math</option>
-            <option value="science">Science</option>
-            <option value="programming">Programming</option>
-          </select>
+        <div className="option-row">
+          <label htmlFor="math">
+            <img src={mathImage} alt="Math" />
+            <input
+              type="radio"
+              id="math"
+              name="subject"
+              value="math"
+              checked={subject === "math"}
+              onChange={handleSubjectChange}
+              required
+            />
+            Math
+          </label>
+          <label htmlFor="science">
+            <img src={scienceImage} alt="Science" />
+            <input
+              type="radio"
+              id="science"
+              name="subject"
+              value="science"
+              checked={subject === "science"}
+              onChange={handleSubjectChange}
+              required
+            />
+            Science
+          </label>
+          <label htmlFor="programming">
+            <img src={programmingImage} alt="Programming" />
+            <input
+              type="radio"
+              id="programming"
+              name="subject"
+              value="programming"
+              checked={subject === "programming"}
+              onChange={handleSubjectChange}
+              required
+            />
+            Programming
+          </label>
         </div>
 
-        <div className="form-group">
-          <label htmlFor="difficulty">Select difficulty:</label>
-          <select
-            id="difficulty"
-            value={difficulty}
-            onChange={handleDifficultyChange}
-            required
-          >
-            <option value="">-- Select Difficulty --</option>
-            <option value="easy">Easy</option>
-            <option value="medium">Medium</option>
-            <option value="hard">Hard</option>
-          </select>
+        <div className="option-row">
+          <label htmlFor="easy">
+            <img src={easyImage} alt="Easy" />
+            <input
+              type="radio"
+              id="easy"
+              name="difficulty"
+              value="easy"
+              checked={difficulty === "easy"}
+              onChange={handleDifficultyChange}
+              required
+            />
+            Easy
+          </label>
+          <label htmlFor="medium">
+            <img src={mediumImage} alt="Medium" />
+            <input
+              type="radio"
+              id="medium"
+              name="difficulty"
+              value="medium"
+              checked={difficulty === "medium"}
+              onChange={handleDifficultyChange}
+              required
+            />
+            Medium
+          </label>
+          <label htmlFor="hard">
+            <img src={hardImage} alt="Hard" />
+            <input
+              type="radio"
+              id="hard"
+              name="difficulty"
+              value="hard"
+              checked={difficulty === "hard"}
+              onChange={handleDifficultyChange}
+              required
+            />
+            Hard
+          </label>
         </div>
 
-        <button type="submit">Start Course</button>
+        <button className="make-course-button" type="submit">
+          Start Course
+        </button>
       </form>
     </div>
   );
