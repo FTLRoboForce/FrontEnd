@@ -1,5 +1,3 @@
-// QuizOptions.js
-
 import React, { useState } from "react";
 import "./MakeCourse.css";
 
@@ -17,12 +15,12 @@ export default function MakeCourse() {
   const [subject, setSubject] = useState("");
   const [difficulty, setDifficulty] = useState("");
 
-  const handleSubjectChange = (event) => {
-    setSubject(event.target.value);
+  const handleSubjectChange = (selectedSubject) => {
+    setSubject(selectedSubject);
   };
 
-  const handleDifficultyChange = (event) => {
-    setDifficulty(event.target.value);
+  const handleDifficultyChange = (selectedDifficulty) => {
+    setDifficulty(selectedDifficulty);
   };
 
   const handleSubmit = (event) => {
@@ -36,95 +34,79 @@ export default function MakeCourse() {
     setDifficulty("");
   };
 
+  const isSubjectSelected = (selectedSubject) => {
+    return subject === selectedSubject ? "selected" : "";
+  };
+
+  const isDifficultySelected = (selectedDifficulty) => {
+    return difficulty === selectedDifficulty ? "selected" : "";
+  };
+
+  const isSubmitDisabled = !subject || !difficulty;
+
   return (
     <div className="course-options-container">
       <h2>Choose Course Options</h2>
       <form onSubmit={handleSubmit}>
         <div className="option-row">
-          <label htmlFor="math">
+          <label
+            htmlFor="math"
+            className={`option ${isSubjectSelected("math")}`}
+            onClick={() => handleSubjectChange("math")}
+          >
             <img src={mathImage} alt="Math" />
-            <input
-              type="radio"
-              id="math"
-              name="subject"
-              value="math"
-              checked={subject === "math"}
-              onChange={handleSubjectChange}
-              required
-            />
             Math
           </label>
-          <label htmlFor="science">
+          <label
+            htmlFor="science"
+            className={`option ${isSubjectSelected("science")}`}
+            onClick={() => handleSubjectChange("science")}
+          >
             <img src={scienceImage} alt="Science" />
-            <input
-              type="radio"
-              id="science"
-              name="subject"
-              value="science"
-              checked={subject === "science"}
-              onChange={handleSubjectChange}
-              required
-            />
             Science
           </label>
-          <label htmlFor="programming">
+          <label
+            htmlFor="programming"
+            className={`option ${isSubjectSelected("programming")}`}
+            onClick={() => handleSubjectChange("programming")}
+          >
             <img src={programmingImage} alt="Programming" />
-            <input
-              type="radio"
-              id="programming"
-              name="subject"
-              value="programming"
-              checked={subject === "programming"}
-              onChange={handleSubjectChange}
-              required
-            />
             Programming
           </label>
         </div>
 
         <div className="option-row">
-          <label htmlFor="easy">
+          <label
+            htmlFor="easy"
+            className={`option ${isDifficultySelected("easy")}`}
+            onClick={() => handleDifficultyChange("easy")}
+          >
             <img src={easyImage} alt="Easy" />
-            <input
-              type="radio"
-              id="easy"
-              name="difficulty"
-              value="easy"
-              checked={difficulty === "easy"}
-              onChange={handleDifficultyChange}
-              required
-            />
             Easy
           </label>
-          <label htmlFor="medium">
+          <label
+            htmlFor="medium"
+            className={`option ${isDifficultySelected("medium")}`}
+            onClick={() => handleDifficultyChange("medium")}
+          >
             <img src={mediumImage} alt="Medium" />
-            <input
-              type="radio"
-              id="medium"
-              name="difficulty"
-              value="medium"
-              checked={difficulty === "medium"}
-              onChange={handleDifficultyChange}
-              required
-            />
             Medium
           </label>
-          <label htmlFor="hard">
+          <label
+            htmlFor="hard"
+            className={`option ${isDifficultySelected("hard")}`}
+            onClick={() => handleDifficultyChange("hard")}
+          >
             <img src={hardImage} alt="Hard" />
-            <input
-              type="radio"
-              id="hard"
-              name="difficulty"
-              value="hard"
-              checked={difficulty === "hard"}
-              onChange={handleDifficultyChange}
-              required
-            />
             Hard
           </label>
         </div>
 
-        <button className="make-course-button" type="submit">
+        <button
+          className="make-course-button"
+          type="submit"
+          disabled={isSubmitDisabled}
+        >
           Start Course
         </button>
       </form>
