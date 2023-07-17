@@ -5,6 +5,7 @@ import Api from "../../utilities/api";
 
 export function Register() {
   let [email, setEmail] = useState("");
+  let [errortext, setErrortext] = useState("");
   let [username, setUsername] = useState("");
   let [firstname, setfirstname] = useState("");
   let [lastname, setlastname] = useState("");
@@ -20,6 +21,7 @@ export function Register() {
   });
 
   function handleOnSubmit(event) {
+    event.preventDefault();
     if (verifyPassword(password, confirm)) {
       Api.register(user);
     }
@@ -39,10 +41,16 @@ export function Register() {
   }
 
   function verifyPassword(password, confirm) {
-    if (password === confirm) {
-      return true;
+    if (password != confirm) {
+      setErrortext("Passwords do not match");
+      return false;
     }
-    return false;
+    if (password.length < 8) {
+      setErrortext("Password must be at least 8 characters long");
+      return false;
+    }
+
+    return true;
   }
 
   return (
@@ -140,6 +148,7 @@ export function Register() {
               >
                 Register
               </button>
+              {errortext ? <p>{errortext}</p> : null}
             </div>
           </form>
         </div>
