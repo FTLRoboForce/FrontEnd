@@ -13,16 +13,28 @@ export function Login({ setToken, setUserGlobal }) {
 
   function handleOnSubmit(event) {
     event.preventDefault();
-    Api.login(user).then((response) => {
-      localStorage.setItem("jwt", response.token);
-      setToken(response.token);
-    });
-    Api.user({ token: localStorage.getItem("jwt") }).then((response) => {
-      setUserGlobal(response);
-      setName(response.firstname + " " + response.lastname);
-    });
+    Api.login(user)
+      .then((response) => {
+        localStorage.setItem("jwt", response.token);
+        setToken(response.token);
+      })
+      .then(() => {
+        Api.user({ token: localStorage.getItem("jwt") }).then((response) => {
+          setUserGlobal(response);
+          setName(response.firstname + " " + response.lastname);
+        });
+      });
     // navigate("/activity");
   }
+
+  useEffect(() => {
+    if (localStorage.getItem("jwt")) {
+      Api.user({ token: localStorage.getItem("jwt") }).then((response) => {
+        setUserGlobal(response);
+        setName(response.firstname + " " + response.lastname);
+      });
+    }
+  }, [user]);
 
   function handleOnChangeLoginEmail(email) {
     setEmail(email);

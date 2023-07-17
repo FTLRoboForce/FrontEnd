@@ -1,6 +1,50 @@
+import React from "react";
 import "./Register.css";
+import { useState } from "react";
+import Api from "../../utilities/api";
 
 export function Register() {
+  let [email, setEmail] = useState("");
+  let [username, setUsername] = useState("");
+  let [firstname, setfirstname] = useState("");
+  let [lastname, setlastname] = useState("");
+  let [password, setPassword] = useState("");
+  let [confirm, setConfirm] = useState("");
+  let [user, setUser] = useState({
+    email: email,
+    username: username,
+    firstname: firstname,
+    lastname: lastname,
+    password: password,
+    points: 0
+  });
+
+  function handleOnSubmit(event) {
+    if (verifyPassword(password, confirm)) {
+      Api.register(user);
+    }
+    // window.location.href = "/excerciseDashbo";
+  }
+
+  function handleValueChange(value, setValue) {
+    setValue(value);
+    setUser({
+      email: email,
+      username: username,
+      firstname: firstname,
+      lastname: lastname,
+      password: password,
+      points: 0
+    });
+  }
+
+  function verifyPassword(password, confirm) {
+    if (password === confirm) {
+      return true;
+    }
+    return false;
+  }
+
   return (
     <div className="registration-page-container">
       <div className="registration-container">
@@ -17,6 +61,9 @@ export function Register() {
                   id="firstname"
                   placeholder="Enter your first name"
                   className="form-input"
+                  onChange={(event) => {
+                    handleValueChange(event.target.value, setfirstname);
+                  }}
                 />
               </div>
               <div className="form-group">
@@ -26,6 +73,9 @@ export function Register() {
                   id="name"
                   placeholder="Enter your last name"
                   className="form-input"
+                  onChange={(event) => {
+                    handleValueChange(event.target.value, setlastname);
+                  }}
                 />
               </div>
               <div className="form-group">
@@ -35,13 +85,22 @@ export function Register() {
                   id="username"
                   placeholder="Enter a username"
                   className="form-input"
+                  onChange={(event) => {
+                    handleValueChange(event.target.value, setUsername);
+                  }}
                 />
               </div>
               <div className="form-group">
                 <label htmlFor="email">Email</label>
-                <input type="email" id="email" placeholder="Enter your email" 
-                 className="form-input"/>
-                
+                <input
+                  type="email"
+                  id="email"
+                  placeholder="Enter your email"
+                  className="form-input"
+                  onChange={(event) => {
+                    handleValueChange(event.target.value, setEmail);
+                  }}
+                />
               </div>
             </div>
             <div className="registration-form-bottom">
@@ -52,6 +111,9 @@ export function Register() {
                   id="password"
                   placeholder="Enter your password"
                   className="form-input"
+                  onChange={(event) => {
+                    handleValueChange(event.target.value, setPassword);
+                  }}
                 />
               </div>
 
@@ -62,12 +124,22 @@ export function Register() {
                   id="password"
                   placeholder="Enter your password"
                   className="form-input"
+                  onChange={(event) => {
+                    handleValueChange(event.target.value, setConfirm);
+                  }}
                 />
               </div>
             </div>
 
             <div className="registration-form-button">
-              <button type="submit">Register</button>
+              <button
+                type="submit"
+                onClick={(event) => {
+                  handleOnSubmit(event);
+                }}
+              >
+                Register
+              </button>
             </div>
           </form>
         </div>
