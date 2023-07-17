@@ -54,6 +54,19 @@ class User {
     } catch (err) {
       throw err;
     }
+
+    if (password.length < 8) {
+      throw new BadRequestError("Password must be at least 8 characters");
+    }
+
+    if (username.length < 3) {
+      throw new BadRequestError("Username must be at least 3 characters");
+    }
+
+    if (email.indexOf("@") <= 0) {
+      throw new BadRequestError("Invalid email");
+    }
+    
     const existingUserWithEmail = await User.fetchUserByEmailRegister(email);
     if (existingUserWithEmail) {
       throw new BadRequestError(`Duplicate email: ${email}`);
