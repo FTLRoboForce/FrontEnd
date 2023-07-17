@@ -5,9 +5,12 @@ const PORT = process.env.PORT ? Number(process.env.PORT) : 3001;
 
 // Use dev database, testing database, or via env var, production database
 function getDatabaseUri() {
-  const dbURL = process.env.dburl;
+  const dbURL = process.env.dbURL;
+  console.log("dbURL".blue, dbURL);
   return dbURL;
 }
+
+
 
 const BCRYPT_WORK_FACTOR = 1;
 

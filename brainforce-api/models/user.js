@@ -108,7 +108,7 @@ class User {
 
   static async fetchUserByEmailRegister(email) {
     const { rows } = await db.query("SELECT * FROM users WHERE email = $1", [
-      email
+      email.toLowerCase()
     ]);
     const user = rows[0];
     if (user) {
