@@ -8,12 +8,16 @@ import FlashcardPage from "../FlashcardPage/FlashcardPage";
 import MakeCourse from "../MakeCourse/MakeCourse";
 import Leaderboard from "../Leaderboard/Leaderboard";
 import Report from "../Report/Report";
+import Quiz from "../Quiz/Quiz";
 
 function App() {
+  const handleAnswer = (selectedOption) => {
+    console.log("Selected Option:", selectedOption);
+  };
+
   return (
     <BrowserRouter>
       <Navbar />
-
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/register" element={<Register />} />
@@ -21,6 +25,16 @@ function App() {
         <Route path="/flashcard" element={<FlashcardPage />} />
         <Route path="/makecourse" element={<MakeCourse />} />
         <Route path="/leaderboard" element={<Leaderboard />} />
+        <Route
+          path="/quiz"
+          element={
+            <Quiz
+              question="What is the capital of France?"
+              options={["Paris", "London", "Berlin", "Rome"]}
+              onAnswer={handleAnswer}
+            />
+          }
+        ></Route>
         <Route path="/report" element={<Report />} />
       </Routes>
     </BrowserRouter>
