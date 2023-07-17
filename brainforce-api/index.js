@@ -6,13 +6,14 @@ app.use(express.json())
 
 const config = new Configuration({
     apiKey : process.env.OPEN_AI_KEY,
+    basePath: 'https://api.openai.com/v1/chat/completions'
+
 })
 
 const openAi = new OpenAIApi(config)
 
 app.post("/flashcard", async (req,res) => {
     try{
-        const openAiUrl = 'https://api.openai.com/v1/chat/completions'
         const { number, difficultyLevel, subject, optionalSection } = req.body
         const response = await openAi.createCompletion({
             model : "gpt-3.5-turbo-0613",
