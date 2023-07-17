@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./MakeCourse.css";
+import einstein from "../../images/einstein.png";
 
 // Import images for subjects
 import mathImage from "./math.png";
@@ -45,6 +46,9 @@ export default function MakeCourse() {
   const isSubmitDisabled = !subject || !difficulty;
 
   return (
+    <>
+   
+    
     <div className="course-options-container">
       <h2>Choose Course Options</h2>
       <form onSubmit={handleSubmit}>
@@ -111,5 +115,15 @@ export default function MakeCourse() {
         </button>
       </form>
     </div>
+
+    <div className= "einstein-img">
+      <img src={einstein} alt="Einstein" />
+      
+
+  
+
+      
+    </div>
+    </>
   );
 }
