@@ -17,7 +17,7 @@ export function Navbar() {
         <section className="nav-links-container">
           <ul className="nav-links">
             <li>
-              <a href="#">Make Course</a>
+              <a href="/makecourse">Make Course</a>
             </li>
             <li>
               <a href="#">Previous Flashcard</a>
@@ -26,7 +26,7 @@ export function Navbar() {
               <a href="/quiz">Previous Quizzes</a>
             </li>
             <li>
-              <a href="#">Leaderboard</a>
+              <a href="/leaderboard">Leaderboard</a>
             </li>
           </ul>
         </section>
