@@ -6,6 +6,7 @@ import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import FlashcardPage from "../FlashcardPage/FlashcardPage";
 import MakeCourse from "../MakeCourse/MakeCourse";
+import Leaderboard from "../Leaderboard/Leaderboard";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/flashcard" element={<FlashcardPage />} />
         <Route path="/makecourse" element={<MakeCourse />} />
+        <Route path="/leaderboard" element={<Leaderboard />} />
       </Routes>
     </BrowserRouter>
   );
