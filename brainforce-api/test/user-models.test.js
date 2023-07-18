@@ -1,104 +1,120 @@
-// const {test} = require('node:test');
-const User = require("../models/user");
-const bcrypt = require("bcrypt");
-const db = require("../db");
+const bcrypt = require('bcrypt');
+const User = require('../models/user');
+const { BadRequestError } = require('../errors'); 
+const db = require('../db'); // Assuming you have a database connection
 
-jest.mock("bcrypt");
-jest.mock("../db");
+jest.mock('../db'); // Mock the db module
 
-describe("register function", () => {
-  beforeEach(() => {
-    jest.clearAllMocks();
-  });
 
-  test("should register a new user successfully", async () => {
-    const creds = {
-      email: "test123@email.com",
-      password: "12345678",
-      firstname: "test",
-      lastname: "test",
-      username: "test",
-      points: 0,
-    };
 
-    const expectedUser = {
-      id: 1,
-      email: creds.email.toLowerCase(),
-      password: "hashedPassword",
-      firstname: creds.firstname,
-      lastname: creds.lastname,
-      username: creds.username,
-    };
+// Clear the necessary tables or collections
+const clearDatabase = async () => {
+  await db.query('TRUNCATE TABLE users CASCADE'); // Example for PostgreSQL, adjust for your database
+  // Add more truncate/drop statements for other tables or collections if needed
+};
 
-    // Mock the required functions and return values
-    const validateFieldsMock = jest.fn();
-    validateFieldsMock.mockImplementationOnce(() => {
-      // no error, validation passes
-    });
-
-    const fetchUserByEmailRegisterMock = jest.fn();
-    fetchUserByEmailRegisterMock.mockResolvedValueOnce(null);
-
-    bcrypt.hash.mockResolvedValueOnce("hashedPassword");
-
-    db.query.mockResolvedValueOnce({
-      rows: [expectedUser],
-    });
-
-    // Call the register function
-    const result = await User.register(creds);
-
-    // Assertions
-    expect(validateFieldsMock).toHaveBeenCalledTimes(1);
-    expect(fetchUserByEmailRegisterMock).toHaveBeenCalledTimes(1);
-    expect(bcrypt.hash).toHaveBeenCalledTimes(1);
-    expect(db.query).toHaveBeenCalledTimes(1);
-    expect(result).toEqual(expectedUser);
-  });
+// Run the clearDatabase function before each test
+beforeEach(async () => {
+  await clearDatabase();
 });
 
-test("should handle duplicate email during registration", async () => {
-    const creds = {
-      email: "test121@emal.com",
-      password: "12345678",
-      firstname: "test",
-      lastname: "test",
-      username: "test",
-      points: 0,
-    };
-  
-    // Mock the required functions and return values
-    const validateFieldsMock = jest.fn();
-    validateFieldsMock.mockImplementationOnce(() => {
-      // no error, validation passes
-    });
-  
-    const fetchUserByEmailRegisterMock = jest.fn();
-    fetchUserByEmailRegisterMock.mockResolvedValueOnce({
-      rows: [
-        {
-          id: 2,
-          email: creds.email.toLowerCase(),
-          password: "hashedPassword",
-          firstname: "existing",
-          lastname: "user",
-          username: "existingUser",
-        },
-      ],
-    });
-  
-    // Call the register function and expect it to throw an error
-    await expect(User.register(creds)).rejects.toThrowError(
-      "Duplicate email: test123@email.com"
-    );
-  
-    // Assertions
-    expect(validateFieldsMock).toHaveBeenCalledTimes(1);
-    expect(fetchUserByEmailRegisterMock).toHaveBeenCalledTimes(1);
+describe('User Model - register', () => {
+  beforeEach(() => {
+    // Reset the mock implementation for each test
+    db.query.mockReset();
   });
 
+  test('should register a new user', async () => {
+    // Mock the db query method to return a mock user
+    const mockUser = {
+      id: 2,
+      email: 'test123456@email.com',
+      firstname: 'test',
+      lastname: 'Test',
+      username: 'testdoe',
+      points: 0
+    };
+    db.query.mockResolvedValueOnce({
+      rows: [mockUser]
+    });
 
+    // Mock the bcrypt hash method to return a hashed password
+    bcrypt.hash = jest.fn().mockResolvedValueOnce('hashedPassword');
 
+    // Mock the normalized email value
+    const normalizedEmail = 'test123456@email.com'.toLowerCase();
+
+    // Mock the credentials
+    const creds = {
+      email: 'test123456@email.com',
+      password: 'password',
+      firstname: 'test',
+      lastname: 'Test',
+      username: 'testdoe',
+      points: 0
+    };
+
+    // Call the register function
+    const user = await User.register(creds);
+
+    // Check the expected database query
+    expect(db.query).toHaveBeenCalledWith(
+      expect.stringContaining('INSERT INTO users'),
+      expect.arrayContaining([
+        'hashedPassword',
+        'test',
+        'Test',
+        'testdoe',
+        normalizedEmail,
+        0
+      ])
+    );
+
+    // Check the returned user
+    expect(user).toEqual(mockUser);
+  });
+
+  test('should throw BadRequestError for duplicate email', async () => {
+    // Mock the db query method to return an existing user
+    const existingUser = {
+      id: 1,
+      email: 'test123456@email.com',
+      firstname: 'test',
+      lastname: 'Test',
+      username: 'testdoe',
+      points: 0
+    };
+    db.query.mockResolvedValueOnce({
+      rows: [existingUser]
+    });
+
+    // Mock the normalized email value
+    const normalizedEmail = 'test123456@email.com'.toLowerCase();
+
+    // Mock the credentials
+    const creds = {
+      email: 'test123456@email.com',
+      password: 'password',
+      firstname: 'test',
+      lastname: 'Test',
+      username: 'testdoe',
+      points: 0
+    };
+
+    // Call the register function and expect it to throw BadRequestError
+    await expect(User.register(creds)).rejects.toThrow(
+      new BadRequestError(`Duplicate email: ${creds.email}`)
+    );
+
+    // Check the expected database query
+    expect(db.query).toHaveBeenCalledWith(
+      expect.stringContaining('SELECT * FROM users WHERE email ='),
+      expect.arrayContaining([normalizedEmail])
+    );
+  });
+
+  // Could Add more tests for other scenarios, such as password length, username length, etc.
+});
 
   
 

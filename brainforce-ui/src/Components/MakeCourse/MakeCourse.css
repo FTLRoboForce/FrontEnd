@@ -1,85 +1,125 @@
 .course-options-container {
-    max-width: 75%;
-    margin: 100px auto;
-    padding: 20px;
-    background: linear-gradient(#009EDB, #005EB8);
-    border: 1px solid #ccc;
-    border-radius: 50px;
+  max-width: 75%;
+  margin: 100px auto;
+  padding: 20px;
+  background: linear-gradient(#009edb, #005eb8);
+  border: 1px solid #ccc;
+  border-radius: 50px;
 
-    box-shadow: 0 0 100px var(--lightgrey);
-  }
-  
-  .course-options-container h2 {
-    text-align: center;
-    color: black;
-    margin-bottom: 20px;
-    font-weight: bolder;
-    font-size: 2rem;
-    font-family: 'Roboto', sans-serif;
-  }
-  
-  form {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .option-row {
-    display: flex;
-    align-items: center;
-    margin-bottom: 20px;
-  }
-  
-  .option-row .option {
-    padding-top: 10px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-right: 20px;
-    text-align: center;
-    width: 33%;
-    cursor: pointer;
-    border: 2px solid transparent;
-    transition: border-color 0.3s ease-in-out;
-    border-radius: 15px;
-  }
-  
-  .option-row .option.selected {
-    background-color: #005EB8;
-  }
-  
-  .option-row .option.disabled {
-    cursor: not-allowed;
-    opacity: 0.5;
-  }
-  
-  .option-row img {
-    width: 120px;
-    height: 120px;
-    margin-bottom: 10px;
-  }
-  
-  .make-course-button {
-    margin-top: 50px;
-    padding: 10px 20px;
-    font-size: 1.2rem;
-    font-weight: bold;
-    background-color: var(--darkblue);
-    color: var(--ligtblue);
-    border: none;
-    cursor: pointer;
-    width: 10rem;
-    height: 3rem;
-    border-radius: 5px;
-   
-  }
-  
-  .make-course-button:disabled {
-    background-color: var(--darkblue);
-    cursor: not-allowed;
-  }
-  
+  box-shadow: 0 0 100px var(--lightgrey);
+}
+
+.course-options-container h2 {
+  text-align: center;
+  color: black;
+  margin-bottom: 20px;
+  font-weight: bolder;
+  font-size: 2rem;
+  font-family: "Roboto", sans-serif;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+.option-row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.option-row .option {
+  padding-top: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-right: 20px;
+  text-align: center;
+  width: 33%;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: border-color 0.3s ease-in-out;
+  border-radius: 15px;
+}
+
+.option-row .option.selected {
+  background-color: var(--darkblue);
+}
+
+.option-row .option.disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.option-row img {
+  width: 120px;
+  height: 120px;
+  margin-bottom: 10px;
+}
+
+.make-course-button {
+  margin-top: 50px;
+  padding: 10px 20px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  background-color: var(--darkblue);
+  color: var(--ligtblue);
+  border: none;
+  cursor: pointer;
+  width: 10rem;
+  height: 3rem;
+  border-radius: 5px;
+}
+
+.make-course-button:disabled {
+  background-color: var(--darkblue);
+  cursor: not-allowed;
+}
+
 .make-course-button:hover {
-    background-color: var(--lightgrey);
-    color: var(--darkblue);
+  background-color: var(--lightgrey);
+  color: var(--darkblue);
+}
+
+.option-row label:hover {
+  background-color: var(--darkblue);
+}
+
+@keyframes flip {
+  0% {
+    transform: rotateY(0);
   }
-  
+  50% {
+    transform: rotateY(90deg);
+  }
+  100% {
+    transform: rotateY(180deg);
+  }
+}
+
+.einstein-img {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.einstein-img img {
+  width: 20%;
+  animation: flip 4s  infinite;
+  animation-direction: alternate;
+  animation-timing-function: linear;
+}
+
+
+.einstein-img {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+.einstein-img img {
+  width: 30%;
+  height: 70%;
+  margin-top: -200px;
+}
+

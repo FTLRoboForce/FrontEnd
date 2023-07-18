@@ -140,27 +140,7 @@
 
 
   
-  #einstein-container1 img {
-    width: 60px;
-    height: 60px;
-    position: absolute;
-    top: 50px;
-    left: 250px;
-    z-index: 2;
-    border-radius: 40%;
-    box-shadow: 0 0 10px rgba(201, 198, 198, 0.5);
-  }
   
-  #einstein-container2 img {
-    width: 60px;
-    height: 60px;
-    position: absolute;
-    top: 50px;
-    left: 80%;
-    z-index: 2;
-    border-radius: 40%;
-    box-shadow: 0 0 10px rgba(201, 198, 198, 0.5);
-  }
   
   /* Media query for smaller screens */
   @media (max-width: 600px) {
