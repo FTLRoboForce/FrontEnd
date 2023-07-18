@@ -1,128 +1,158 @@
 :root {
-    --darkblue: #004D85;
-    --lightblue: #00A1E0;
-    --lightgrey: #D9D9D9;
+  --darkblue: #004D85;
+  --lightblue: #00A1E0;
+  --lightgrey: #D9D9D9;
+  --gradient-start: #004D85;
+  --gradient-end: #00A1E0;
+}
+
+.home {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background: linear-gradient(to bottom right, var(--gradient-start), var(--gradient-end));
+  color: #fff;
+}
+
+.hero-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.logo-container-home{
+  background-color: rgba(255, 255, 255, 0.3);
+  padding: 1rem;
+  border-radius: 8px;
+  /* margin-bottom: 1rem; */
+  margin-top:  -9rem;
+  width: 200%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.logo-container-home h3 {
+  justify-content: center;
+  font-size: 3rem;
+  font-weight: 700;
+
+}
+
+.hero-image-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.hero-image-container {
+  width: 100%;
+  height: 100%;
+  margin: -50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hero-image-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  margin-top: -2rem ;
+}
+
+.hero-title-container h3 {
+  font-size: 5rem;
+  font-weight: 700;
+  margin-top: 1rem;
+}
+
+
+.heroo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+}
+.hero-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.cta-button {
+  width: 10rem;
+  height: 3rem;
+  border-radius: 5px;
+  background-color: var(--darkblue);
+  color: white;
+  font-size: 1.2rem;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+  padding: 10px;
+text-decoration: none;
+display: flex;
+justify-content: center;
+align-items: center;
+}
+
+
+@keyframes slowMotion {
+  0% {
+    transform: scale(1);
   }
-  
-  body {
-    margin: 0;
-    font-family: Arial, sans-serif;
+  50% {
+    transform: scale(1.2);
   }
-  
-  /* Header */
-  header {
-    background-color: var(--lightgrey);
-    padding: 20px;
-    text-align: center;
+  100% {
+    transform: scale(1);
   }
-  
-  .logo-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+}
+
+
+.hero-image-container img {
+  animation: slowMotion 10s infinite linear;
+}
+
+
+.cta-button {
+  animation: flash 1s infinite;
+}
+
+@keyframes flash {
+  0% {
+    opacity: 55;
   }
-  
-  .logo-container img {
-    width: 50px;
-    height: 50px;
-    margin-right: 10px;
+  50% {
+    opacity: 0.5;
   }
-  
-  .logo-container h3 {
-    font-size: 24px;
-    color: var(--darkblue);
+  100% {
+    opacity: 1;
   }
-  
-  /* Hero Section */
-  .hero {
-    background-color: var(--lightblue);
-    padding: 100px;
-    text-align: center;
-    color: white;
-  }
-  
-  .hero h1 {
-    font-size: 36px;
-    margin-bottom: 20px;
-  }
-  
-  .hero p {
-    font-size: 18px;
-    margin-bottom: 40px;
-  }
-  
-  .cta-button {
-    display: inline-block;
-    background-color: var(--darkblue);
-    color: white;
-    padding: 10px 20px;
-    text-decoration: none;
-    border-radius: 5px;
-    animation: pulse 1s infinite;
-  }
-  
-  @keyframes pulse {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.1); }
-    100% { transform: scale(1); }
-  }
-  
-  /* Flashcard Section */
-  .flashcard-section {
-    padding: 50px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: var(--lightgrey);
-  }
-  
-  .flashcard-container {
-    perspective: 1000px;
-  }
-  
-  .flashcard {
-    width: 300px;
-    height: 200px;
-    position: relative;
-    transform-style: preserve-3d;
-    transition: transform 0.6s;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(201, 198, 198, 0.5);
-  }
-  
-  .flashcard:hover {
-    transform: rotateY(180deg);
-  }
-  
-  .flashcard .front,
-  .flashcard .back {
+}
+
+
+
+  #lightbulb-left {
     position: absolute;
-    width: 100%;
-    height: 100%;
-    backface-visibility: hidden;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(201, 198, 198, 0.5);
+    top: 100px; /* Adjust the top value as needed */
+    left: 20px; /* Adjust the left value as needed */
+    
+    transform: rotate(20deg);
   }
-  
-  .flashcard .front {
-    background-color: var(--darkblue);
-    color: white;
+
+  #lightbulb-right{
+    position: absolute;
+    top: 900px; /* Adjust the top value as needed */
+    left: 125rem; /* Adjust the left value as needed */
+    transform: rotate(-30deg);
   }
-  
-  .flashcard .back {
-    background-color: var(--lightblue);
-    color: white;
-    transform: rotateY(180deg);
-  }
-  
-  /* Footer */
-  footer {
-    background-color: var(--darkblue);
-    color: white;
-    padding: 20px;
-    text-align: center;
-  }
+
+
   
