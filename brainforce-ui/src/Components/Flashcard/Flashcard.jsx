@@ -7,7 +7,7 @@ export default function Flashcard({ flashcard }) {
 
   useEffect(() => {
     setisnotflipped(true);
-  }, []);
+  }, [flashcard]);
 
   return (
     <div className="flashcard">
