@@ -2,7 +2,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import "./Flashcard.css";
 
-export default function Flashcard() {
+export default function Flashcard({ flashcard }) {
   const [isnotflipped, setisnotflipped] = useState();
 
   useEffect(() => {
@@ -18,7 +18,7 @@ export default function Flashcard() {
               setisnotflipped(false);
             }}
           >
-            <p>Front</p>
+            <p>{flashcard.front}</p>
           </button>
         </div>
       ) : (
@@ -28,7 +28,7 @@ export default function Flashcard() {
               setisnotflipped(true);
             }}
           >
-            <p>Back</p>
+            <p>{flashcard.back}</p>
           </button>
         </div>
       )}
