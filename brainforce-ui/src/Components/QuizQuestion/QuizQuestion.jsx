@@ -2,11 +2,18 @@ import React, { useState } from "react";
 import "./QuizQuestion.css";
 import QuestionOption from "../QuestionOption/QuestionOption";
 
-const QuizQuestion = ({ question, options }) => {
-  const [selectedOptionIndex, setSelectedOptionIndex] = useState(-1);
+const QuizQuestion = ({
+  question,
+  options,
+  answer,
+  setSelectedOption,
+  submitted
+}) => {
+  const [selectedOption, setSelectedOptionLocal] = useState("");
 
-  const handleSelectOption = (index) => {
-    setSelectedOptionIndex(index);
+  const handleSelectOption = (option) => {
+    setSelectedOptionLocal(option);
+    setSelectedOption(option); // Pass the selected option back to the parent component (Quiz)
   };
 
   return (
@@ -18,8 +25,9 @@ const QuizQuestion = ({ question, options }) => {
             <QuestionOption
               key={index}
               option={option}
-              isSelected={selectedOptionIndex === index}
-              handleSelect={() => handleSelectOption(index)}
+              isSelected={selectedOption === option}
+              handleSelect={() => handleSelectOption(option)}
+              disabled={submitted} // Disable options after the user submits the quiz
             />
           ))}
         </ul>

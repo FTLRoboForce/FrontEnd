@@ -3,6 +3,7 @@ import { useState } from "react";
 import QuizQuestion from "../QuizQuestion/QuizQuestion";
 
 const Quiz = () => {
+  const [points, setPoints] = useState(0);
   const [questions, setQuestions] = useState([
     {
       question: "What is the capital of France?",
@@ -26,6 +27,19 @@ const Quiz = () => {
     }
   ]);
 
+  const [submitted, setSubmitted] = useState(false);
+
+  const handleSubmit = () => {
+    let totalPoints = 0;
+    questions.forEach((question) => {
+      if (question.answer === question.selectedOption) {
+        totalPoints++;
+      }
+    });
+    setPoints(totalPoints);
+    setSubmitted(true);
+  };
+
   return (
     <>
       {questions.map((question, index) => (
@@ -33,8 +47,21 @@ const Quiz = () => {
           key={index}
           question={question.question}
           options={question.options}
+          answer={question.answer}
+          setSelectedOption={(option) => {
+            const updatedQuestions = [...questions];
+            updatedQuestions[index].selectedOption = option;
+            setQuestions(updatedQuestions);
+          }}
+          submitted={submitted}
         />
       ))}
+
+      <button onClick={handleSubmit} disabled={submitted}>
+        Submit
+      </button>
+
+      {submitted && <p>Total Points: {points}</p>}
     </>
   );
 };
