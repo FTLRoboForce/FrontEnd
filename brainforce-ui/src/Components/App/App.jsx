@@ -32,16 +32,7 @@ function App() {
         <Route path="/flashcard" element={<FlashcardPage />} />
         <Route path="/makecourse" element={<MakeCourse />} />
         <Route path="/leaderboard" element={<Leaderboard />} />
-        <Route
-          path="/quiz"
-          element={
-            <Quiz
-              question="What is the capital of France?"
-              options={["Paris", "London", "Berlin", "Rome"]}
-              onAnswer={handleAnswer}
-            />
-          }
-        ></Route>
+        <Route path="/quiz" element={<Quiz />}></Route>
         <Route path="/report" element={<Report />} />
       </Routes>
     </BrowserRouter>
