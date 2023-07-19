@@ -58,7 +58,7 @@ export default function MakeCourse() {
             className={`option ${isSubjectSelected("math")}`}
             onClick={() => handleSubjectChange("math")}
           >
-            <img src={mathImage} alt="Math" />
+            <img id="math-img" src={mathImage} alt="Math" />
             Math
           </label>
           <label
