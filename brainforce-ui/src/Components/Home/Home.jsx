@@ -3,14 +3,11 @@ import logo from "../../images/brainForce-logo.png";
 import einstein from "../../images/einstein.png";
 import hero from "../../images/bf.png";
 import "./Home.css";
-import lightbulb from "../../images/lightbulb.png";
 
 export function Home() {
   return (
     <div className="homePage-container">
-      <div className="lightbulb-container-left">
-        <img src={lightbulb} alt="Lightbulb" />
-      </div>
+     
 
       <div className="hero-home-container">
         <section className="hero-title">
@@ -26,7 +23,7 @@ export function Home() {
         </section>
 
         <div className="homePage-title">
-          <a href="/register" className="cta-button">
+          <a href="/register" className="homePage-cta-button"> {/* Changed class name from cta-button to homePage-cta-button */}
             Get Started
           </a>
           <p>Unlock your potential with BrainForce, the ultimate learning platform.</p>
@@ -37,9 +34,7 @@ export function Home() {
         </div>
       </div>
 
-      <div className="lightbulb-container-right">
-        <img src={lightbulb} alt="Lightbulb" />
-      </div>
+    
     </div>
   );
 }
