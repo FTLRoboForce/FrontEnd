@@ -10,6 +10,8 @@ import Leaderboard from "../Leaderboard/Leaderboard";
 import Report from "../Report/Report";
 import Quiz from "../Quiz/Quiz";
 import { useState } from "react";
+import { Creator } from "../Creators/Creator";
+
 
 function App() {
   const [token, setToken] = useState();
@@ -20,11 +22,13 @@ function App() {
   };
 
   return (
+    
     <BrowserRouter>
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/register" element={<Register />} />
+     
         <Route
           path="/login"
           element={<Login setToken={setToken} setUserGlobal={setUserGlobal} />}

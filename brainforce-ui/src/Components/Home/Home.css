@@ -139,3 +139,33 @@ animation: flash 1s infinite;
 
 
 
+
+
+
+.side-tab {
+  position: fixed;
+  top: 50%; /* Adjust the vertical position as needed */
+  left: 0;
+  width: 50px; /* Set the width of the tab as needed */
+  height: 100px; /* Set the height of the tab as needed */
+  background-color: #007bff; /* Set the background color of the tab */
+  color: #fff; /* Set the text color */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+  transform: translateY(-50%);
+  z-index: 999; /* Ensure the tab is on top of other content */
+  transition: transform 0.3s, width 0.3s;
+}
+
+
+.side-tab:hover {
+  width: 100px; /* Adjust the width on hover */
+}
+
+
+.side-tab.active {
+  width: 200px; /* Adjust the width when active */
+}
