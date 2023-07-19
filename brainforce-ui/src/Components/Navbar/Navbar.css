@@ -1,190 +1,143 @@
-/* Styles for larger screens */
+/* Navbar container */
 .nav-container {
   display: flex;
-  flex-direction: row;
   justify-content: space-between;
-  align-items: center; /* Added */
+  align-items: center;
   padding: 4px 30px 0px;
   background-color: #D9D9D9;
 }
 
-/* Rest of the CSS code remains the same */
+/* Logo and Branding */
+.logo-container {
+  display: flex;
+  align-items: center;
+}
 
-  
-  .nav-links-container {
-    background-color: #00A1E0;
-    width: auto;
-    height: 100%;
-    border-radius: 5px;
+.logo-container img {
+  width: auto;
+  height: 50px;
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+/* Brand text */
+h3 {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+/* Nav links container */
+.nav-links-container {
+  background-color: #00A1E0;
+  width: 57%;
+  border-radius: 5px;
+  padding: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+
+}
+
+/* Nav links */
+.nav-links {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+
+}
+
+/* hacky */
+.user-activity {
+  transform: translateY(-10px);
+}
+
+.nav-links li {
+  list-style-type: none;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #000;
+  font-size: 1.2rem;
+  font-weight: 600;
+  padding: 5px 10px;
+  margin: 5px 0;
+  border-bottom: 2px solid transparent;
+  transition: all 0.3s ease 0s;
+}
+
+.nav-links a:hover {
+  border-bottom-color: #FFF;
+}
+
+/* User activity container */
+.user-activity-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  justify-content: space-around;
+}
+
+.user-activity {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 100%;
+}
+
+/* Login and Signup buttons */
+.user-activity-container button {
+  background-color: #00A1E0;
+  border-radius: 10px;
+  border: none;
+  padding: 10px;
+  color: #004D85;
+  font-weight: bolder;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#navbar-login-container {
+  margin-right: 10px;
+}
+
+.user-activity-container button:hover {
+  background-color: #004D85;
+  color: #00A1E0;
+}
+
+/* Einstein image */
+#einstein-container1 {
+  display: none;
+}
+
+/* Media query for smaller screens */
+@media (max-width: 600px) {
+  .nav-container {
+    flex-direction: column;
+    padding: 10px;
   }
-  
-  .nav-links {
-    display: flex;
-    flex-direction: row; 
-    width: 100%;
-  }
-  
-  .nav-links li {
-    list-style-type: none;
-  }
-  
-  .nav-links a {
-    text-decoration: none;
-    color: #000;
-    font-size: 1.2rem;
-    font-weight: 600;
-    padding: 0px 10px;
-    margin: 0px 10px;
-    border-bottom: 2px solid transparent;
-    transition: all 0.3s ease 0s;
-  }
-  
-  .nav-links a:hover {
-    border-bottom-color: #FFF;
-  }
-  
+
   .logo-container {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-  }
-  
-  .logo-container img {
-    width: auto;
-    height: 50px;
-  }
-  
-  .user-activity {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    width: 100%;
-    padding: 0px 10px;
-  }
-  
-  .user-activity button {
-    display: flex;
-    flex-direction: row; 
-    width: 100%;
-  }
-  
-  .user-activity-container a {
-    text-decoration: none;
-    color: #000;
-    font-size: 1.2rem;
-    font-weight: 600;
-    padding: 0px 10px;
-    margin: 0px 10px;
-    border-bottom: 2px solid transparent;
-    transition: all 0.3s ease 0s;
-  }
-  
-  .user-activity-container a:hover {
-    border-bottom-color: #FFF;
-  }
-  
-  #navbar-login-container {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    align-items: center;
-    width: 100%;
-    padding: 0px 10px;
-  }
-  
-  #navbar-login-container button {
-    background-color: #00A1E0;
-    border-radius: 10px;
-    border: none;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 10px;
-    color: #004D85;
-    font-weight: bolder;
-    transition: background-color 0.3s ease;
-  }
-  
-  #navbar-login-container button:hover {
-    background-color: #004D85;
-    color: #00A1E0;
-  }
-  
-  #navbar-signup-container {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    align-items: center;
-    width: 100%;
-    padding: 0px 10px;
-  }
-  
-  #navbar-signup-container button {
-    background-color: #004D85;
-    border-radius: 10px;
-    border: none;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 10px;
-    font-weight: bolder;
-    color: #00A1E0;
-    transition: background-color 0.3s ease;
-  }
-  
-  #navbar-signup-container button:hover {
-    background-color: #00A1E0;
-    color: #004D85;
+    margin-bottom: 10px;
   }
 
-
-  
-  
-  
-  /* Media query for smaller screens */
-  @media (max-width: 600px) {
-    .nav-container {
-      flex-direction: column;
-      padding: 10px;
-    }
-  
-    .nav-links-container {
-      width: 100%;
-      border-radius: 0;
-    }
-  
-    .nav-links {
-      flex-direction: column;
-    }
-  
-    .nav-links a {
-      padding: 5px 0;
-      margin: 0;
-    }
-  
-    .logo-container {
-      margin-bottom: 10px;
-    }
-  
-    .user-activity,
-    #navbar-login-container,
-    #navbar-signup-container {
-      flex-direction: column;
-      align-items: center;
-    }
-  
-    .user-activity button,
-    .user-activity-container a,
-    #navbar-login-container button,
-    #navbar-signup-container button {
-      width: auto;
-      margin: 5px 0;
-    }
-  
-    #einstein-container1,
-    #einstein-container2 {
-      display: none;
-    }
+  .user-activity-container {
+    flex-direction: column;
   }
-  
+
+  /* Display Einstein image on smaller screens */
+  #einstein-container1 {
+    display: block;
+    margin-top: 10px;
+  }
+
+  /* Hide the navbar links on smaller screens */
+  .nav-links-container {
+    display: none;
+  }
+}

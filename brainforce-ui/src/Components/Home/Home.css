@@ -39,6 +39,17 @@
   align-items: center;
 }
 
+.hero-title h3 {
+  font-size: 2rem;
+  font-weight: bolder;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 
   
 @keyframes slowMotion {
@@ -141,7 +152,7 @@ animation: flash 1s infinite;
 
 
 
-
+/* Styling for the side tab button */
 .side-tab {
   position: fixed;
   top: 50%; /* Adjust the vertical position as needed */
