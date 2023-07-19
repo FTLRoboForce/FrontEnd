@@ -25,7 +25,7 @@ export function Navbar() {
               <a href="/makecourse">Make Course</a>
             </li>
             <li>
-              <a href="#">Previous Flashcard</a>
+              <a href="/flashcard">Previous Flashcard</a>
             </li>
             <li>
               <a href="/quiz">Previous Quizzes</a>
