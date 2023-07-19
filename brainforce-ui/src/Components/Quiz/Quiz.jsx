@@ -1,43 +1,67 @@
 import "./Quiz.css";
 import { useState } from "react";
+import QuizQuestion from "../QuizQuestion/QuizQuestion";
 
-const Quiz = ({ question, options, onAnswer }) => {
-  const [selectedOption, setSelectedOption] = useState(null);
-
-  const handleOptionSelect = (option) => {
-    setSelectedOption(option);
-  };
-
-  const handleAnswer = () => {
-    if (selectedOption) {
-      onAnswer(selectedOption);
-      setSelectedOption(null);
+const Quiz = () => {
+  const [points, setPoints] = useState(0);
+  const [questions, setQuestions] = useState([
+    {
+      question: "What is the capital of France?",
+      options: ["New York", "London", "Paris", "Dublin"],
+      answer: "Paris"
+    },
+    {
+      question: "Who is CEO of Tesla?",
+      options: ["Jeff Bezos", "Elon Musk", "Bill Gates", "Tony Stark"],
+      answer: "Elon Musk"
+    },
+    {
+      question: "The iPhone was created by which company?",
+      options: ["Apple", "Intel", "Amazon", "Microsoft"],
+      answer: "Apple"
+    },
+    {
+      question: "How many Harry Potter books are there?",
+      options: ["1", "4", "6", "7"],
+      answer: "7"
     }
+  ]);
+
+  const [submitted, setSubmitted] = useState(false);
+
+  const handleSubmit = () => {
+    let totalPoints = 0;
+    questions.forEach((question) => {
+      if (question.answer === question.selectedOption) {
+        totalPoints++;
+      }
+    });
+    setPoints(totalPoints);
+    setSubmitted(true);
   };
 
   return (
     <>
-      <div className="quiz-card">
-        <h3 className="quiz-question">{question}</h3>
-        <ul className="quiz-options">
-          {options.map((option, index) => (
-            <li
-              key={index}
-              className={`quiz-option ${
-                selectedOption === option ? "selected" : ""
-              }`}
-              onClick={() => handleOptionSelect(option)}
-            >
-              {option}
-            </li>
-          ))}
-        </ul>
-      </div>
-      <div className="quiz-button-container">
-        <button className="quiz-submit" onClick={handleAnswer}>
-          Submit Answer
-        </button>
-      </div>
+      {questions.map((question, index) => (
+        <QuizQuestion
+          key={index}
+          question={question.question}
+          options={question.options}
+          answer={question.answer}
+          setSelectedOption={(option) => {
+            const updatedQuestions = [...questions];
+            updatedQuestions[index].selectedOption = option;
+            setQuestions(updatedQuestions);
+          }}
+          submitted={submitted}
+        />
+      ))}
+
+      <button onClick={handleSubmit} disabled={submitted}>
+        Submit
+      </button>
+
+      {submitted && <p>Total Points: {points}</p>}
     </>
   );
 };
