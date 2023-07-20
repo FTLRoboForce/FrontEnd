@@ -2,12 +2,32 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './Components/App/App.jsx';
-import { ChakraProvider } from '@chakra-ui/react';
+import { ChakraProvider, ColorModeScript} from '@chakra-ui/react';
+import {extendTheme} from '@chakra-ui/react';
+
+// Extend the default theme to customize the color mode
+const theme = extendTheme({
+  colors: {
+    brand: {
+      100: "#004D85", // Dark blue color
+      200: "#00A1E0", // Light blue color
+      300: "#D9D9D9", // Light grey color
+    },
+  },
+  config: {
+    initialColorMode: "light", // Set the initial color mode to "light"
+    useSystemColorMode: false, // Set to true to use the user's system preference for dark mode
+  },
+});
+
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <ChakraProvider>
+    <ChakraProvider theme={theme}>
+    <ColorModeScript initialColorMode={theme.config.initialColorMode} />
+    
       <App />
     </ChakraProvider>
   </React.StrictMode>

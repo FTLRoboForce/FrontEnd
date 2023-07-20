@@ -11,14 +11,8 @@ import {
   Box,
   Flex,
   Heading,
-  IconButton,
   Image,
   Text,
-  Card,
-  CardHeader,
-  CardBody,
-  CardFooter
-
 } from '@chakra-ui/react'
 import { Button, useDisclosure } from '@chakra-ui/react'
 import Khalid from './kahlid.png';
@@ -27,11 +21,6 @@ import oj from './oj.png';
 import Sac from './sac.png';
 import psu from './pennstate.png';
 import fiu from './fiu.png';
-
-
-
-import './Creator.css';
-
 
 export function Creator() {
 
@@ -67,92 +56,103 @@ export function Creator() {
       </Button>
       <Modal isCentered isOpen={isOpen} onClose={onClose}>
         {overlay}
-        <ModalContent>
-          <ModalHeader>Creators of BrainForce</ModalHeader>
+        <ModalContent
+          bgColor='var(--lightgrey)' // Set custom theme color
+          w='100%' // Set width to 100%
+        >
+          <ModalHeader>
+            <Heading size='lg' color='var(--darkblue)'>Creators of BrainForce</Heading>
+          </ModalHeader>
           <ModalCloseButton />
-          <ModalBody className="justify-content">
-
-            <Card className = "card" maxW='md'>
-              <CardHeader>
-                <Flex spacing='4'>
-                  <Flex flex='1' gap='4' alignItems='center' flexWrap='wrap' >
-                    <Avatar name='khalud' src={Khalid} />
-
-                    <Box>
-                      <Heading className="name-color"  size='sm'>Khalid Abouelrous</Heading>
-                      <Text> Computer Science </Text>
-                    </Box>
-                  </Flex>
+          <ModalBody>
+            <Flex justifyContent='center' alignItems='center' flexWrap='wrap'>
+              {/* Card 1 */}
+              <Box
+                borderWidth='1px'
+                borderRadius='md'
+                overflow='hidden'
+                boxShadow='md'
+                p='4'
+                m='2' // Add margin to create space between cards
+                w='300px' // Set a fixed width for consistent layout
+              >
+                <Flex spacing='4' alignItems='center'>
+                  <Avatar name='khalud' src={Khalid} />
+                  <Box ml='2'>
+                    <Heading size='sm' color='var(--darkblue)'>Khalid Abouelrous</Heading>
+                    <Text fontSize='sm' color='gray.600'>Computer Science</Text>
+                  </Box>
                 </Flex>
-              </CardHeader>
-             
-              <Image
-                objectFit='cover'
-                src={Sac}
-                alt='Chakra UI'
-              />
-            </Card>
-            <Card className = "card" maxW='md'>
-              <CardHeader>
-                <Flex spacing='4'>
-                  <Flex flex='1' gap='4' alignItems='center' flexWrap='wrap'>
-                    <Avatar name='khalud' src={oj} />
+                <Image
+                  mt='4'
+                  objectFit='cover'
+                  src={Sac}
+                  alt='Chakra UI'
+                  w='100%'
+                  h='150px'
+                />
+              </Box>
 
-                    <Box>
-                      <Heading className="name-color" size='sm'>Oyindamola Akanbi</Heading>
-                      <Text> Info Science & Tech</Text>
-                    </Box>
-                  </Flex>
+              {/* Card 2 */}
+              <Box
+                borderWidth='1px'
+                borderRadius='md'
+                overflow='hidden'
+                boxShadow='md'
+                p='4'
+                m='2' // Add margin to create space between cards
+                w='300px' // Set a fixed width for consistent layout
+              >
+                <Flex spacing='4' alignItems='center'>
+                  <Avatar name='oj' src={oj} />
+                  <Box ml='2'>
+                    <Heading size='sm' color='var(--darkblue)'>Oyindamola Akanbi</Heading>
+                    <Text fontSize='sm' color='gray.600'>Info Science & Tech</Text>
+                  </Box>
                 </Flex>
-              </CardHeader>
-             
-              <Image
-                objectFit='cover'
-                src={psu}
-                alt='Chakra UI'
-              />
-            </Card>
-            <Card className = "card" maxW='md'>
-              <CardHeader>
-                <Flex spacing='4'>
-                  <Flex flex='1' gap='4' alignItems='center' flexWrap='wrap'>
-                    <Avatar name='hassani' src={hassani} />
+                <Image
+                  mt='4'
+                  objectFit='cover'
+                  src={psu}
+                  alt='Chakra UI'
+                  w='100%'
+                  h='150px'
+                />
+              </Box>
 
-                    <Box>
-                      <Heading className="name-color" size='sm'>Hassani Wissam</Heading>
-                      <Text> Computer Science  </Text>
-                    </Box>
-                  </Flex>
+              {/* Card 3 */}
+              <Box
+                borderWidth='1px'
+                borderRadius='md'
+                overflow='hidden'
+                boxShadow='md'
+                p='4'
+                m='2' // Add margin to create space between cards
+                w='300px' // Set a fixed width for consistent layout
+              >
+                <Flex spacing='4' alignItems='center'>
+                  <Avatar name='hassani' src={hassani} />
+                  <Box ml='2'>
+                    <Heading size='sm' color='var(--darkblue)'>Hassani Wissam</Heading>
+                    <Text fontSize='sm' color='gray.600'>Computer Science</Text>
+                  </Box>
                 </Flex>
-              </CardHeader>
-             
-              <Image
-                objectFit='cover'
-                src={fiu}
-                alt='Chakra UI'
-              />
-            </Card>
-
-         
-
-
+                <Image
+                  mt='4'
+                  objectFit='cover'
+                  src={fiu}
+                  alt='Chakra UI'
+                  w='100%'
+                  h='150px'
+                />
+              </Box>
+            </Flex>
           </ModalBody>
           <ModalFooter>
             <Button onClick={onClose}>Close</Button>
           </ModalFooter>
         </ModalContent>
       </Modal>
-
-
-      <div>
-
-
-      </div>
     </>
-
-
-
-
   )
-
 }
