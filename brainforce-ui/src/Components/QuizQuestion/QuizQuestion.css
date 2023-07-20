@@ -1,14 +1,14 @@
 
 
 .quiz-card {
-    color: black;
-    background-color: #ffffff;
+    color: white;
+    background: linear-gradient(0.25turn, var(--darkblue),#0390c8);
     border-radius: 8px;
     box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
     padding: 16px;
     width: 500px;
     height: 500px;
-    margin: 50px auto;
+    margin: 50px 25px;
 
   display: flex;
   flex-direction: column;
@@ -42,7 +42,7 @@
     margin-bottom: 8px;
     cursor: pointer;
     border-radius: 4px;
-    border: 1px solid #dddddd;
+    border: 1px solid var(--lightblue);
   }
   
   .quiz-option.selected {
