@@ -39,6 +39,10 @@ export default function FlashcardPage() {
   };
 
   return (
+    <>
+    <div className= "flashcardPage-container">
+
+    
     <div className="flashcard-container">
       <div className="flash-content">
         <Flashcard flashcard={flashcards[counter]} />
@@ -63,5 +67,8 @@ export default function FlashcardPage() {
         </button>
       </div>
     </div>
+    </div>
+    </>
+
   );
 }

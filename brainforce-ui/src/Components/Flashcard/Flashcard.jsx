@@ -1,37 +1,22 @@
-import React from "react";
-import { useState, useEffect } from "react";
+// Flashcard.js
+import React, { useState } from "react";
 import "./Flashcard.css";
 
 export default function Flashcard({ flashcard }) {
-  const [isnotflipped, setisnotflipped] = useState();
+  const [isFlipped, setIsFlipped] = useState(false);
 
-  useEffect(() => {
-    setisnotflipped(true);
-  }, [flashcard]);
+  const handleFlipClick = () => {
+    setIsFlipped(!isFlipped);
+  };
 
   return (
-    <div className="flashcard">
-      {isnotflipped ? (
-        <div className="flashcard__front">
-          <button
-            onClick={() => {
-              setisnotflipped(false);
-            }}
-          >
-            <p>{flashcard.front}</p>
-          </button>
-        </div>
-      ) : (
-        <div className="flashcard__back">
-          <button
-            onClick={() => {
-              setisnotflipped(true);
-            }}
-          >
-            <p>{flashcard.back}</p>
-          </button>
-        </div>
-      )}
+    <div className={`flashcard ${isFlipped ? "is-flipped" : ""}`} onClick={handleFlipClick}>
+      <div className="flashcard__front">
+        <p>{flashcard.front}</p>
+      </div>
+      <div className="flashcard__back">
+        <p>{flashcard.back}</p>
+      </div>
     </div>
   );
 }

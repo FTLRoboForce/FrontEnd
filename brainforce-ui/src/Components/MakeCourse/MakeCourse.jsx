@@ -115,7 +115,7 @@ export default function MakeCourse() {
         </button>
       </form>
     </div>
-
+{/* 
     <div className= "einstein-img">
       <img src={einstein} alt="Einstein" />
       
@@ -123,7 +123,7 @@ export default function MakeCourse() {
   
 
       
-    </div>
+    </div> */}
     </>
   );
 }
