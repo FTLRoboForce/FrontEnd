@@ -5,6 +5,16 @@
   align-items: center;
   padding: 4px 30px 0px;
   background-color: #D9D9D9;
+  overflow: hidden;
+  position: fixed;
+  top: 0;
+  width: 100%;
+
+}
+
+#tsparticles{
+  position: absolute;
+  z-index: -1;
 }
 
 /* Logo and Branding */
