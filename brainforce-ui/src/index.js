@@ -15,9 +15,13 @@ const theme = extendTheme({
   },
 });
 
+//the prop them was removes from ChakraProvider
+
 ReactDOM.render(
   <React.StrictMode>
-    <ChakraProvider theme={theme}>
+
+    
+    <ChakraProvider >
       <App />
     </ChakraProvider>
   </React.StrictMode>,

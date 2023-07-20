@@ -4,6 +4,7 @@ import einstein from "../../images/einstein.png";
 import hero from "../../images/bf.png";
 import "./Home.css";
 import { Creator } from "../Creators/Creator";
+import Particle from "../../ParticleBackground/ParticleBackground";
 
 
 export function Home() {
@@ -11,7 +12,7 @@ export function Home() {
     <>
   
     
-    
+    <Particle />
     <div className="homePage-container">
     <div className= "side-bar">
    
@@ -49,6 +50,7 @@ export function Home() {
 
     
     </div>
+    
 
     
     </>
