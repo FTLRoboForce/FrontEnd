@@ -47,6 +47,7 @@ export default function MakeCourse() {
 
   return (
     <>
+    <div className="full-page-container"> 
    
     
     <div className="course-options-container">
@@ -124,6 +125,7 @@ export default function MakeCourse() {
 
       
     </div> */}
+    </div>
     </>
   );
 }

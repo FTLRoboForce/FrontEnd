@@ -40,6 +40,7 @@ export default function FlashcardPage() {
 
   return (
     <>
+    
     <div className= "flashcardPage-container">
 
     

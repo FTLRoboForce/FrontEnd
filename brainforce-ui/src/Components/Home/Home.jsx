@@ -14,7 +14,7 @@ export function Home() {
     
     <div className="homePage-container">
     <div className= "side-bar">
-   <Creator /> 
+   
 
    </div>
    

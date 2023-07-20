@@ -2,9 +2,13 @@ import React from "react";
 import "./Navbar.css";
 import logo from "../../images/brainForce-logo.png";
 import einstein from "../../images/einstein.png";
+import { Creator } from "../Creators/Creator";
 
 export function Navbar() {
   return (
+    <>
+    
+   
     <div>
       <nav className="nav-container">
         <section className="logo-container">
@@ -36,6 +40,10 @@ export function Navbar() {
           </ul>
         </section>
 
+        
+
+        <Creator/>
+
         <section className="user-activity-container">
           <ul className="user-activity">
             <section id="navbar-login-container">
@@ -50,11 +58,17 @@ export function Navbar() {
               </button>
             </section>
           </ul>
+       
           {/* <section id="einstein-container2">
             <img src={einstein} alt="Einstein" />
           </section> */}
         </section>
+        
       </nav>
+     
     </div>
+
+     
+    </>
   );
 }

@@ -1,6 +1,17 @@
 import React from "react";
 import "./Leaderboard.css";
 
+const LeaderboardRow = ({ data, index }) => {
+  return (
+    <tr key={index} className={`leaderboard-row ${index % 2 === 0 ? "even-row" : "odd-row"}`}>
+      <td>{data.username}</td>
+      <td>{data.points}</td>
+      <td>{data.quizzesTaken}</td>
+      <td>{data.dateJoined}</td>
+    </tr>
+  );
+};
+
 export default function Leaderboard() {
   const leaderboardData = [
     {
@@ -49,6 +60,9 @@ export default function Leaderboard() {
   ];
 
   return (
+    <div className="leaderboardPage-container">
+
+    
     <div className="leaderboard-container">
       <h2>Leaderboard</h2>
       <table className="leaderboard-table">
@@ -62,15 +76,11 @@ export default function Leaderboard() {
         </thead>
         <tbody>
           {leaderboardData.map((data, index) => (
-            <tr key={index}>
-              <td>{data.username}</td>
-              <td>{data.points}</td>
-              <td>{data.quizzesTaken}</td>
-              <td>{data.dateJoined}</td>
-            </tr>
+            <LeaderboardRow data={data} index={index} />
           ))}
         </tbody>
       </table>
+    </div>
     </div>
   );
 }
