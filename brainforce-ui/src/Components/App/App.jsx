@@ -10,6 +10,9 @@ import Leaderboard from "../Leaderboard/Leaderboard";
 import Report from "../Report/Report";
 import Quiz from "../Quiz/Quiz";
 import { useState } from "react";
+import { Creator } from "../Creators/Creator";
+import { Box } from "@chakra-ui/react";
+
 
 function App() {
   const [token, setToken] = useState();
@@ -20,11 +23,15 @@ function App() {
   };
 
   return (
+
+    <Box bg="brand.100"> {/* Set the background color to darkblue */}
+    
     <BrowserRouter>
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/register" element={<Register />} />
+     
         <Route
           path="/login"
           element={<Login setToken={setToken} setUserGlobal={setUserGlobal} />}
@@ -36,6 +43,7 @@ function App() {
         <Route path="/report" element={<Report />} />
       </Routes>
     </BrowserRouter>
+    </Box>
   );
 }
 

@@ -3,10 +3,21 @@ import logo from "../../images/brainForce-logo.png";
 import einstein from "../../images/einstein.png";
 import hero from "../../images/bf.png";
 import "./Home.css";
+import { Creator } from "../Creators/Creator";
+
 
 export function Home() {
   return (
+    <>
+  
+    
+    
     <div className="homePage-container">
+    <div className= "side-bar">
+   
+
+   </div>
+   
      
 
       <div className="hero-home-container">
@@ -34,7 +45,12 @@ export function Home() {
         </div>
       </div>
 
+ 
+
     
     </div>
+
+    
+    </>
   );
 }
