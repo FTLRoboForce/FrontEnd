@@ -21,6 +21,7 @@ import oj from './oj.png';
 import Sac from './sac.png';
 import psu from './pennstate.png';
 import fiu from './fiu.png';
+import ParticleBackground from "../../ParticleBackground/ParticleBackground";
 
 export function Creator() {
 
@@ -45,6 +46,7 @@ export function Creator() {
 
   return (
     <>
+    
       <Button transform='translateY(-10px)'
         ml='4'
         onClick={() => {
@@ -54,12 +56,14 @@ export function Creator() {
       >
         Creators
       </Button>
+      
       <Modal isCentered isOpen={isOpen} onClose={onClose}>
         {overlay}
         <ModalContent
           bgColor='var(--lightgrey)' // Set custom theme color
           w='100%' // Set width to 100%
         >
+          
           <ModalHeader>
             <Heading size='lg' color='var(--darkblue)'>Creators of BrainForce</Heading>
           </ModalHeader>
@@ -122,6 +126,7 @@ export function Creator() {
 
               {/* Card 3 */}
               <Box
+                
                 borderWidth='1px'
                 borderRadius='md'
                 overflow='hidden'
