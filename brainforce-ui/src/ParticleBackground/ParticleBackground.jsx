@@ -1,6 +1,9 @@
 import React, { useEffect, useCallback } from 'react';
 import Particles from "react-particles";
 import { loadSlim } from "tsparticles-slim";
+import brain from "../images/lightbulb.png";  
+// import css
+import "./ParticleBackground.css";
 
 
  function ParticleBackground(){
@@ -18,7 +21,7 @@ import { loadSlim } from "tsparticles-slim";
             options={{
                 background: {
                     color: {
-                        value: "#00A1E0",
+                      value: "transparent", // Set the background color to transparent
                     },
                 },
                 fpsLimit: 60,
@@ -50,14 +53,14 @@ import { loadSlim } from "tsparticles-slim";
                     },
                     links: {
                         color: "#D9D9D9",
-                        distance: 150,
+                        distance: 140,
                         enable: true,
-                        opacity: 0.5,
-                        width: 2,
+                        opacity: 1,
+                        width: 1,
                     },
                     move: {
                         direction: "none",
-                        radius: 50,
+                        radius: 1010,
                         enable: true,
                         outModes: {
                             default: "bounce",
@@ -77,10 +80,17 @@ import { loadSlim } from "tsparticles-slim";
                         value: 0.5,
                     },
                     shape: {
-                        type: "polygon",
+                        type: "images",
+                        image:[
+                            { 
+                                src: brain,
+                                width: 100,
+                                height: 100
+                             }
+                        ]
                     },
                     size: {
-                        value: { min: 4, max: 5 },
+                        value: { min: 10, max: 15 },
                     },
                 },
                 detectRetina: true,
