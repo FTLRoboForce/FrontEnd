@@ -1,8 +1,8 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./Login.css";
-import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Api from "../../utilities/api";
+import ParticleBackground from "../../ParticleBackground/ParticleBackground";
 
 export function Login({ setToken, setUserGlobal }) {
   const [email, setEmail] = useState("");
@@ -45,49 +45,57 @@ export function Login({ setToken, setUserGlobal }) {
     setPassword(password);
     setUser({ email: email, password: password });
   }
+
   return (
+    <>
+    <ParticleBackground/>
+    
+   
     <div className="login-container">
-      <h1>Login</h1>
-      <form className="form">
-        <div className="form-group">
-          <label className="email-login" htmlFor="email">
-            Email:
-          </label>
-          <input
-            type="email"
-            id="email"
-            onChange={(event) => {
-              handleOnChangeLoginEmail(event.target.value);
+      <div className="login-form-container">
+        <h2 className="login-heading">Login</h2>
+        <form className="login-form">
+          <div className="form-group">
+            <label className="form-label" htmlFor="email">
+              Email:
+            </label>
+            <input
+              type="email"
+              id="email"
+              onChange={(event) => {
+                handleOnChangeLoginEmail(event.target.value);
+              }}
+              placeholder="Enter your email"
+              className="form-input-login"
+            />
+          </div>
+          <div className="form-group">
+            <label className="form-label" htmlFor="password">
+              Password:
+            </label>
+            <input
+              type="password"
+              id="password"
+              onChange={(event) => {
+                handleOnChangeLoginPassword(event.target.value);
+              }}
+              placeholder="Enter your password"
+              className="form-input-login"
+            />
+          </div>
+          <button
+            type="submit"
+            className="submit-button"
+            onClick={(event) => {
+              handleOnSubmit(event);
             }}
-            placeholder="Enter your email"
-            className="form-input-login"
-          />
-        </div>
-        <div className="form-group">
-          <label className="password-login" htmlFor="password">
-            Password:
-          </label>
-          <input
-            type="password"
-            id="password"
-            onChange={(event) => {
-              handleOnChangeLoginPassword(event.target.value);
-            }}
-            placeholder="Enter your password"
-            className="form-input-login"
-          />
-        </div>
-        <button
-          type="submit"
-          className="submit-button"
-          onClick={(event) => {
-            handleOnSubmit(event);
-          }}
-        >
-          Login
-        </button>
-      </form>
-      {name?.length > 0 ? <h1>Hello {name}</h1> : null}
+          >
+            Login
+          </button>
+        </form>
+        {name?.length > 0 && <h2 className="login-message">Hello {name}</h2>}
+      </div>
     </div>
+    </>
   );
 }
