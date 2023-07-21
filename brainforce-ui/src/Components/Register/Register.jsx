@@ -10,7 +10,7 @@ const initialUserState = {
   lastname: "",
   password: "",
   confirm: "",
-  points: 0,
+  points: 0
 };
 
 export function Register() {
@@ -21,6 +21,7 @@ export function Register() {
     event.preventDefault();
     if (verifyPassword(user.password, user.confirm)) {
       Api.register(user);
+      setUser(initialUserState);
     }
     // window.location.href = "/excerciseDashbo";
   }
@@ -29,7 +30,7 @@ export function Register() {
     const { name, value } = event.target;
     setUser((prevUser) => ({
       ...prevUser,
-      [name]: value,
+      [name]: value
     }));
   }
 
@@ -63,6 +64,7 @@ export function Register() {
                 name="firstname"
                 placeholder="Enter your first name"
                 className="form-input"
+                value={user.firstname}
                 onChange={handleValueChange}
               />
             </div>
@@ -76,6 +78,7 @@ export function Register() {
                 name="lastname"
                 placeholder="Enter your last name"
                 className="form-input"
+                value={user.lastname}
                 onChange={handleValueChange}
               />
             </div>
@@ -89,6 +92,7 @@ export function Register() {
                 name="username"
                 placeholder="Enter a username"
                 className="form-input"
+                value={user.username}
                 onChange={handleValueChange}
               />
             </div>
@@ -102,6 +106,7 @@ export function Register() {
                 name="email"
                 placeholder="Enter your email"
                 className="form-input"
+                value={user.email}
                 onChange={handleValueChange}
               />
             </div>
@@ -115,6 +120,7 @@ export function Register() {
                 name="password"
                 placeholder="Enter your password"
                 className="form-input"
+                value={user.password}
                 onChange={handleValueChange}
               />
             </div>
@@ -128,6 +134,7 @@ export function Register() {
                 name="confirm"
                 placeholder="Confirm your password"
                 className="form-input"
+                value={user.confirm}
                 onChange={handleValueChange}
               />
             </div>
