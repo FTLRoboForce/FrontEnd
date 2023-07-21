@@ -21,7 +21,9 @@ export function Login({ setToken, setUserGlobal }) {
       .then(() => {
         Api.user({ token: localStorage.getItem("jwt") }).then((response) => {
           setUserGlobal(response);
-          setName(response.firstname + " " + response.lastname);
+          if (response?.firstname && response?.lastname) {
+            setName(response?.firstname + " " + response?.lastname);
+          }
         });
       });
     // navigate("/activity");
@@ -34,7 +36,7 @@ export function Login({ setToken, setUserGlobal }) {
         setName(response.firstname + " " + response.lastname);
       });
     }
-  }, [user]);
+  }, []);
 
   function handleOnChangeLoginEmail(email) {
     setEmail(email);
@@ -48,54 +50,53 @@ export function Login({ setToken, setUserGlobal }) {
 
   return (
     <>
-    <ParticleBackground/>
-    
-   
-    <div className="login-container">
-      <div className="login-form-container">
-        <h2 className="login-heading">Login</h2>
-        <form className="login-form">
-          <div className="form-group">
-            <label className="form-label" htmlFor="email">
-              Email:
-            </label>
-            <input
-              type="email"
-              id="email"
-              onChange={(event) => {
-                handleOnChangeLoginEmail(event.target.value);
+      <ParticleBackground />
+
+      <div className="login-container">
+        <div className="login-form-container">
+          <h2 className="login-heading">Login</h2>
+          <form className="login-form">
+            <div className="form-group">
+              <label className="form-label" htmlFor="email">
+                Email:
+              </label>
+              <input
+                type="email"
+                id="email"
+                onChange={(event) => {
+                  handleOnChangeLoginEmail(event.target.value);
+                }}
+                placeholder="Enter your email"
+                className="form-input-login"
+              />
+            </div>
+            <div className="form-group">
+              <label className="form-label" htmlFor="password">
+                Password:
+              </label>
+              <input
+                type="password"
+                id="password"
+                onChange={(event) => {
+                  handleOnChangeLoginPassword(event.target.value);
+                }}
+                placeholder="Enter your password"
+                className="form-input-login"
+              />
+            </div>
+            <button
+              type="submit"
+              className="submit-button"
+              onClick={(event) => {
+                handleOnSubmit(event);
               }}
-              placeholder="Enter your email"
-              className="form-input-login"
-            />
-          </div>
-          <div className="form-group">
-            <label className="form-label" htmlFor="password">
-              Password:
-            </label>
-            <input
-              type="password"
-              id="password"
-              onChange={(event) => {
-                handleOnChangeLoginPassword(event.target.value);
-              }}
-              placeholder="Enter your password"
-              className="form-input-login"
-            />
-          </div>
-          <button
-            type="submit"
-            className="submit-button"
-            onClick={(event) => {
-              handleOnSubmit(event);
-            }}
-          >
-            Login
-          </button>
-        </form>
-        {name?.length > 0 && <h2 className="login-message">Hello {name}</h2>}
+            >
+              Login
+            </button>
+          </form>
+          {name?.length > 0 && <h2 className="login-message">Hello {name}</h2>}
+        </div>
       </div>
-    </div>
     </>
   );
 }
