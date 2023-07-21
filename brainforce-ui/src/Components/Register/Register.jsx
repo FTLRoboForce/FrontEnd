@@ -1,47 +1,40 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Register.css";
-import { useState } from "react";
 import Api from "../../utilities/api";
+import Particle from "../../ParticleBackground/ParticleBackground";
+
+const initialUserState = {
+  email: "",
+  username: "",
+  firstname: "",
+  lastname: "",
+  password: "",
+  confirm: "",
+  points: 0,
+};
 
 export function Register() {
-  let [email, setEmail] = useState("");
-  let [errortext, setErrortext] = useState("");
-  let [username, setUsername] = useState("");
-  let [firstname, setfirstname] = useState("");
-  let [lastname, setlastname] = useState("");
-  let [password, setPassword] = useState("");
-  let [confirm, setConfirm] = useState("");
-  let [user, setUser] = useState({
-    email: email,
-    username: username,
-    firstname: firstname,
-    lastname: lastname,
-    password: password,
-    points: 0
-  });
+  const [user, setUser] = useState(initialUserState);
+  const [errortext, setErrortext] = useState("");
 
   function handleOnSubmit(event) {
     event.preventDefault();
-    if (verifyPassword(password, confirm)) {
+    if (verifyPassword(user.password, user.confirm)) {
       Api.register(user);
     }
     // window.location.href = "/excerciseDashbo";
   }
 
-  function handleValueChange(value, setValue) {
-    setValue(value);
-    setUser({
-      email: email,
-      username: username,
-      firstname: firstname,
-      lastname: lastname,
-      password: password,
-      points: 0
-    });
+  function handleValueChange(event) {
+    const { name, value } = event.target;
+    setUser((prevUser) => ({
+      ...prevUser,
+      [name]: value,
+    }));
   }
 
   function verifyPassword(password, confirm) {
-    if (password != confirm) {
+    if (password !== confirm) {
       setErrortext("Passwords do not match");
       return false;
     }
@@ -54,105 +47,97 @@ export function Register() {
   }
 
   return (
-    <div className="registration-page-container">
-      <div className="registration-container">
-        <div className="registration-heading">
-          <section>Register</section>
-        </div>
-        <div className="registration-form">
-          <form>
-            <div className="registration-form-top">
-              <div className="form-group">
-                <label htmlFor="firstname">First Name</label>
-                <input
-                  type="text"
-                  id="firstname"
-                  placeholder="Enter your first name"
-                  className="form-input"
-                  onChange={(event) => {
-                    handleValueChange(event.target.value, setfirstname);
-                  }}
-                />
-              </div>
-              <div className="form-group">
-                <label htmlFor="lastname">Last Name </label>
-                <input
-                  type="text"
-                  id="name"
-                  placeholder="Enter your last name"
-                  className="form-input"
-                  onChange={(event) => {
-                    handleValueChange(event.target.value, setlastname);
-                  }}
-                />
-              </div>
-              <div className="form-group">
-                <label htmlFor="username">Username</label>
-                <input
-                  type="text"
-                  id="username"
-                  placeholder="Enter a username"
-                  className="form-input"
-                  onChange={(event) => {
-                    handleValueChange(event.target.value, setUsername);
-                  }}
-                />
-              </div>
-              <div className="form-group">
-                <label htmlFor="email">Email</label>
-                <input
-                  type="email"
-                  id="email"
-                  placeholder="Enter your email"
-                  className="form-input"
-                  onChange={(event) => {
-                    handleValueChange(event.target.value, setEmail);
-                  }}
-                />
-              </div>
+    <>
+      <Particle />
+      <div className="registration-page-container">
+        <div className="registration-container">
+          <h2 className="registration-heading">Register</h2>
+          <form className="registration-form" onSubmit={handleOnSubmit}>
+            <div className="form-group">
+              <label className="form-label" htmlFor="firstname">
+                First Name:
+              </label>
+              <input
+                type="text"
+                id="firstname"
+                name="firstname"
+                placeholder="Enter your first name"
+                className="form-input"
+                onChange={handleValueChange}
+              />
             </div>
-            <div className="registration-form-bottom">
-              <div className="form-group">
-                <label htmlFor="password">Password</label>
-                <input
-                  type="password"
-                  id="password"
-                  placeholder="Enter your password"
-                  className="form-input"
-                  onChange={(event) => {
-                    handleValueChange(event.target.value, setPassword);
-                  }}
-                />
-              </div>
-
-              <div className="form-group">
-                <label htmlFor="password">Confirm Password</label>
-                <input
-                  type="password"
-                  id="password"
-                  placeholder="Enter your password"
-                  className="form-input"
-                  onChange={(event) => {
-                    handleValueChange(event.target.value, setConfirm);
-                  }}
-                />
-              </div>
+            <div className="form-group">
+              <label className="form-label" htmlFor="lastname">
+                Last Name:
+              </label>
+              <input
+                type="text"
+                id="lastname"
+                name="lastname"
+                placeholder="Enter your last name"
+                className="form-input"
+                onChange={handleValueChange}
+              />
             </div>
-
+            <div className="form-group">
+              <label className="form-label" htmlFor="username">
+                Username:
+              </label>
+              <input
+                type="text"
+                id="username"
+                name="username"
+                placeholder="Enter a username"
+                className="form-input"
+                onChange={handleValueChange}
+              />
+            </div>
+            <div className="form-group">
+              <label className="form-label" htmlFor="email">
+                Email:
+              </label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                placeholder="Enter your email"
+                className="form-input"
+                onChange={handleValueChange}
+              />
+            </div>
+            <div className="form-group">
+              <label className="form-label" htmlFor="password">
+                Password:
+              </label>
+              <input
+                type="password"
+                id="password"
+                name="password"
+                placeholder="Enter your password"
+                className="form-input"
+                onChange={handleValueChange}
+              />
+            </div>
+            <div className="form-group">
+              <label className="form-label" htmlFor="confirm">
+                Confirm Password:
+              </label>
+              <input
+                type="password"
+                id="confirm"
+                name="confirm"
+                placeholder="Confirm your password"
+                className="form-input"
+                onChange={handleValueChange}
+              />
+            </div>
             <div className="registration-form-button">
-              <button
-                type="submit"
-                onClick={(event) => {
-                  handleOnSubmit(event);
-                }}
-              >
-                Register
-              </button>
-              {errortext ? <p>{errortext}</p> : null}
+              <button type="submit">Register</button>
+              {errortext && <p className="error-text">{errortext}</p>}
             </div>
           </form>
         </div>
       </div>
-    </div>
+    </>
   );
 }

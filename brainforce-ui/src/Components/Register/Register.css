@@ -1,107 +1,65 @@
 .registration-page-container {
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 100vw;
-    height: 100vh;
-    background-color: var(--dakrblue);
-}
-
-.registration-container {
-  max-width: 800px;
-  margin: 200px auto;
-  padding:70px;
-  background: linear-gradient( #009EDB, #005EB8);
-  border: 1px solid #ccc;
-  border-radius: 4px;
+    min-height: 100vh;
+  }
   
-
-}
-
-
-.registration-heading {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 10%;
-    margin-top: -60px;
-    font-size: 1.8rem;
+  .registration-container {
+    max-width: 400px;
+    padding: 20px;
+    /* background: #f5f5f5; */
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 10px 10px 10px var(--darkblue);
+    margin-top: 50px;
+  }
+  
+  .registration-heading {
+    text-align: center;
+    font-size: 2rem;
     font-weight: bold;
     color: black;
- 
-}
-
-.registration-form {
+    margin-bottom: 20px;
+  }
+  
+  .registration-form {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
     align-items: center;
-    width: 100%;
-   
-}
-
-
-.registration-form-top{
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-    
-
-    
-}
-
-.registration-form-top label {
-   display: block;
-    margin-bottom: 5px;
+    margin-top: 20px;
+  }
+  
+  .form-group {
+    margin-bottom: 15px;
+    padding: 10px;
+  }
+  
+  .form-label {
     font-weight: bold;
-}
-
-.form-group {
-  margin-bottom: 15px;
-  padding: 10px;
-  padding-right: 30px;
-}
-
-.registration-form-bottom{
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
+    margin-bottom: 5px;
+    display: block; /* Add this line to make the label full-width */
+  }
+  
+  .form-input {
     width: 100%;
-    margin-top: 50px;
-    
-}
-
-
-.registration-form-bottom label {
-  display: block;
-  margin-bottom: 5px;
-  font-weight: bold;
-}
-
-
-.form-input
-{
-  width: 20vw;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
-
-.registration-form-button {
+    max-width: 300px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .registration-form-button {
     display: flex;
     justify-content: center;
     align-items: center;
     width: 100%;
-    height: 10%;
     margin-top: 20px;
-}
-
-.registration-form-button button {
-    width: 10rem;
+  }
+  
+  .registration-form-button button {
+    width: 100%;
+    max-width: 200px;
     height: 3rem;
     border-radius: 5px;
     background-color: var(--darkblue);
@@ -110,9 +68,17 @@
     font-weight: bold;
     border: none;
     cursor: pointer;
-}
-
-.registration-form-button button:hover {
-    background-color: var( --ligtblue);
+  }
+  
+  .registration-form-button button:hover {
+    background-color: var(--ligtblue);
     color: var(--darkblue);
-}
+  }
+  
+  .error-text {
+    color: red;
+    font-size: 0.9rem;
+    margin-top: 10px;
+    text-align: center;
+  }
+  

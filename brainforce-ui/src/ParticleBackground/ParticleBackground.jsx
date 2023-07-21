@@ -77,7 +77,7 @@ import { loadSlim } from "tsparticles-slim";
                         value: 0.5,
                     },
                     shape: {
-                        type: "circle",
+                        type: "polygon",
                     },
                     size: {
                         value: { min: 4, max: 5 },
