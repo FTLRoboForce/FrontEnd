@@ -3,18 +3,13 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 4px 30px 0px;
-  background-color: #D9D9D9;
+  padding: 10px 30px;
+  background-color: #d9d9d9;
   overflow: hidden;
   position: fixed;
   top: 0;
   width: 100%;
-
-}
-
-#tsparticles{
-  position: absolute;
-  z-index: -1;
+  z-index: 1000; /* Ensure Navbar stays on top of other elements */
 }
 
 /* Logo and Branding */
@@ -34,19 +29,19 @@
 h3 {
   font-size: 1.5rem;
   font-weight: bold;
+  margin: 0;
 }
 
 /* Nav links container */
 .nav-links-container {
-  background-color: #00A1E0;
-  width: 57%;
+  background-color: #00a1e0;
   border-radius: 5px;
   padding: 10px;
   display: flex;
-  flex-direction: row;
   justify-content: space-around;
   align-items: center;
-
+  flex-grow: 1; /* Take the available space */
+  margin-left: 20px; /* Add spacing between logo and navigation links */
 }
 
 /* Nav links */
@@ -56,12 +51,6 @@ h3 {
   justify-content: space-around;
   align-items: center;
   width: 100%;
-
-}
-
-/* hacky */
-.user-activity {
-  transform: translateY(-10px);
 }
 
 .nav-links li {
@@ -74,50 +63,44 @@ h3 {
   font-size: 1.2rem;
   font-weight: 600;
   padding: 5px 10px;
-  margin: 5px 0;
+  margin: 5px 10px; /* Add some margin between the links */
   border-bottom: 2px solid transparent;
   transition: all 0.3s ease 0s;
 }
 
 .nav-links a:hover {
-  border-bottom-color: #FFF;
+  border-bottom-color: #fff;
+}
+
+
+#navbar-signup-container button {
+  margin-right: 20px;
 }
 
 /* User activity container */
 .user-activity-container {
   display: flex;
-  flex-direction: column;
+  justify-content: space-between; /* Adjust the spacing between Login and Signup buttons */
   align-items: center;
-  gap: 10px;
-  justify-content: space-around;
-}
-
-.user-activity {
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
-  width: 100%;
+  margin-right: 20px; /* Add spacing between navigation links and login/signup buttons */
 }
 
 /* Login and Signup buttons */
 .user-activity-container button {
-  background-color: #00A1E0;
+  background-color: #00a1e0;
   border-radius: 10px;
   border: none;
-  padding: 10px;
-  color: #004D85;
+  padding: 10px 20px; /* Add some padding to the buttons */
+  margin: 0 5px; /* Add spacing between the buttons */
+  color: #004d85;
   font-weight: bolder;
   cursor: pointer;
   transition: background-color 0.3s ease;
+  white-space: nowrap; /* Prevent text from wrapping */
 }
-
-#navbar-login-container {
-  margin-right: 10px;
-}
-
 .user-activity-container button:hover {
-  background-color: #004D85;
-  color: #00A1E0;
+  background-color: #004d85;
+  color: #00a1e0;
 }
 
 /* Einstein image */
@@ -134,10 +117,6 @@ h3 {
 
   .logo-container {
     margin-bottom: 10px;
-  }
-
-  .user-activity-container {
-    flex-direction: column;
   }
 
   /* Display Einstein image on smaller screens */
