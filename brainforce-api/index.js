@@ -29,7 +29,8 @@ app.post("/flashcard", async (req,res) => {
         })
         return res.status(200).json({
             success : true,
-            data : response.data.choices[0].message
+            data : response.data.choices[0].message.content,
+            console : console.log(response.data.choices[0].message.content)
         }
         )
     }
@@ -53,21 +54,22 @@ app.post("/quiz", async (req,res) => {
             messages: [{role : "user", content: `Create ${number} unique ${difficultyLevel} multiple-choice questions about ${subject} specifically ${optionalSection}. 
             ### It should be stored as an array of json objects where the question,options and answer are stored as key-value pairs such as:
             {
-                question: "What is the capital of France?",
-                options: ["New York", "London", "Paris", "Dublin"],
-                answer: "Paris"
+                "question": "What is the capital of France?",
+                "options": ["New York", "London", "Paris", "Dublin"],
+                "answer": "Paris"
               }
-            `}],temperature: 1.5, max_tokens: 100, top_p: 1.0, frequency_penalty: 2.0, presence_penalty: 2.0
+            `}],temperature: .6, max_tokens: 100, top_p: 1.0, frequency_penalty: 2.0, presence_penalty: 2.0
         })
         return res.status(200).json({
             success : true,
-            data : response.data.choices[0].message
+            data : response.data.choices[0].message.content,
+            console : console.log(response.data.choices[0].message.content)
         }
         )
     }
     catch(error){
+        console.error(error)
         return res.status(400).json({
-
             success : false,
             error : error.response ? error.response.data : "There was an issue on the server"
         })
