@@ -1,72 +1,80 @@
-.login-container {
+/* Import the provided colors from :root */
+:root {
+  --darkblue: #004D85;
+  --lightblue: #00A1E0;
+  --lightgrey: #D9D9D9;
+  --gradient-start: #004D85;
+  --gradient-end: #00A1E0;
+}
+
+/* Login container */
+/* Particle background */
+/* Add your ParticleBackground styles here */
+
+/* Center container */
+.center-container {
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 100vh;
+  height: 100vh;
+  
 }
 
-.login-form-container {
-  max-width: 400px;
-  padding: 20px;
-  /* background: #f5f5f5; */
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  box-shadow: 10px 10px 10px var(--darkblue);
-  margin-top: 50px;
+/* Login container */
+.login-container {
+  background-color: white;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+  padding: 30px;
+  max-width: 420px;
+  width: 100%;
 }
 
-.login-heading {
-  text-align: center;
-  font-size: 1.8rem;
-  font-weight: bold;
-  color: black;
-  margin-bottom: 20px;
-}
-
+/* Login form */
 .login-form {
-  display: flex;
-  flex-direction: column;
+  margin-top: 20px;
 }
 
+/* Style the form inputs and labels */
 .form-group {
   margin-bottom: 15px;
 }
 
-.form-label {
-  font-weight: bold;
-  margin-bottom: 5px;
-}
-
-.form-input-login {
-  width: 100%;
-  max-width: 300px;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
-
-.submit-button {
-  width: 100%;
-  max-width: 200px;
-  height: 3rem;
-  border-radius: 5px;
-  background-color: var(--darkblue);
-  color: white;
-  font-size: 1.2rem;
-  font-weight: bold;
-  border: none;
-  cursor: pointer;
-}
-
-.submit-button:hover {
-  background-color: var(--ligtblue);
+.form-group label {
+  font-size: 1rem;
   color: var(--darkblue);
 }
 
+.form-group input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid var(--lightgrey);
+  border-radius: 4px;
+}
+
+/* Style the "Hello {name}" message */
 .login-message {
   text-align: center;
-  color: #fff;
-  font-size: 1.1rem;
-  margin-top: 10px;
+  margin-top: 15px;
+  font-size: 1.5rem;
+  color: var(--darkblue);
   font-weight: bold;
 }
+
+/* Login button */
+.submit-button {
+  width: 100%;
+  padding: 10px;
+  background-color: var(--lightblue);
+  color: #ffffff;
+  font-weight: bold;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.submit-button:hover {
+  background-color: var(--darkblue);
+}
+

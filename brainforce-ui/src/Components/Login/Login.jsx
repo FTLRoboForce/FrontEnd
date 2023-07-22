@@ -1,8 +1,21 @@
 import React, { useState, useEffect } from "react";
-import "./Login.css";
+import {
+  TextInput,
+  PasswordInput,
+  Checkbox,
+  Anchor,
+  Paper,
+  Title,
+  Text,
+  Container,
+  Group,
+  Button,
+} from '@mantine/core';
 import { useNavigate } from "react-router-dom";
 import Api from "../../utilities/api";
 import ParticleBackground from "../../ParticleBackground/ParticleBackground";
+
+import "./Login.css";
 
 export function Login({ setToken, setUserGlobal }) {
   const [email, setEmail] = useState("");
@@ -52,49 +65,61 @@ export function Login({ setToken, setUserGlobal }) {
     <>
       <ParticleBackground />
 
-      <div className="login-container">
-        <div className="login-form-container">
-          <h2 className="login-heading">Login</h2>
-          <form className="login-form">
-            <div className="form-group">
-              <label className="form-label" htmlFor="email">
-                Email:
-              </label>
-              <input
-                type="email"
-                id="email"
-                onChange={(event) => {
-                  handleOnChangeLoginEmail(event.target.value);
-                }}
-                placeholder="Enter your email"
-                className="form-input-login"
-              />
-            </div>
-            <div className="form-group">
-              <label className="form-label" htmlFor="password">
-                Password:
-              </label>
-              <input
-                type="password"
-                id="password"
-                onChange={(event) => {
-                  handleOnChangeLoginPassword(event.target.value);
-                }}
-                placeholder="Enter your password"
-                className="form-input-login"
-              />
-            </div>
-            <button
-              type="submit"
-              className="submit-button"
-              onClick={(event) => {
-                handleOnSubmit(event);
-              }}
-            >
-              Login
-            </button>
-          </form>
-          {name?.length > 0 && <h2 className="login-message">Hello {name}</h2>}
+      <div className="center-container">
+        <div className="login-container">
+        <Title
+        align="center"
+        color="#004D85" 
+        sx={(theme) => ({ fontFamily: `Greycliff CF, ${theme.fontFamily}`, fontWeight: 900 })}
+      >
+        Welcome back!
+      </Title>
+      <Text color="dimmed" size="sm" align="center" mt={5}>
+        Do not have an account yet?{' '}
+        <Anchor onClick={ () => window.location = "/register"} size="sm" component="button">
+          Create account
+        </Anchor>
+      </Text>
+          <div className="login-form-container">
+            
+            <form className="login-form">
+              <div className="form-group">
+
+                <TextInput
+                  label="Email"
+                  placeholder="Enter your email"
+                  required
+                  value={email}
+                  onChange={(event) =>
+                    handleOnChangeLoginEmail(event.target.value)
+                  }
+                />
+              </div>
+              <div className="form-group">
+                <PasswordInput
+                  label="Password"
+                  placeholder="Enter your password"
+                  required
+                  value={password}
+                  onChange={(event) =>
+                    handleOnChangeLoginPassword(event.target.value)
+                  }
+                />
+
+              </div>
+              <Checkbox label="Remember me" />
+              <button
+                type="submit"
+                className="submit-button"
+                onClick={(event) => handleOnSubmit(event)}
+              >
+                Login
+              </button>
+            </form>
+            {name?.length > 0 && (
+              <h2 className="login-message">Hello {name}</h2>
+            )}
+          </div>
         </div>
       </div>
     </>
