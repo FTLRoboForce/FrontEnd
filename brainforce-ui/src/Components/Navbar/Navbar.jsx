@@ -15,9 +15,7 @@ export function Navbar() {
           onClick={() => (window.location = "/")}
         />
         <h3>BrainForce</h3>
-        <section id="einstein-container1">
-          <img src={einstein} alt="Einstein" />
-        </section>
+        
       </section>
       <section className="nav-links-container">
         <ul className="nav-links">
