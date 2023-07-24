@@ -17,7 +17,14 @@ function App() {
   const [token, setToken] = useState();
   const [userGlobal, setUserGlobal] = useState();
   const [flashcards, setFlashcards] = useState([
-    { answer: "test", question: "test" }
+    { answer: "test", question: "test" },
+  ]);
+  const [questions, setQuestions] = useState([
+    {
+      question: "What is the capital of France?",
+      options: ["New York", "London", "Paris", "Dublin"],
+      answer: "Paris",
+    },
   ]);
 
   const handleAnswer = (selectedOption) => {
@@ -60,6 +67,8 @@ function App() {
               userGlobal={userGlobal}
               flashcards={flashcards}
               setFlashcards={setFlashcards}
+              setQuestions={setQuestions}
+              questions={questions}
             />
           }
         />
@@ -77,7 +86,16 @@ function App() {
           path="/leaderboard"
           element={<Leaderboard userGlobal={userGlobal} />}
         />
-        <Route path="/quiz" element={<Quiz userGlobal={userGlobal} />}></Route>
+        <Route
+          path="/quiz"
+          element={
+            <Quiz
+              userGlobal={userGlobal}
+              questions={questions}
+              setQuestions={setQuestions}
+            />
+          }
+        ></Route>
         <Route path="/report" element={<Report userGlobal={userGlobal} />} />
         <Route
           path="/creators"
