@@ -47,7 +47,7 @@ const useStyles = createStyles((theme) => ({
   },
   logoText: {
     fontWeight: 900,
-    color: "white",
+    color: "var(--darkblue)",
     fontSize: rem(22)
   },
   navLinksContainer: {

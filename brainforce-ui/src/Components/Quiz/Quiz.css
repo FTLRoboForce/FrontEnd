@@ -2,8 +2,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: auto;
-    background: transparent;
 }
 
 .submit-quiz {
@@ -22,10 +20,15 @@
     max-width: 600px;
     width: 100%;
     padding: 20px;
-    background-color: white;
+    z-index: 1;
+
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
     overflow: hidden;
   background: linear-gradient(0.25turn, #0390c8, var(--darkblue));
   }
   
+
+  .particle-div {
+ background: linear-gradient(0.25turn, #0390c8, var(--darkblue));
+  }

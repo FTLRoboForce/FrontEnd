@@ -16,59 +16,66 @@ import ParticleBackground from "../../ParticleBackground/ParticleBackground";
 import brainImage from "../../images/bf.png";
 import einsteinImage from "../../images/einstein.png";
 
+import "./Home.css";
+
 const useStyles = createStyles((theme) => ({
   inner: {
     display: "flex",
     justifyContent: "space-between",
     alignItems: "center",
-    paddingTop: `calc(${theme.spacing.xl} * 1)`,
-    paddingBottom: `calc(${theme.spacing.xl} * 2)`
+    paddingTop: `calc(${theme.spacing.xl} * 8)`,
+    paddingBottom: `calc(${theme.spacing.xl} * 2)`,
+    zIndex: 1,
+    width: rem(1200),
+    marginLeft: rem(-200),
+ 
   },
 
   content: {
-    maxWidth: rem(480),
-    marginRight: `calc(${theme.spacing.xl} * 0)`,
+    width: rem(9999), // Set the default width to 80% of the screen width
+    margin: `0 auto`, // Center the content horizontally
     background: `linear-gradient(to right, var(--lightgrey), var(--lightblue))`,
     padding: rem(80),
     borderRadius: rem(12),
     boxShadow: theme.shadows.sm,
 
     [theme.breakpoints.sm]: {
-      maxWidth: "100%",
-      marginRight: 0
-    }
+      maxWidth:rem(9999),
+      margin: theme.spacing.md, // Adjust margin for smaller screens
+      width: rem(9999), // Adjust the width for smaller screens
+    },
+
+    [theme.breakpoints.lg]: {
+      width: rem(9999), // Increase the width for larger screens (e.g., 60%)
+      maxWidth : rem(9999),
+    },
   },
 
   title: {
     color: "#004D85",
     fontFamily: `Greycliff CF, ${theme.fontFamily}`,
-    fontSize: rem(90),
+    fontSize: rem(150),
     lineHeight: 1.2,
     fontWeight: 900,
 
     [theme.breakpoints.xs]: {
-      fontSize: rem(28)
-    }
-  },
-
-  control: {
-    [theme.breakpoints.xs]: {
-      flex: 1
-    }
+      fontSize: rem(88),
+    },
   },
 
   animatedImage: {
-    flex: "0 0 60%",
-    maxWidth: "60%",
-    animation: "$fadeInOut 2s linear infinite"
+    flex: "0 0 40%", // Reduce the size of the image for larger screens
+    maxWidth: "90%", // Reduce the maximum width for larger screens
+    animation: "$fadeInOut 1s linear infinite",
   },
 
   "@keyframes fadeInOut": {
-    "0%": { opacity: 1 },
+    "0%, 100%": { opacity: 1 },
     "50%": { opacity: 0 },
-    "100%": { opacity: 1 }
-  }
+  },
 }));
+
+
 
 export function Home({ userGlobal }) {
   const { classes } = useStyles();
@@ -87,7 +94,7 @@ export function Home({ userGlobal }) {
       <ParticleBackground />
 
       <div>
-        <Container>
+        <Container className="home-container">
           <div className={classes.inner}>
             <div className={classes.content}>
               <Title color="#004D85" className={classes.title}>
