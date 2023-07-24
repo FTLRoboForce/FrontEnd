@@ -36,6 +36,7 @@ export function Login({ setToken, setUserGlobal }) {
           setUserGlobal(response);
           if (response?.firstname && response?.lastname) {
             setName(response?.firstname + " " + response?.lastname);
+            localStorage.setItem("username", response.firstname);
           }
         });
       });
@@ -46,6 +47,8 @@ export function Login({ setToken, setUserGlobal }) {
     if (localStorage.getItem("jwt")) {
       Api.user({ token: localStorage.getItem("jwt") }).then((response) => {
         setUserGlobal(response);
+        // store users username in local storage 
+
         setName(response.firstname + " " + response.lastname);
       });
     }

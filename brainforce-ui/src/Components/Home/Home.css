@@ -6,6 +6,9 @@
   --gradient-end: #00A1E0;
 }
 
+
+
+
 .homePage-container {
   /* background: linear-gradient(to bottom right, var(--gradient-start), var(--gradient-end)); */
   height: 100%; /* Set the height to 100% of the viewport height */

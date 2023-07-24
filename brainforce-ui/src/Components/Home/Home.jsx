@@ -10,14 +10,14 @@ const useStyles = createStyles((theme) => ({
     display: 'flex',
     justifyContent: 'space-between',
     alignItems: 'center',
-    paddingTop: `calc(${theme.spacing.xl} * 5)`,
-    paddingBottom: `calc(${theme.spacing.xl} * 3)`,
+    paddingTop: `calc(${theme.spacing.xl} * 1)`,
+    paddingBottom: `calc(${theme.spacing.xl} * 2)`,
   },
 
   content: {
     maxWidth: rem(480),
     marginRight: `calc(${theme.spacing.xl} * 0)`,
-    background: 'white', // Linear gradient background
+    background: `linear-gradient(to right, var(--lightgrey), var(--lightblue))`,
     padding: rem(80),
     borderRadius: rem(12),
     boxShadow: theme.shadows.sm,
@@ -29,7 +29,7 @@ const useStyles = createStyles((theme) => ({
   },
 
   title: {
-    color: theme.colorScheme === 'dark' ? theme.colors.dark : theme.colors.black,
+    color: "#004D85",
     fontFamily: `Greycliff CF, ${theme.fontFamily}`,
     fontSize: rem(90),
     lineHeight: 1.2,

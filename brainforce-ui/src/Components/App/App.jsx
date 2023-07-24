@@ -27,7 +27,7 @@ function App() {
    
     
     <BrowserRouter>
-      <Navbar />
+      <Navbar token={token} setToken={setToken} userGlobal={userGlobal}/>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/register" element={<Register />} />
