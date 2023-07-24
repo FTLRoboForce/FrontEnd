@@ -1,29 +1,33 @@
-import React, { useState } from "react";
-import "./Register.css";
+import React, { useState } from 'react';
+import { useToggle, upperFirst } from '@mantine/hooks';
+import { TextInput, PasswordInput, Text, Paper, Group, Button, Divider, Checkbox, Anchor, Stack, Image } from '@mantine/core';
+import ParticleBackground from '../../ParticleBackground/ParticleBackground';
 import Api from "../../utilities/api";
-import Particle from "../../ParticleBackground/ParticleBackground";
+import  google  from "../../images/google.svg"
+
+import './Register.css'; 
 
 const initialUserState = {
-  email: "",
-  username: "",
-  firstname: "",
-  lastname: "",
-  password: "",
-  confirm: "",
-  points: 0
+  email: '',
+  firstname: '',
+  lastname: '',
+  password: '',
+  confirm: '',
+  points: 0,
 };
 
 export function Register() {
   const [user, setUser] = useState(initialUserState);
-  const [errortext, setErrortext] = useState("");
+  const [errortext, setErrortext] = useState('');
 
   function handleOnSubmit(event) {
     event.preventDefault();
-    if (verifyPassword(user.password, user.confirm)) {
+    
+    if (verifyPassword(user.password, user.confirm) && verifyEmail(user.email)) {
       Api.register(user);
       setUser(initialUserState);
+      setErrortext(''); // Clear any previous error messages
     }
-    // window.location.href = "/excerciseDashbo";
   }
 
   function handleValueChange(event) {
@@ -40,7 +44,20 @@ export function Register() {
       return false;
     }
     if (password.length < 8) {
-      setErrortext("Password must be at least 8 characters long");
+      setErrortext("Passwords must be at least 8 characters long");
+      return false;
+    }
+
+    return true;
+  }
+
+  function verifyEmail(email) {
+    if (email.length < 5) {
+      setErrortext("Email must be at least 5 characters long");
+      return false;
+    }
+    if (!email.includes("@")) {
+      setErrortext("Email must be a valid email address");
       return false;
     }
 
@@ -49,102 +66,101 @@ export function Register() {
 
   return (
     <>
-      <Particle />
+   
+    <ParticleBackground/>
+    <div className="container"> 
       <div className="registration-page-container">
-        <div className="registration-container">
-          <h2 className="registration-heading">Register</h2>
-          <form className="registration-form" onSubmit={handleOnSubmit}>
-            <div className="form-group">
-              <label className="form-label" htmlFor="firstname">
-                First Name:
-              </label>
-              <input
-                type="text"
-                id="firstname"
-                name="firstname"
+       
+        <Paper radius="md" p="xl" withBorder>
+        <Text  align="center"
+        color="#004D85" 
+        sx={(theme) => ({ fontFamily: `Greycliff CF, ${theme.fontFamily}`, fontWeight: 900,  fontSize: 26, } ) }
+       >
+          Welcome to Brainforce!
+        </Text>
+          <Text size="lg" weight={500}>
+            Register with
+          </Text>
+
+          <Group grow mb="md" mt="md">
+          <button id='google-btn'>  <Image src = {google} width={20}/>
+          </button>
+      
+       
+          </Group>
+
+          <Divider label="Or continue with email" labelPosition="center" my="lg" />
+
+          <form onSubmit={handleOnSubmit}>
+            <Stack>
+              <TextInput
+                required
+                label="First Name"
                 placeholder="Enter your first name"
-                className="form-input"
                 value={user.firstname}
                 onChange={handleValueChange}
+                name="firstname"
               />
-            </div>
-            <div className="form-group">
-              <label className="form-label" htmlFor="lastname">
-                Last Name:
-              </label>
-              <input
-                type="text"
-                id="lastname"
-                name="lastname"
+
+              <TextInput
+                required
+                label="Last Name"
                 placeholder="Enter your last name"
-                className="form-input"
                 value={user.lastname}
                 onChange={handleValueChange}
+                name="lastname"
               />
-            </div>
-            <div className="form-group">
-              <label className="form-label" htmlFor="username">
-                Username:
-              </label>
-              <input
-                type="text"
-                id="username"
-                name="username"
-                placeholder="Enter a username"
-                className="form-input"
-                value={user.username}
-                onChange={handleValueChange}
-              />
-            </div>
-            <div className="form-group">
-              <label className="form-label" htmlFor="email">
-                Email:
-              </label>
-              <input
-                type="email"
-                id="email"
-                name="email"
+
+              <TextInput
+                required
+                label="Email"
                 placeholder="Enter your email"
-                className="form-input"
                 value={user.email}
                 onChange={handleValueChange}
+                name="email"
+                error={errortext && errortext.includes("Email") && errortext}
               />
-            </div>
-            <div className="form-group">
-              <label className="form-label" htmlFor="password">
-                Password:
-              </label>
-              <input
-                type="password"
-                id="password"
-                name="password"
+
+              <PasswordInput
+                required
+                label="Password"
                 placeholder="Enter your password"
-                className="form-input"
                 value={user.password}
                 onChange={handleValueChange}
+                name="password"
               />
-            </div>
-            <div className="form-group">
-              <label className="form-label" htmlFor="confirm">
-                Confirm Password:
-              </label>
-              <input
-                type="password"
-                id="confirm"
-                name="confirm"
+
+              <PasswordInput
+                required
+                label="Confirm Password"
                 placeholder="Confirm your password"
-                className="form-input"
                 value={user.confirm}
                 onChange={handleValueChange}
+                name="confirm"
+                error={errortext && errortext.includes("Passwords") && errortext}
               />
-            </div>
-            <div className="registration-form-button">
-              <button type="submit">Register</button>
-              {errortext && <p className="error-text">{errortext}</p>}
-            </div>
+
+              <Checkbox
+                required
+                label="I accept terms and conditions"
+               
+                // onChange={(event) => setUser((prevUser) => ({ ...prevUser, terms: event.currentTarget.checked }))}
+              />
+
+              <Button type="submit" radius="xl" className='submit-button'>
+                Register
+              </Button>
+
+              {errortext && !errortext.includes("Passwords") && !errortext.includes("Email") && (
+                <p className="error-text">{errortext}</p>
+              )}
+            </Stack>
           </form>
-        </div>
+
+          
+        </Paper>
       </div>
+    </div>
     </>
   );
 }
