@@ -1,10 +1,19 @@
 import React, { useEffect } from "react";
 import Flashcard from "../Flashcard/Flashcard";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 import "./FlashcardPage.css";
 import { useState } from "react";
 
-export default function FlashcardPage({ userGlobal, flashcards }) {
+export default function FlashcardPage({
+  userGlobal,
+  flashcards,
+  setQuestions,
+  subject,
+  difficulty,
+}) {
   const [counter, setCounter] = useState(0);
+  const navigate = useNavigate();
   console.log("flashcards", flashcards);
 
   // make sure counter doesn't go more than the number of flashcards
@@ -25,6 +34,25 @@ export default function FlashcardPage({ userGlobal, flashcards }) {
     }
   };
 
+  const createQuiz = (event) => {
+    event.preventDefault();
+    axios
+      .post("http://localhost:3002/quiz", {
+        subject: subject,
+        difficulty: difficulty,
+        number: 2,
+        optional: "",
+      })
+      .then((response) => {
+        setQuestions(JSON.parse(response.data.data));
+        navigate("/quiz");
+      })
+      .catch((error) => {
+        console.log(error);
+        console.error("There was an error!", error);
+      });
+  };
+
   return (
     <>
       {userGlobal ? (
@@ -35,22 +63,31 @@ export default function FlashcardPage({ userGlobal, flashcards }) {
             </div>
 
             <div className="flash-buttons">
-              <button
-                className="flashcard-button"
-                onClick={() => {
-                  handlePreviousClick();
-                }}
-              >
-                Previous
-              </button>
-              <button
-                className="flashcard-button"
-                onClick={() => {
-                  handleNextClick();
-                }}
-              >
-                Next
-              </button>
+              {counter > 0 && (
+                <button
+                  className="flashcard-button"
+                  onClick={() => {
+                    handlePreviousClick();
+                  }}
+                >
+                  Previous
+                </button>
+              )}
+
+              {counter < flashcards.length - 1 ? (
+                <button
+                  className="flashcard-button"
+                  onClick={() => {
+                    handleNextClick();
+                  }}
+                >
+                  Next
+                </button>
+              ) : (
+                <button className="flashcard-button" onClick={createQuiz}>
+                  Last Flashcard Button
+                </button>
+              )}
             </div>
           </div>
         </div>

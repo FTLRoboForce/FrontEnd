@@ -62,7 +62,7 @@ app.post("/quiz", async (req,res) => {
                 "options": ["New York", "London", "Paris", "Dublin"],
                 "answer": "Paris"
               }
-            `}],temperature: .6, max_tokens: 100, top_p: 1.0, frequency_penalty: 2.0, presence_penalty: 2.0
+            `}],temperature: .6, max_tokens: 200, top_p: 1.0, frequency_penalty: 2.0, presence_penalty: 2.0
         })
         return res.status(200).json({
             success : true,
