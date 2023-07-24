@@ -20,8 +20,8 @@ import {
   IconPlayerPause,
   IconTrash,
   IconSwitchHorizontal,
-  IconChevronDown
-} from "@tabler/icons-react";
+  IconChevronDown,
+} from '@tabler/icons-react';
 
 import { useDisclosure } from "@mantine/hooks";
 import { cx } from "@mantine/core";

@@ -1,19 +1,107 @@
-/* .justify-content{
+
+:root {
+    --darkblue: #004D85;
+    --lightblue: #00A1E0;
+    --lightgrey: #D9D9D9;
+    --gradient-start: #004D85;
+    --gradient-end: #00A1E0;
+  }
+  
+.btn-linkedin {
+    background: #0E76A8;
+ 
+    border-radius: 0;
+    color: #fff;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #084461;
+    padding: 6px 12px; /* Adjust padding to make the button smaller */
+    text-decoration: none;
+    margin: auto; /* Center the button horizontally */
+  }
+  
+
+  .btn-linkedin:active,
+  .btn-linkedin:hover {
+    background: #084461;
+    color: #fff;
+  }
+  .Creator-container {
+    height: 100vh;
+    width: 100vw;
+    background: linear-gradient(to left, var(--darkblue), var(--lightblue));
+    display: flex;
+    flex-direction: column;
+  }
+
+  .Creator {
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
     align-items: center;
+    justify-content: space-around;
+    margin-top: 150px;
 
+
+  }
+
+
+.divider {
+  display: flex;
+  
+  &:before,
+  &:after {
+    content: "";
+    flex: 1;
+  }
 }
 
-.name-color {
-    color: #000;
-    font-size: 1.1rem;
-    font-weight: 600;
-    border-bottom: 2px solid transparent;
-    transition: all 0.3s ease 0s;
-}
+  .donotcross {
+    overflow: hidden;
+    align-items: center;
+    background: linear-gradient(to right, var(--darkblue), var(--lightblue));
+    color: black;
+    height: 2em;
+    line-height: 2em;
+    font-size: 3rem;
+    font-family: "Roboto", sans-serif;
+      
+    &:before,
+    &:after {
+      background: white;
+      padding: 50px 0;
+      height: 0;
+      transform: rotate(45deg);
+    }
+  }
+  
+  .Card-container {
+    position: relative;
+    animation: dAnimation 3s infinite ease-in-out;
+  }
+  
+  @keyframes dAnimation {
+    0%, 100% {
+      transform: scale(1) translateZ(0);
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+    }
+    50% {
+      transform: scale(1.05) translateZ(20px);
+      box-shadow: 0 0 40px rgba(0, 0, 0, 0.6);
+    }
+  }
+  
 
-.card {
-margin: 1%;
-} */
+  .college-img {
+    width: 50rem;
+    height: 30rem;
+    object-fit: cover;
+    border-radius: 8px;
+    border-radius: 8px;
+  transition: transform 0.3s ease-in-out;
+
+  }
+
+  .college-img:hover {
+    transform: scale(1.05) translateZ(20px);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+  }

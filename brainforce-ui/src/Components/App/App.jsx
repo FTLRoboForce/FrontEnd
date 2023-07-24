@@ -11,7 +11,7 @@ import Report from "../Report/Report";
 import Quiz from "../Quiz/Quiz";
 import Api from "../../utilities/api";
 import { useEffect, useState } from "react";
-import { Creator } from "../Creators/Creator";
+import Creator from "../Creators/Creator";
 
 function App() {
   const [token, setToken] = useState();
@@ -64,6 +64,7 @@ function App() {
         />
         <Route path="/quiz" element={<Quiz userGlobal={userGlobal} />}></Route>
         <Route path="/report" element={<Report userGlobal={userGlobal} />} />
+        <Route path="/creators" element={<Creator userGlobal={userGlobal} />}></Route>
       </Routes>
     </BrowserRouter>
   );
