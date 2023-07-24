@@ -10,11 +10,9 @@ function getDatabaseUri() {
   return dbURL;
 }
 
-
-
 const BCRYPT_WORK_FACTOR = 1;
 
-console.log("Lifetracker Config:".red);
+console.log("BrainForce Config:".red);
 console.log("PORT:".blue, PORT);
 console.log("BCRYPT_WORK_FACTOR".blue, BCRYPT_WORK_FACTOR);
 console.log("Database:".blue, getDatabaseUri());

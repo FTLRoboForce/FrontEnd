@@ -66,7 +66,7 @@ class User {
     if (email.indexOf("@") <= 0) {
       throw new BadRequestError("Invalid email");
     }
-    
+
     const existingUserWithEmail = await User.fetchUserByEmailRegister(email);
     if (existingUserWithEmail) {
       throw new BadRequestError(`Duplicate email: ${email}`);
@@ -107,10 +107,12 @@ class User {
    */
 
   static async fetchUserByEmailRegister(email) {
+    console.log("fetchUserByEmailRegister", email);
     const { rows } = await db.query("SELECT * FROM users WHERE email = $1", [
       email.toLowerCase()
     ]);
     const user = rows[0];
+    console.log("user fetched", user);
     if (user) {
       return user;
     }
