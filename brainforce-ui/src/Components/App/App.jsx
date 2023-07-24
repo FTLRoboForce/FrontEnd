@@ -16,6 +16,7 @@ import Creator from "../Creators/Creator";
 function App() {
   const [token, setToken] = useState();
   const [userGlobal, setUserGlobal] = useState();
+  const [flashcards, setFlashcards] = useState([]);
 
   const handleAnswer = (selectedOption) => {
     console.log("Selected Option:", selectedOption);
@@ -52,11 +53,23 @@ function App() {
         />
         <Route
           path="/flashcard"
-          element={<FlashcardPage userGlobal={userGlobal} />}
+          element={
+            <FlashcardPage
+              userGlobal={userGlobal}
+              flashcards={flashcards}
+              setFlashcards={setFlashcards}
+            />
+          }
         />
         <Route
           path="/makecourse"
-          element={<MakeCourse userGlobal={userGlobal} />}
+          element={
+            <MakeCourse
+              userGlobal={userGlobal}
+              flashcards={flashcards}
+              setFlashcards={setFlashcards}
+            />
+          }
         />
         <Route
           path="/leaderboard"
@@ -64,7 +77,10 @@ function App() {
         />
         <Route path="/quiz" element={<Quiz userGlobal={userGlobal} />}></Route>
         <Route path="/report" element={<Report userGlobal={userGlobal} />} />
-        <Route path="/creators" element={<Creator userGlobal={userGlobal} />}></Route>
+        <Route
+          path="/creators"
+          element={<Creator userGlobal={userGlobal} />}
+        ></Route>
       </Routes>
     </BrowserRouter>
   );
