@@ -58,7 +58,7 @@
   .donotcross {
     overflow: hidden;
     align-items: center;
-    background: #00A1E0;
+    background: linear-gradient(to right, var(--darkblue), var(--lightblue));
     color: black;
     height: 2em;
     line-height: 2em;
