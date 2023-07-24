@@ -16,7 +16,9 @@ import Creator from "../Creators/Creator";
 function App() {
   const [token, setToken] = useState();
   const [userGlobal, setUserGlobal] = useState();
-  const [flashcards, setFlashcards] = useState([]);
+  const [flashcards, setFlashcards] = useState([
+    { answer: "test", question: "test" }
+  ]);
 
   const handleAnswer = (selectedOption) => {
     console.log("Selected Option:", selectedOption);

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import logo from "../../images/bf.png";
+import { Link } from "react-router-dom";
 import {
   createStyles,
   Group,
@@ -20,8 +21,8 @@ import {
   IconPlayerPause,
   IconTrash,
   IconSwitchHorizontal,
-  IconChevronDown,
-} from '@tabler/icons-react';
+  IconChevronDown
+} from "@tabler/icons-react";
 
 import { useDisclosure } from "@mantine/hooks";
 import { cx } from "@mantine/core";
@@ -130,18 +131,18 @@ export function Navbar({ token, setToken, userGlobal }) {
       </div>
       {token ? (
         <div className={classes.navLinksContainer}>
-          <a href="/makecourse" className={classes.navLink}>
+          <Link to="/makecourse" className={classes.navLink}>
             Make Course
-          </a>
-          <a href="/flashcard" className={classes.navLink}>
+          </Link>
+          <Link to="/flashcard" className={classes.navLink}>
             Previous Flashcard
-          </a>
-          <a href="/quiz" className={classes.navLink}>
+          </Link>
+          <Link to="/quiz" className={classes.navLink}>
             Previous Quizzes
-          </a>
-          <a href="/leaderboard" className={classes.navLink}>
+          </Link>
+          <Link to="/leaderboard" className={classes.navLink}>
             Leaderboard
-          </a>
+          </Link>
 
           <Menu>
             <Menu.Target>

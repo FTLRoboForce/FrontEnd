@@ -5,6 +5,7 @@ import { useState } from "react";
 
 export default function FlashcardPage({ userGlobal, flashcards }) {
   const [counter, setCounter] = useState(0);
+  console.log("flashcards", flashcards);
 
   // make sure counter doesn't go more than the number of flashcards
 
