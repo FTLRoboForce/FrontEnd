@@ -23,9 +23,10 @@ app.post("/flashcard", async (req,res) => {
         const response = await openAi.createChatCompletion({
             model : "gpt-3.5-turbo",
             messages:[{role: 'user',content : `Create ${number} unique ${difficultyLevel} flashcard(s) about ${subject} specifically ${optionalSection}.
-            The question(s) are meant for academic uses so don't include too broad question(s). Response should be returned as an array of json objects where the response would look like:
+            The question(s) are meant for academic uses so don't include too broad question(s).
+             Response should be returned as an array of json objects where the response would look like:
             [{"question" : "What is the general formula for alkane?", "answer": "CnH2n+2"}]`
-        }], max_tokens: 100, temperature:.8,top_p: 1.0,frequency_penalty: 2.0,presence_penalty: 2.0
+        }], max_tokens: 200, temperature:.8,top_p: 1.0,frequency_penalty: 2.0,presence_penalty: 2.0
         })
         return res.status(200).json({
             success : true,
@@ -51,7 +52,10 @@ app.post("/quiz", async (req,res) => {
     try{
         const response = await openAi.createChatCompletion({
             model : "gpt-3.5-turbo",
-            messages: [{role : "user", content: `Create ${number} unique ${difficultyLevel} multiple-choice questions about ${subject} specifically ${optionalSection}. 
+            messages: [{role : "user", content: `Create ${number} unique ${difficultyLevel} multiple-choice questions about ${subject} specifically ${optionalSection}.
+            The answer should be a string (the answer must be 
+                in the options and not as an index of the options)
+                and the options should be an array of strings. 
             ### It should be stored as an array of json objects where the question,options and answer are stored as key-value pairs such as:
             {
                 "question": "What is the capital of France?",

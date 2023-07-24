@@ -19,10 +19,10 @@ export default function Flashcard({ flashcard }) {
       onClick={handleFlipClick}
     >
       <div className="flashcard__front">
-        <p>{flashcard.front}</p>
+        <p>{flashcard.question || "undefined"}</p>
       </div>
       <div className="flashcard__back">
-        <p>{flashcard.back}</p>
+        <p>{flashcard.answer || "undefined"}</p>
       </div>
     </div>
   );

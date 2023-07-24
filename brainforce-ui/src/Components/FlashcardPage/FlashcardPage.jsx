@@ -3,22 +3,8 @@ import Flashcard from "../Flashcard/Flashcard";
 import "./FlashcardPage.css";
 import { useState } from "react";
 
-export default function FlashcardPage({ userGlobal }) {
+export default function FlashcardPage({ userGlobal, flashcards }) {
   const [counter, setCounter] = useState(0);
-  const [flashcards, setFlashcards] = useState([
-    {
-      front: "Front 1",
-      back: "Back 1"
-    },
-    {
-      front: "Front 2",
-      back: "Back 2"
-    },
-    {
-      front: "Front 3",
-      back: "Back 3"
-    }
-  ]);
 
   // make sure counter doesn't go more than the number of flashcards
 

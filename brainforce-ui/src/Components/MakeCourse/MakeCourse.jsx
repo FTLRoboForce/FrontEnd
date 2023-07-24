@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import "./MakeCourse.css";
 import einstein from "../../images/einstein.png";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 // Import images for subjects
 import mathImage from "./math.png";
@@ -12,9 +14,10 @@ import easyImage from "./green.png";
 import mediumImage from "./yellow.png";
 import hardImage from "./red.png";
 
-export default function MakeCourse({ userGlobal }) {
+export default function MakeCourse({ userGlobal, setFlashcards }) {
   const [subject, setSubject] = useState("");
   const [difficulty, setDifficulty] = useState("");
+  const navigate = useNavigate();
 
   const handleSubjectChange = (selectedSubject) => {
     setSubject(selectedSubject);
@@ -26,6 +29,21 @@ export default function MakeCourse({ userGlobal }) {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    axios
+      .post("http://localhost:3002/flashcard", {
+        subject: subject,
+        difficulty: difficulty,
+        number: 2,
+        optional: "",
+      })
+      .then((response) => {
+        setFlashcards(JSON.parse(response.data.data));
+        navigate("/flashcard");
+      })
+      .catch((error) => {
+        console.log(error);
+        console.error("There was an error!", error);
+      });
 
     // Handle form submission
     // You can perform additional actions based on the selected subject and difficulty
