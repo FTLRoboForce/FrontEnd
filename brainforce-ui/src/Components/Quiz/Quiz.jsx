@@ -3,7 +3,7 @@ import { useState } from "react";
 import QuizQuestion from "../QuizQuestion/QuizQuestion";
 import Particle from "../../ParticleBackground/ParticleBackground";
 
-const Quiz = () => {
+const Quiz = ({ userGlobal }) => {
   const [points, setPoints] = useState(0);
   const [questions, setQuestions] = useState([
     {
@@ -43,35 +43,41 @@ const Quiz = () => {
 
   return (
     <>
-      <Particle />
-      <div className="quiz-page">
-        <div className="quiz-container">
-          {questions.map((question, index) => (
-            <QuizQuestion
-              key={index}
-              question={question.question}
-              options={question.options}
-              answer={question.answer}
-              setSelectedOption={(option) => {
-                const updatedQuestions = [...questions];
-                updatedQuestions[index].selectedOption = option;
-                setQuestions(updatedQuestions);
-              }}
-              submitted={submitted}
-            />
-          ))}
+      {userGlobal ? (
+        <>
+          <Particle />
+          <div className="quiz-page">
+            <div className="quiz-container">
+              {questions.map((question, index) => (
+                <QuizQuestion
+                  key={index}
+                  question={question.question}
+                  options={question.options}
+                  answer={question.answer}
+                  setSelectedOption={(option) => {
+                    const updatedQuestions = [...questions];
+                    updatedQuestions[index].selectedOption = option;
+                    setQuestions(updatedQuestions);
+                  }}
+                  submitted={submitted}
+                />
+              ))}
 
-          <button
-            className="submit-quiz"
-            onClick={handleSubmit}
-            disabled={submitted}
-          >
-            Submit
-          </button>
+              <button
+                className="submit-quiz"
+                onClick={handleSubmit}
+                disabled={submitted}
+              >
+                Submit
+              </button>
 
-          {submitted && <p>Total Points: {points}</p>}
-        </div>
-      </div>
+              {submitted && <p>Total Points: {points}</p>}
+            </div>
+          </div>
+        </>
+      ) : (
+        <div className="flashcardPage-container">Please Log In</div>
+      )}
     </>
   );
 };

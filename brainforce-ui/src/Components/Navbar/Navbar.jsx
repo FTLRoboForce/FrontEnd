@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import logo from "../../images/bf.png";
 import {
   createStyles,
@@ -14,11 +14,17 @@ import {
 import {
   IconLogout,
   IconHeart,
+  IconStar,
+  IconMessage,
+  IconSettings,
+  IconPlayerPause,
+  IconTrash,
+  IconSwitchHorizontal,
   IconChevronDown,
 } from '@tabler/icons-react';
 
-import { useDisclosure } from '@mantine/hooks';
-import { cx } from '@mantine/core';
+import { useDisclosure } from "@mantine/hooks";
+import { cx } from "@mantine/core";
 
 const useStyles = createStyles((theme) => ({
   navContainer: {
@@ -26,26 +32,26 @@ const useStyles = createStyles((theme) => ({
     justifyContent: "space-between",
     alignItems: "center",
     padding: theme.spacing.xs,
-    background: `linear-gradient(to right, ${theme.colors.blue[2]}, ${theme.colors.blue[9]})`,
+    background: `linear-gradient(to right, ${theme.colors.blue[2]}, ${theme.colors.blue[9]})`
   },
   logoContainer: {
     display: "flex",
     alignItems: "center",
-    cursor: "pointer",
+    cursor: "pointer"
   },
   logoImage: {
     width: rem(40),
     height: rem(40),
-    marginRight: rem(10),
+    marginRight: rem(10)
   },
   logoText: {
     fontWeight: 900,
     color: "white",
-    fontSize: rem(22),
+    fontSize: rem(22)
   },
   navLinksContainer: {
     display: "flex",
-    alignItems: "center",
+    alignItems: "center"
   },
 
   navLink: {
@@ -56,12 +62,12 @@ const useStyles = createStyles((theme) => ({
     fontSize: rem(16),
     cursor: "pointer",
     "&:hover": {
-      borderBottom: `2px solid ${theme.white}`,
-    },
+      borderBottom: `2px solid ${theme.white}`
+    }
   },
   userActivityContainer: {
     display: "flex",
-    alignItems: "center",
+    alignItems: "center"
   },
   userActivityButton: {
     marginLeft: rem(20),
@@ -74,8 +80,8 @@ const useStyles = createStyles((theme) => ({
     fontSize: rem(16),
     cursor: "pointer",
     "&:hover": {
-      backgroundColor: theme.colors.blue[6],
-    },
+      backgroundColor: theme.colors.blue[6]
+    }
   },
   user: {
     cursor: "pointer",
@@ -87,11 +93,11 @@ const useStyles = createStyles((theme) => ({
     alignItems: "center",
     background: "transparent",
     border: "none",
-    textDecoration: "none",
+    textDecoration: "none"
   },
   userActive: {
-    color: theme.colors.blue[9],
-  },
+    color: theme.colors.blue[9]
+  }
 }));
 
 export function Navbar({ token, setToken, userGlobal }) {
@@ -124,7 +130,7 @@ export function Navbar({ token, setToken, userGlobal }) {
       </div>
       {token ? (
         <div className={classes.navLinksContainer}>
-            <a href="/makecourse" className={classes.navLink}>
+          <a href="/makecourse" className={classes.navLink}>
             Make Course
           </a>
           <a href="/flashcard" className={classes.navLink}>
@@ -136,25 +142,32 @@ export function Navbar({ token, setToken, userGlobal }) {
           <a href="/leaderboard" className={classes.navLink}>
             Leaderboard
           </a>
-         
-          <Menu >
+
+          <Menu>
             <Menu.Target>
               <UnstyledButton
-                className={cx(classes.user, { [classes.userActive]: userMenuOpened })}
+                className={cx(classes.user, {
+                  [classes.userActive]: userMenuOpened
+                })}
               >
- <Group
+                <Group
                   spacing={7}
                   style={{
                     background: `linear-gradient(to left, var(--lightgrey), var(--lightblue))`,
                     borderRadius: rem(5),
                     boxShadow: `0px 2px 6px rgba(0, 0, 0, 0.15)`,
                     marginBottom: rem(10),
-                    marginLeft: rem(5),
-                   
+                    marginLeft: rem(5)
                   }}
                 >
                   <Avatar src={logo} alt={username} radius="xl" size={20} />
-                  <Text color={"#004D85"} weight={500} size="sm" sx={{ lineHeight: 1 }} mr={3}>
+                  <Text
+                    color={"#004D85"}
+                    weight={500}
+                    size="sm"
+                    sx={{ lineHeight: 1 }}
+                    mr={3}
+                  >
                     {username}
                   </Text>
                   <IconChevronDown size={rem(12)} stroke={1.5} />
@@ -163,26 +176,32 @@ export function Navbar({ token, setToken, userGlobal }) {
             </Menu.Target>
             <Menu.Dropdown>
               <Menu.Item
-                icon={<IconHeart size="0.9rem" color={theme.colors.red[6]} stroke={1.5} />}
+                icon={
+                  <IconHeart
+                    size="0.9rem"
+                    color={theme.colors.red[6]}
+                    stroke={1.5}
+                  />
+                }
               >
                 Points
               </Menu.Item>
-             
+
               <Menu.Divider />
-             
-              <Menu.Item onClick= {logOut}icon={<IconLogout size="0.9rem" stroke={1.5} />}>Logout</Menu.Item>
 
-             
-
-             
+              <Menu.Item
+                onClick={logOut}
+                icon={<IconLogout size="0.9rem" stroke={1.5} />}
+              >
+                Logout
+              </Menu.Item>
             </Menu.Dropdown>
           </Menu>
         </div>
       ) : (
         <div className={classes.navLinksContainer}>
-          
           <div className={classes.userActivityContainer}>
-          <button
+            <button
               onClick={() => (window.location = "/creators")}
               className={classes.userActivityButton}
             >

@@ -3,7 +3,10 @@ import "./Leaderboard.css";
 
 const LeaderboardRow = ({ data, index }) => {
   return (
-    <tr key={index} className={`leaderboard-row ${index % 2 === 0 ? "even-row" : "odd-row"}`}>
+    <tr
+      key={index}
+      className={`leaderboard-row ${index % 2 === 0 ? "even-row" : "odd-row"}`}
+    >
       <td>{data.username}</td>
       <td>{data.points}</td>
       <td>{data.quizzesTaken}</td>
@@ -12,7 +15,7 @@ const LeaderboardRow = ({ data, index }) => {
   );
 };
 
-export default function Leaderboard() {
+export default function Leaderboard({ userGlobal }) {
   const leaderboardData = [
     {
       username: "John",
@@ -60,27 +63,31 @@ export default function Leaderboard() {
   ];
 
   return (
-    <div className="leaderboardPage-container">
-
-    
-    <div className="leaderboard-container">
-      <h2>Leaderboard</h2>
-      <table className="leaderboard-table">
-        <thead>
-          <tr>
-            <th>Username</th>
-            <th>Points</th>
-            <th>Total Quizzes Taken</th>
-            <th>Date Joined</th>
-          </tr>
-        </thead>
-        <tbody>
-          {leaderboardData.map((data, index) => (
-            <LeaderboardRow data={data} index={index} />
-          ))}
-        </tbody>
-      </table>
-    </div>
-    </div>
+    <>
+      {userGlobal ? (
+        <div className="leaderboardPage-container">
+          <div className="leaderboard-container">
+            <h2>Leaderboard</h2>
+            <table className="leaderboard-table">
+              <thead>
+                <tr>
+                  <th>Username</th>
+                  <th>Points</th>
+                  <th>Total Quizzes Taken</th>
+                  <th>Date Joined</th>
+                </tr>
+              </thead>
+              <tbody>
+                {leaderboardData.map((data, index) => (
+                  <LeaderboardRow data={data} index={index} />
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      ) : (
+        <div className="flashcardPage-container">Please Log In</div>
+      )}
+    </>
   );
 }
