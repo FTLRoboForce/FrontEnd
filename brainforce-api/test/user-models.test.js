@@ -3,7 +3,7 @@ const User = require("../models/user");
 const { BadRequestError } = require("../errors");
 const db = require("../db"); // Assuming you have a database connection
 
-// jest.mock("../db"); // Mock the db module
+jest.mock("../db"); // Mock the db module
 
 // Clear the necessary tables or collections
 const clearDatabase = async () => {
@@ -12,30 +12,30 @@ const clearDatabase = async () => {
 };
 
 // Run the clearDatabase function before each test
-// beforeEach(async () => {
-//   await clearDatabase();
-// });
+beforeEach(async () => {
+  await clearDatabase();
+});
 
 describe("User Model - register", () => {
-  // beforeEach(() => {
-  //   // Reset the mock implementation for each test
-  //   db.query.mockReset();
-  // });
+  beforeEach(() => {
+    // Reset the mock implementation for each test
+    db.query.mockReset();
+  });
 
   test("should register a new user", async () => {
     // Mock the db query method to return a mock user
-    // const mockUser = {
-    //   // id: 2,
-    //   email: "test12345@gmail.com",
-    //   firstname: "test",
-    //   lastname: "Test",
-    //   username: "testdoe",
-    //   password: "password123",
-    //   points: 0
-    // };
-    // db.query.mockResolvedValueOnce({
-    //   rows: [mockUser]
-    // });
+    const mockUser = {
+      // id: 2,
+      email: "test12345@gmail.com",
+      firstname: "test",
+      lastname: "Test",
+      username: "testdoe",
+      password: "password123",
+      points: 0
+    };
+    db.query.mockResolvedValueOnce({
+      rows: [mockUser]
+    });
 
     // Mock the bcrypt hash method to return a hashed password
     bcrypt.hash = jest.fn().mockResolvedValueOnce("hashedPassword");
@@ -57,6 +57,7 @@ describe("User Model - register", () => {
 
     // Call the register function
     console.log("registered user");
+    User.fetchUserByEmailRegister = jest.fn().mockResolvedValueOnce(undefined);
     const user = await User.register(creds);
     // Check the expected database query
     // expect(db.query).toHaveBeenCalledWith(
@@ -72,7 +73,7 @@ describe("User Model - register", () => {
     // );
 
     // Check the returned user
-    expect(user).toEqual(creds);
+    expect(user).toEqual(mockUser);
   });
 
   test("should throw BadRequestError for duplicate email", async () => {
