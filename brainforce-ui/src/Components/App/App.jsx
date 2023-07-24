@@ -9,10 +9,9 @@ import MakeCourse from "../MakeCourse/MakeCourse";
 import Leaderboard from "../Leaderboard/Leaderboard";
 import Report from "../Report/Report";
 import Quiz from "../Quiz/Quiz";
-import { useState } from "react";
+import Api from "../../utilities/api";
+import { useEffect, useState } from "react";
 import { Creator } from "../Creators/Creator";
-
-
 
 function App() {
   const [token, setToken] = useState();
@@ -22,28 +21,51 @@ function App() {
     console.log("Selected Option:", selectedOption);
   };
 
-  return (
+  useEffect(() => {
+    if (localStorage.getItem("jwt")) {
+      setToken(localStorage.getItem("jwt"));
+      Api.user({ token: localStorage.getItem("jwt") }).then((response) => {
+        setUserGlobal(response);
+      });
+    }
+  }, []);
 
-   
-    
+  return (
     <BrowserRouter>
-      <Navbar token={token} setToken={setToken} userGlobal={userGlobal}/>
+      <Navbar token={token} setToken={setToken} userGlobal={userGlobal} />
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/register" element={<Register />} />
-     
+        <Route path="/" element={<Home userGlobal={userGlobal} />} />
+        <Route
+          path="/register"
+          element={<Register userGlobal={userGlobal} />}
+        />
+
         <Route
           path="/login"
-          element={<Login setToken={setToken} setUserGlobal={setUserGlobal} />}
+          element={
+            <Login
+              setToken={setToken}
+              setUserGlobal={setUserGlobal}
+              userGlobal={userGlobal}
+            />
+          }
         />
-        <Route path="/flashcard" element={<FlashcardPage />} />
-        <Route path="/makecourse" element={<MakeCourse />} />
-        <Route path="/leaderboard" element={<Leaderboard />} />
-        <Route path="/quiz" element={<Quiz />}></Route>
-        <Route path="/report" element={<Report />} />
+        <Route
+          path="/flashcard"
+          element={<FlashcardPage userGlobal={userGlobal} />}
+        />
+        <Route
+          path="/makecourse"
+          element={<MakeCourse userGlobal={userGlobal} />}
+        />
+        <Route
+          path="/leaderboard"
+          element={<Leaderboard userGlobal={userGlobal} />}
+        />
+        <Route path="/quiz" element={<Quiz userGlobal={userGlobal} />}></Route>
+        <Route path="/report" element={<Report userGlobal={userGlobal} />} />
       </Routes>
     </BrowserRouter>
-    
   );
 }
 
