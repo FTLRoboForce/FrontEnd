@@ -63,25 +63,31 @@ export default function Leaderboard({ userGlobal }) {
   ];
 
   return (
-    <div className="leaderboardPage-container">
-      <div className="leaderboard-container">
-        <h2>Leaderboard</h2>
-        <table className="leaderboard-table">
-          <thead>
-            <tr>
-              <th>Username</th>
-              <th>Points</th>
-              <th>Total Quizzes Taken</th>
-              <th>Date Joined</th>
-            </tr>
-          </thead>
-          <tbody>
-            {leaderboardData.map((data, index) => (
-              <LeaderboardRow data={data} index={index} />
-            ))}
-          </tbody>
-        </table>
-      </div>
-    </div>
+    <>
+      {userGlobal ? (
+        <div className="leaderboardPage-container">
+          <div className="leaderboard-container">
+            <h2>Leaderboard</h2>
+            <table className="leaderboard-table">
+              <thead>
+                <tr>
+                  <th>Username</th>
+                  <th>Points</th>
+                  <th>Total Quizzes Taken</th>
+                  <th>Date Joined</th>
+                </tr>
+              </thead>
+              <tbody>
+                {leaderboardData.map((data, index) => (
+                  <LeaderboardRow data={data} index={index} />
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      ) : (
+        <div className="flashcardPage-container">Please Log In</div>
+      )}
+    </>
   );
 }

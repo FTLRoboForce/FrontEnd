@@ -47,83 +47,78 @@ export default function MakeCourse({ userGlobal }) {
 
   return (
     <>
-      <div className="full-page-container">
-        <div className="course-options-container">
-          <h2>Choose Course Options</h2>
-          <form onSubmit={handleSubmit}>
-            <div className="option-row">
-              <label
-                htmlFor="math"
-                className={`option ${isSubjectSelected("math")}`}
-                onClick={() => handleSubjectChange("math")}
-              >
-                <img id="math-img" src={mathImage} alt="Math" />
-                Math
-              </label>
-              <label
-                htmlFor="science"
-                className={`option ${isSubjectSelected("science")}`}
-                onClick={() => handleSubjectChange("science")}
-              >
-                <img src={scienceImage} alt="Science" />
-                Science
-              </label>
-              <label
-                htmlFor="programming"
-                className={`option ${isSubjectSelected("programming")}`}
-                onClick={() => handleSubjectChange("programming")}
-              >
-                <img src={programmingImage} alt="Programming" />
-                Programming
-              </label>
-            </div>
+      {userGlobal ? (
+        <div className="full-page-container">
+          <div className="course-options-container">
+            <h2>Choose Course Options</h2>
+            <form onSubmit={handleSubmit}>
+              <div className="option-row">
+                <label
+                  htmlFor="math"
+                  className={`option ${isSubjectSelected("math")}`}
+                  onClick={() => handleSubjectChange("math")}
+                >
+                  <img id="math-img" src={mathImage} alt="Math" />
+                  Math
+                </label>
+                <label
+                  htmlFor="science"
+                  className={`option ${isSubjectSelected("science")}`}
+                  onClick={() => handleSubjectChange("science")}
+                >
+                  <img src={scienceImage} alt="Science" />
+                  Science
+                </label>
+                <label
+                  htmlFor="programming"
+                  className={`option ${isSubjectSelected("programming")}`}
+                  onClick={() => handleSubjectChange("programming")}
+                >
+                  <img src={programmingImage} alt="Programming" />
+                  Programming
+                </label>
+              </div>
 
-            <div className="option-row">
-              <label
-                htmlFor="easy"
-                className={`option ${isDifficultySelected("easy")}`}
-                onClick={() => handleDifficultyChange("easy")}
-              >
-                <img src={easyImage} alt="Easy" />
-                Easy
-              </label>
-              <label
-                htmlFor="medium"
-                className={`option ${isDifficultySelected("medium")}`}
-                onClick={() => handleDifficultyChange("medium")}
-              >
-                <img src={mediumImage} alt="Medium" />
-                Medium
-              </label>
-              <label
-                htmlFor="hard"
-                className={`option ${isDifficultySelected("hard")}`}
-                onClick={() => handleDifficultyChange("hard")}
-              >
-                <img src={hardImage} alt="Hard" />
-                Hard
-              </label>
-            </div>
+              <div className="option-row">
+                <label
+                  htmlFor="easy"
+                  className={`option ${isDifficultySelected("easy")}`}
+                  onClick={() => handleDifficultyChange("easy")}
+                >
+                  <img src={easyImage} alt="Easy" />
+                  Easy
+                </label>
+                <label
+                  htmlFor="medium"
+                  className={`option ${isDifficultySelected("medium")}`}
+                  onClick={() => handleDifficultyChange("medium")}
+                >
+                  <img src={mediumImage} alt="Medium" />
+                  Medium
+                </label>
+                <label
+                  htmlFor="hard"
+                  className={`option ${isDifficultySelected("hard")}`}
+                  onClick={() => handleDifficultyChange("hard")}
+                >
+                  <img src={hardImage} alt="Hard" />
+                  Hard
+                </label>
+              </div>
 
-            <button
-              className="make-course-button"
-              type="submit"
-              disabled={isSubmitDisabled}
-            >
-              Start Course
-            </button>
-          </form>
+              <button
+                className="make-course-button"
+                type="submit"
+                disabled={isSubmitDisabled}
+              >
+                Start Course
+              </button>
+            </form>
+          </div>
         </div>
-        {/* 
-    <div className= "einstein-img">
-      <img src={einstein} alt="Einstein" />
-      
-
-  
-
-      
-    </div> */}
-      </div>
+      ) : (
+        <div className="flashcardPage-container">Please Log In</div>
+      )}
     </>
   );
 }

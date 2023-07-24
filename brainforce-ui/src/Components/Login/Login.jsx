@@ -66,69 +66,75 @@ export function Login({ setToken, setUserGlobal, userGlobal }) {
 
   return (
     <>
-      <ParticleBackground />
+      {userGlobal ? (
+        <div className="flashcardPage-container">Please Log Out</div>
+      ) : (
+        <>
+          <ParticleBackground />
 
-      <div className="center-container">
-        <div className="login-container">
-          <Title
-            align="center"
-            color="#004D85"
-            sx={(theme) => ({
-              fontFamily: `Greycliff CF, ${theme.fontFamily}`,
-              fontWeight: 900
-            })}
-          >
-            Welcome back!
-          </Title>
-          <Text color="dimmed" size="sm" align="center" mt={5}>
-            Do not have an account yet?{" "}
-            <Anchor
-              onClick={() => (window.location = "/register")}
-              size="sm"
-              component="button"
-            >
-              Create account
-            </Anchor>
-          </Text>
-          <div className="login-form-container">
-            <form className="login-form">
-              <div className="form-group">
-                <TextInput
-                  label="Email"
-                  placeholder="Enter your email"
-                  required
-                  value={email}
-                  onChange={(event) =>
-                    handleOnChangeLoginEmail(event.target.value)
-                  }
-                />
-              </div>
-              <div className="form-group">
-                <PasswordInput
-                  label="Password"
-                  placeholder="Enter your password"
-                  required
-                  value={password}
-                  onChange={(event) =>
-                    handleOnChangeLoginPassword(event.target.value)
-                  }
-                />
-              </div>
-              <Checkbox label="Remember me" />
-              <button
-                type="submit"
-                className="submit-button"
-                onClick={(event) => handleOnSubmit(event)}
+          <div className="center-container">
+            <div className="login-container">
+              <Title
+                align="center"
+                color="#004D85"
+                sx={(theme) => ({
+                  fontFamily: `Greycliff CF, ${theme.fontFamily}`,
+                  fontWeight: 900
+                })}
               >
-                Login
-              </button>
-            </form>
-            {name?.length > 0 && (
-              <h2 className="login-message">Hello {name}</h2>
-            )}
+                Welcome back!
+              </Title>
+              <Text color="dimmed" size="sm" align="center" mt={5}>
+                Do not have an account yet?{" "}
+                <Anchor
+                  onClick={() => (window.location = "/register")}
+                  size="sm"
+                  component="button"
+                >
+                  Create account
+                </Anchor>
+              </Text>
+              <div className="login-form-container">
+                <form className="login-form">
+                  <div className="form-group">
+                    <TextInput
+                      label="Email"
+                      placeholder="Enter your email"
+                      required
+                      value={email}
+                      onChange={(event) =>
+                        handleOnChangeLoginEmail(event.target.value)
+                      }
+                    />
+                  </div>
+                  <div className="form-group">
+                    <PasswordInput
+                      label="Password"
+                      placeholder="Enter your password"
+                      required
+                      value={password}
+                      onChange={(event) =>
+                        handleOnChangeLoginPassword(event.target.value)
+                      }
+                    />
+                  </div>
+                  <Checkbox label="Remember me" />
+                  <button
+                    type="submit"
+                    className="submit-button"
+                    onClick={(event) => handleOnSubmit(event)}
+                  >
+                    Login
+                  </button>
+                </form>
+                {name?.length > 0 && (
+                  <h2 className="login-message">Hello {name}</h2>
+                )}
+              </div>
+            </div>
           </div>
-        </div>
-      </div>
+        </>
+      )}
     </>
   );
 }

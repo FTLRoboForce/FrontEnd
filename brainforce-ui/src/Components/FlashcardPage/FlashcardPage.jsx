@@ -40,32 +40,36 @@ export default function FlashcardPage({ userGlobal }) {
 
   return (
     <>
-      <div className="flashcardPage-container">
-        <div className="flashcard-container">
-          <div className="flash-content">
-            <Flashcard flashcard={flashcards[counter]} />
-          </div>
+      {userGlobal ? (
+        <div className="flashcardPage-container">
+          <div className="flashcard-container">
+            <div className="flash-content">
+              <Flashcard flashcard={flashcards[counter]} />
+            </div>
 
-          <div className="flash-buttons">
-            <button
-              className="flashcard-button"
-              onClick={() => {
-                handlePreviousClick();
-              }}
-            >
-              Previous
-            </button>
-            <button
-              className="flashcard-button"
-              onClick={() => {
-                handleNextClick();
-              }}
-            >
-              Next
-            </button>
+            <div className="flash-buttons">
+              <button
+                className="flashcard-button"
+                onClick={() => {
+                  handlePreviousClick();
+                }}
+              >
+                Previous
+              </button>
+              <button
+                className="flashcard-button"
+                onClick={() => {
+                  handleNextClick();
+                }}
+              >
+                Next
+              </button>
+            </div>
           </div>
         </div>
-      </div>
+      ) : (
+        <div className="flashcardPage-container">Please Log In</div>
+      )}
     </>
   );
 }
