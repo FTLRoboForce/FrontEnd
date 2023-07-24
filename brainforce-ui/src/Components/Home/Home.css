@@ -6,10 +6,13 @@
   --gradient-end: #00A1E0;
 }
 
+
+
+
 .homePage-container {
   /* background: linear-gradient(to bottom right, var(--gradient-start), var(--gradient-end)); */
-  height: 100vh; /* Set the height to 100% of the viewport height */
-  width: 100vw; /* Set the width to 100% of the viewport width */
+  height: 100%; /* Set the height to 100% of the viewport height */
+  width: 100%; /* Set the width to 100% of the viewport width */
   overflow: hidden; /* Prevent scrolling */
   color: white;
   /* Add any other styles specific to the child component */
@@ -87,7 +90,7 @@
 
 .hero-image img{
   animation: slowMotion 10s infinite linear;
-  width: 60%;
+  width: 30%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -99,7 +102,7 @@
 
 
 .hero-title-container {
-    font-size: 1rem;
+    font-size: 0.5rem;
     font-weight: 700;
     margin: 0;
     display: flex;

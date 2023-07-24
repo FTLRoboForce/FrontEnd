@@ -11,7 +11,7 @@ import Report from "../Report/Report";
 import Quiz from "../Quiz/Quiz";
 import { useState } from "react";
 import { Creator } from "../Creators/Creator";
-import { Box } from "@chakra-ui/react";
+
 
 
 function App() {
@@ -24,10 +24,10 @@ function App() {
 
   return (
 
-    <Box bg="brand.100"> {/* Set the background color to darkblue */}
+   
     
     <BrowserRouter>
-      <Navbar />
+      <Navbar token={token} setToken={setToken} userGlobal={userGlobal}/>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/register" element={<Register />} />
@@ -43,7 +43,7 @@ function App() {
         <Route path="/report" element={<Report />} />
       </Routes>
     </BrowserRouter>
-    </Box>
+    
   );
 }
 
