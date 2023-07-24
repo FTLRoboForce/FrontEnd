@@ -3,7 +3,7 @@ import { useState } from "react";
 import QuizQuestion from "../QuizQuestion/QuizQuestion";
 import Particle from "../../ParticleBackground/ParticleBackground";
 
-const Quiz = () => {
+const Quiz = ({ userGlobal }) => {
   const [points, setPoints] = useState(0);
   const [questions, setQuestions] = useState([
     {

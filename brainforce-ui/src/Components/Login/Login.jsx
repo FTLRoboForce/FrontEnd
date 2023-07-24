@@ -9,15 +9,15 @@ import {
   Text,
   Container,
   Group,
-  Button,
-} from '@mantine/core';
+  Button
+} from "@mantine/core";
 import { useNavigate } from "react-router-dom";
 import Api from "../../utilities/api";
 import ParticleBackground from "../../ParticleBackground/ParticleBackground";
 
 import "./Login.css";
 
-export function Login({ setToken, setUserGlobal }) {
+export function Login({ setToken, setUserGlobal, userGlobal }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [user, setUser] = useState({ email: email, password: password });
@@ -47,7 +47,7 @@ export function Login({ setToken, setUserGlobal }) {
     if (localStorage.getItem("jwt")) {
       Api.user({ token: localStorage.getItem("jwt") }).then((response) => {
         setUserGlobal(response);
-        // store users username in local storage 
+        // store users username in local storage
 
         setName(response.firstname + " " + response.lastname);
       });
@@ -70,24 +70,29 @@ export function Login({ setToken, setUserGlobal }) {
 
       <div className="center-container">
         <div className="login-container">
-        <Title
-        align="center"
-        color="#004D85" 
-        sx={(theme) => ({ fontFamily: `Greycliff CF, ${theme.fontFamily}`, fontWeight: 900 })}
-      >
-        Welcome back!
-      </Title>
-      <Text color="dimmed" size="sm" align="center" mt={5}>
-        Do not have an account yet?{' '}
-        <Anchor onClick={ () => window.location = "/register"} size="sm" component="button">
-          Create account
-        </Anchor>
-      </Text>
+          <Title
+            align="center"
+            color="#004D85"
+            sx={(theme) => ({
+              fontFamily: `Greycliff CF, ${theme.fontFamily}`,
+              fontWeight: 900
+            })}
+          >
+            Welcome back!
+          </Title>
+          <Text color="dimmed" size="sm" align="center" mt={5}>
+            Do not have an account yet?{" "}
+            <Anchor
+              onClick={() => (window.location = "/register")}
+              size="sm"
+              component="button"
+            >
+              Create account
+            </Anchor>
+          </Text>
           <div className="login-form-container">
-            
             <form className="login-form">
               <div className="form-group">
-
                 <TextInput
                   label="Email"
                   placeholder="Enter your email"
@@ -108,7 +113,6 @@ export function Login({ setToken, setUserGlobal }) {
                     handleOnChangeLoginPassword(event.target.value)
                   }
                 />
-
               </div>
               <Checkbox label="Remember me" />
               <button

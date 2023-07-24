@@ -3,7 +3,7 @@ import Flashcard from "../Flashcard/Flashcard";
 import "./FlashcardPage.css";
 import { useState } from "react";
 
-export default function FlashcardPage() {
+export default function FlashcardPage({ userGlobal }) {
   const [counter, setCounter] = useState(0);
   const [flashcards, setFlashcards] = useState([
     {
@@ -40,36 +40,32 @@ export default function FlashcardPage() {
 
   return (
     <>
-    
-    <div className= "flashcardPage-container">
+      <div className="flashcardPage-container">
+        <div className="flashcard-container">
+          <div className="flash-content">
+            <Flashcard flashcard={flashcards[counter]} />
+          </div>
 
-    
-    <div className="flashcard-container">
-      <div className="flash-content">
-        <Flashcard flashcard={flashcards[counter]} />
+          <div className="flash-buttons">
+            <button
+              className="flashcard-button"
+              onClick={() => {
+                handlePreviousClick();
+              }}
+            >
+              Previous
+            </button>
+            <button
+              className="flashcard-button"
+              onClick={() => {
+                handleNextClick();
+              }}
+            >
+              Next
+            </button>
+          </div>
+        </div>
       </div>
-
-      <div className="flash-buttons">
-        <button
-          className="flashcard-button"
-          onClick={() => {
-            handlePreviousClick();
-          }}
-        >
-          Previous
-        </button>
-        <button
-          className="flashcard-button"
-          onClick={() => {
-            handleNextClick();
-          }}
-        >
-          Next
-        </button>
-      </div>
-    </div>
-    </div>
     </>
-
   );
 }

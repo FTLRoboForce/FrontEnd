@@ -11,7 +11,7 @@ import {
   Checkbox,
   Anchor,
   Stack,
-  Image,
+  Image
 } from "@mantine/core";
 import ParticleBackground from "../../ParticleBackground/ParticleBackground";
 import Api from "../../utilities/api";
@@ -26,10 +26,10 @@ const initialUserState = {
   lastname: "",
   password: "",
   confirm: "",
-  points: 0,
+  points: 0
 };
 
-export function Register() {
+export function Register({ userGlobal }) {
   const [user, setUser] = useState(initialUserState);
   const [errortext, setErrortext] = useState("");
 
@@ -50,7 +50,7 @@ export function Register() {
     const { name, value } = event.target;
     setUser((prevUser) => ({
       ...prevUser,
-      [name]: value,
+      [name]: value
     }));
   }
 
@@ -92,7 +92,7 @@ export function Register() {
               sx={(theme) => ({
                 fontFamily: `Greycliff CF, ${theme.fontFamily}`,
                 fontWeight: 900,
-                fontSize: 26,
+                fontSize: 26
               })}
             >
               Welcome to Brainforce!
@@ -151,7 +151,9 @@ export function Register() {
                   value={user.username}
                   onChange={handleValueChange}
                   name="username"
-                  error={errortext && errortext.includes("username") && errortext}
+                  error={
+                    errortext && errortext.includes("username") && errortext
+                  }
                 />
 
                 <PasswordInput
