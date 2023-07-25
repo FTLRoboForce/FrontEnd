@@ -122,14 +122,14 @@ export function Navbar({ token, setToken, userGlobal }) {
   return (
     <>
    
-    <ParticleBackground />
+
     <header className={classes.navContainer}>
-      <div className={classes.logoContainer}>
+      <div  onClick={() => (window.location = "/")} className={classes.logoContainer}>
         <div className={classes.logoImage}>
           <Image
             src={logo}
             alt="BrainForce Logo"
-            onClick={() => (window.location = "/")}
+           
           />
         </div>
         <Text className={classes.logoText}>BrainForce</Text>

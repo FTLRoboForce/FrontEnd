@@ -16,6 +16,8 @@ import {
 import ParticleBackground from "../../ParticleBackground/ParticleBackground";
 import Api from "../../utilities/api";
 import google from "../../images/google.svg";
+import einsteinImage from "../../images/einstein.png";
+
 
 import "./Register.css";
 
@@ -86,124 +88,174 @@ export function Register({ userGlobal }) {
         <div className="flashcardPage-container">Please Log Out</div>
       ) : (
         <>
-          <ParticleBackground />
-          <div className="container">
-            <div className="registration-page-container">
-              <Paper radius="md" p="xl" withBorder>
-                <Text
-                  align="center"
-                  color="#004D85"
-                  sx={(theme) => ({
-                    fontFamily: `Greycliff CF, ${theme.fontFamily}`,
-                    fontWeight: 900,
-                    fontSize: 26
-                  })}
-                >
-                  Welcome to Brainforce!
-                </Text>
-                <Text size="lg" weight={500}>
-                  Register with
-                </Text>
+          <div className="left-right-container">
+            <div className="left-side">
+              <h3> Unlock your potential with <span id="brainforce">BrainForce</span> the ultimate learning platform</h3>
+              <img src ={einsteinImage}  width={700} />
 
-                <Group grow mb="md" mt="md">
-                  <button id="google-btn">
-                    {" "}
-                    <Image src={google} width={20} />
-                  </button>
-                </Group>
+            </div>
+            
+            <div className="right-container">
+              <div className="center-container">
+                <div className="registration-page-container">
+                  <Paper radius="md" p="xl" withBorder>
+                    <Text
+                      align="center"
+                      color="#004D85"
+                      sx={(theme) => ({
+                        fontFamily: `Greycliff CF, ${theme.fontFamily}`,
+                        fontWeight: 900,
+                        fontSize: 26
+                      })}
+                    >
+                      Welcome to Brainforce!
+                    </Text>
+                    <Text size="lg" weight={500}>
+                      Register with
+                    </Text>
 
-                <Divider
-                  label="Or continue with email"
-                  labelPosition="center"
-                  my="lg"
-                />
+                    <Group grow mb="md" mt="md">
+                      <button id="google-btn">
+                        {" "}
+                        <Image src={google} width={20} />
+                      </button>
+                    </Group>
 
-                <form onSubmit={handleOnSubmit}>
-                  <Stack>
-                    <TextInput
-                      required
-                      label="First Name"
-                      placeholder="Enter your first name"
-                      value={user.firstname}
-                      onChange={handleValueChange}
-                      name="firstname"
+                    <Divider
+                      label="Or continue with email"
+                      labelPosition="center"
+                      my="lg"
                     />
 
-                    <TextInput
-                      required
-                      label="Last Name"
-                      placeholder="Enter your last name"
-                      value={user.lastname}
-                      onChange={handleValueChange}
-                      name="lastname"
-                    />
+                    <form onSubmit={handleOnSubmit}>
+                      <Stack>
+                        <TextInput
+                          required
+                          label="First Name"
+                          placeholder="Enter your first name"
+                          value={user.firstname}
+                          onChange={handleValueChange}
+                          name="firstname"
+                        labelProps ={{
+                          style: {
+                            color: "#004D85",
+                            fontSize: (16),
+                          }
+                        }}
+                        />
 
-                    <TextInput
-                      required
-                      label="Email"
-                      placeholder="Enter your email"
-                      value={user.email}
-                      onChange={handleValueChange}
-                      name="email"
-                      error={
-                        errortext && errortext.includes("Email") && errortext
-                      }
-                    />
+                        <TextInput
+                          required
+                          label="Last Name"
+                          placeholder="Enter your last name"
+                          value={user.lastname}
+                          onChange={handleValueChange}
+                          name="lastname"
+                          labelProps ={{
+                            style: {
+                              color: "#004D85",
+                              fontSize: (16),
+                            }
+                          }}
+                        />
 
-                    <TextInput
-                      required
-                      label="Username"
-                      placeholder="Enter your username"
-                      value={user.username}
-                      onChange={handleValueChange}
-                      name="username"
-                      error={
-                        errortext && errortext.includes("username") && errortext
-                      }
-                    />
+                        <TextInput
+                          required
+                          label="Email"
+                          placeholder="Enter your email"
+                          value={user.email}
+                          onChange={handleValueChange}
+                          name="email"
+                          labelProps ={{
+                            style: {
+                              color: "#004D85",
+                              fontSize: (16),
+                            }
+                          }}
+                          error={
+                            errortext && errortext.includes("Email") && errortext
+                          }
+                        />
 
-                    <PasswordInput
-                      required
-                      label="Password"
-                      placeholder="Enter your password"
-                      value={user.password}
-                      onChange={handleValueChange}
-                      name="password"
-                    />
+                        <TextInput
+                          required
+                          label="Username"
+                          placeholder="Enter your username"
+                          value={user.username}
+                          onChange={handleValueChange}
+                          name="username"
+                          labelProps ={{
+                            style: {
+                              color: "#004D85",
+                              fontSize: (16),
+                            }
+                          }}
+                          error={
+                            errortext &&
+                            errortext.includes("username") &&
+                            errortext
+                          }
+                        />
 
-                    <PasswordInput
-                      required
-                      label="Confirm Password"
-                      placeholder="Confirm your password"
-                      value={user.confirm}
-                      onChange={handleValueChange}
-                      name="confirm"
-                      error={
-                        errortext &&
-                        errortext.includes("Passwords") &&
-                        errortext
-                      }
-                    />
+                        <PasswordInput
+                          required
+                          label="Password"
+                          placeholder="Enter your password"
+                          value={user.password}
+                          onChange={handleValueChange}
+                          name="password"
+                          labelProps ={{
+                            style: {
+                              color: "#004D85",
+                              fontSize: (16),
+                            }
+                          }}
+                        />
 
-                    <Checkbox
-                      required
-                      label="I accept terms and conditions"
+                        <PasswordInput
+                          required
+                          label="Confirm Password"
+                          placeholder="Confirm your password"
+                          value={user.confirm}
+                          onChange={handleValueChange}
+                          name="confirm"
+                          labelProps ={{
+                            style: {
+                              color: "#004D85",
+                              fontSize: (16),
+                            }
+                          }}
+                          error={
+                            errortext &&
+                            errortext.includes("Passwords") &&
+                            errortext
+                          }
+                        />
 
-                      // onChange={(event) => setUser((prevUser) => ({ ...prevUser, terms: event.currentTarget.checked }))}
-                    />
+                        <Checkbox
+                          required
+                          label="I accept terms and conditions"
+                          // onChange={(event) => setUser((prevUser) => ({ ...prevUser, terms: event.currentTarget.checked }))}
+                        />
 
-                    <Button type="submit" radius="xl" className="submit-button">
-                      Register
-                    </Button>
+                        <Button
+                          type="submit"
+                          radius="xl"
+                          className="submit-button"
+                        >
+                          Register
+                        </Button>
 
-                    {errortext &&
-                      !errortext.includes("Passwords") &&
-                      !errortext.includes("Email") && (
-                        <p className="error-text">{errortext}</p>
-                      )}
-                  </Stack>
-                </form>
-              </Paper>
+                        {errortext &&
+                          !errortext.includes("Passwords") &&
+                          !errortext.includes("Email") && (
+                            <p className="error-text">{errortext}</p>
+                          )}
+                      </Stack>
+                    </form>
+                  </Paper>
+                </div>
+              </div>
             </div>
           </div>
         </>
