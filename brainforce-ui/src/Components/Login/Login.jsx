@@ -43,7 +43,7 @@ export function Login({ setToken, setUserGlobal, userGlobal }) {
           }
         });
       });
-    // navigate("/activity");
+    navigate("/");
   }
 
   useEffect(() => {
@@ -70,7 +70,7 @@ export function Login({ setToken, setUserGlobal, userGlobal }) {
   return (
     <>
       {userGlobal ? (
-        <div className="flashcardPage-container">Please Log Out</div>
+        <div className="flashcardPage-container">You are currently logged in</div>
       ) : (
         <>
 
