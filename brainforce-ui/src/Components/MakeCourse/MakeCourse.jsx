@@ -14,9 +14,21 @@ import easyImage from "./green.png";
 import mediumImage from "./yellow.png";
 import hardImage from "./red.png";
 
+//Import imgages for sub subjects
+import algebraImage from "./algebra.png";
+import geometryImage from "./geometry.png";
+import statisticsImage from "./statistics.png";
+import biologyImage from "./biology.png";
+import physicsImage from "./physics.png";
+import chemistryImage from "./chemistry.png";
+import javascriptImage from "./javascript.png";
+import pythonImage from "./python.png";
+import javaImage from "./java.png";
+
 export default function MakeCourse({ userGlobal, setFlashcards }) {
   const [subject, setSubject] = useState("");
   const [difficulty, setDifficulty] = useState("");
+  const [sub, setSub] = useState("");
   const navigate = useNavigate();
 
   const handleSubjectChange = (selectedSubject) => {
@@ -27,6 +39,10 @@ export default function MakeCourse({ userGlobal, setFlashcards }) {
     setDifficulty(selectedDifficulty);
   };
 
+  const handleSubChange = (selectedSub) => {
+    setSub(selectedSub);
+  };
+
   const handleSubmit = (event) => {
     event.preventDefault();
     axios
@@ -34,7 +50,7 @@ export default function MakeCourse({ userGlobal, setFlashcards }) {
         subject: subject,
         difficulty: difficulty,
         number: 2,
-        optional: "",
+        optional: sub
       })
       .then((response) => {
         setFlashcards(JSON.parse(response.data.data));
@@ -61,7 +77,11 @@ export default function MakeCourse({ userGlobal, setFlashcards }) {
     return difficulty === selectedDifficulty ? "selected" : "";
   };
 
-  const isSubmitDisabled = !subject || !difficulty;
+  const isSubSelected = (selectedSub) => {
+    return sub === selectedSub ? "selected" : "";
+  };
+
+  const isSubmitDisabled = !subject || !difficulty || !sub;
 
   return (
     <>
@@ -123,6 +143,93 @@ export default function MakeCourse({ userGlobal, setFlashcards }) {
                   Hard
                 </label>
               </div>
+
+              {subject === "math" ? (
+                <div className="option-row">
+                  <label
+                    htmlFor="algebra"
+                    className={`option ${isSubSelected("algebra")}`}
+                    onClick={() => handleSubChange("algebra")}
+                  >
+                    <img src={algebraImage} alt="Algebra" />
+                    Algebra
+                  </label>
+                  <label
+                    htmlFor="geometry"
+                    className={`option ${isSubSelected("geometry")}`}
+                    onClick={() => handleSubChange("geometry")}
+                  >
+                    <img src={geometryImage} alt="Geometry" />
+                    Geometry
+                  </label>
+                  <label
+                    htmlFor="statistics"
+                    className={`option ${isSubSelected("statistics")}`}
+                    onClick={() => handleSubChange("statistics")}
+                  >
+                    <img src={statisticsImage} alt="Statistics" />
+                    Statistics
+                  </label>
+                </div>
+              ) : null}
+
+              {subject === "science" ? (
+                <div className="option-row">
+                  <label
+                    htmlFor="biology"
+                    className={`option ${isSubSelected("biology")}`}
+                    onClick={() => handleSubChange("biology")}
+                  >
+                    <img src={biologyImage} alt="Biology" />
+                    Biology
+                  </label>
+                  <label
+                    htmlFor="physics"
+                    className={`option ${isSubSelected("physics")}`}
+                    onClick={() => handleSubChange("physics")}
+                  >
+                    <img src={physicsImage} alt="Physics" />
+                    Physics
+                  </label>
+                  <label
+                    htmlFor="chemistry"
+                    className={`option ${isSubSelected("chemistry")}`}
+                    onClick={() => handleSubChange("chemistry")}
+                  >
+                    <img src={chemistryImage} alt="Chemistry" />
+                    Chemistry
+                  </label>
+                </div>
+              ) : null}
+
+              {subject === "programming" ? (
+                <div className="option-row">
+                  <label
+                    htmlFor="javascript"
+                    className={`option ${isSubSelected("javascript")}`}
+                    onClick={() => handleSubChange("javascript")}
+                  >
+                    <img src={javascriptImage} alt="Javascript" />
+                    Javascript
+                  </label>
+                  <label
+                    htmlFor="python"
+                    className={`option ${isSubSelected("python")}`}
+                    onClick={() => handleSubChange("python")}
+                  >
+                    <img src={pythonImage} alt="Python" />
+                    Python
+                  </label>
+                  <label
+                    htmlFor="java"
+                    className={`option ${isSubSelected("java")}`}
+                    onClick={() => handleSubChange("java")}
+                  >
+                    <img src={javaImage} alt="Java" />
+                    Java
+                  </label>
+                </div>
+              ) : null}
 
               <button
                 className="make-course-button"
