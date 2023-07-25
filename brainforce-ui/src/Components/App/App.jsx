@@ -17,14 +17,14 @@ function App() {
   const [token, setToken] = useState();
   const [userGlobal, setUserGlobal] = useState();
   const [flashcards, setFlashcards] = useState([
-    { answer: "test", question: "test" },
+    { answer: "test", question: "test" }
   ]);
   const [questions, setQuestions] = useState([
     {
       question: "What is the capital of France?",
       options: ["New York", "London", "Paris", "Dublin"],
-      answer: "Paris",
-    },
+      answer: "Paris"
+    }
   ]);
 
   const handleAnswer = (selectedOption) => {
@@ -36,6 +36,7 @@ function App() {
       setToken(localStorage.getItem("jwt"));
       Api.user({ token: localStorage.getItem("jwt") }).then((response) => {
         setUserGlobal(response);
+        console.log(userGlobal);
       });
     }
   }, []);
