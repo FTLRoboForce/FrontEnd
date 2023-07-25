@@ -10,24 +10,6 @@ const { BCRYPT_WORK_FACTOR } = require("../config");
 
 class User {
   /**
-   * Convert a user from the database into a user object that can be viewed publically.
-   * Don't show user's password
-   *
-   *
-   * @param {User} user - user from database
-   * @returns public user
-   */
-  static _createPublicUser(user) {
-    return {
-      id: user.id,
-      firstname: user.firstname,
-      lastname: user.lastname,
-      username: user.username,
-      email: user.email
-    };
-  }
-
-  /**
    * Register user with data.
    *
    * Throws BadRequestError on duplicates.
