@@ -213,4 +213,72 @@ describe("User Model - register", () => {
     // Check the returned user
     expect(user).toEqual(mockUser);
   });
+
+  test("should fetch user by id", async () => {
+    // Mock the db query method to return a mock user
+    const mockUser = {
+      id: 1,
+      email: "test1@gmail.com",
+      firstname: "test",
+      lastname: "Test",
+      username: "testdoe",
+      points: 0
+    };
+    db.query.mockResolvedValueOnce({
+      rows: [mockUser]
+    });
+
+    // Call the fetchUserById function
+    const user = await User.fetchById(1);
+
+    // Check the returned user
+    expect(user).toEqual(mockUser);
+
+    // Check that the db query method was called exactly once
+    expect(db.query).toHaveBeenCalledTimes(1);
+  });
+
+  test("should return token", async () => {
+    // Mock the db query method to return a mock user
+    const mockUser = {
+      id: 1,
+      email: "test1@gmail.com",
+      firstname: "test",
+      lastname: "Test",
+      username: "testdoe",
+      points: 0
+    };
+    db.query.mockResolvedValueOnce({
+      rows: [mockUser]
+    });
+
+    // Mock the bcrypt compare method to return true
+    bcrypt.compare = jest.fn().mockResolvedValueOnce(true);
+
+    // Mock the normalized email value
+    const normalizedEmail = "test1@gmail.com".toLowerCase();
+
+    // Mock the credentials
+    const creds = {
+      email: "test1@gmail.com",
+      password: "password",
+      firstname: "test",
+      lastname: "Test",
+      username: "testdoe",
+      points: 0
+    };
+
+    // Call the login function
+    const user = await User.fetchUserByEmail(creds);
+
+    // Check the returned user
+    expect(user).toEqual(mockUser);
+
+    // Check that the db query method was called exactly once
+    expect(db.query).toHaveBeenCalledTimes(1);
+
+    // Check that token is generated
+    const token = User.generateAuthToken(user);
+    expect(token).toBeTruthy();
+  });
 });

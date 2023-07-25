@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1690304145586" clover="3.2.0">
-  <project timestamp="1690304145586" name="All files">
-    <metrics statements="96" coveredstatements="71" conditionals="30" coveredconditionals="17" methods="18" coveredmethods="9" elements="144" coveredelements="97" complexity="0" loc="96" ncloc="96" packages="3" files="6" classes="6"/>
+<coverage generated="1690306098617" clover="3.2.0">
+  <project timestamp="1690306098617" name="All files">
+    <metrics statements="96" coveredstatements="78" conditionals="30" coveredconditionals="17" methods="18" coveredmethods="11" elements="144" coveredelements="106" complexity="0" loc="96" ncloc="96" packages="3" files="6" classes="6"/>
     <package name="brainforce-api">
       <metrics statements="26" coveredstatements="23" conditionals="4" coveredconditionals="1" methods="3" coveredmethods="2"/>
       <file name="config.js" path="/Users/kabouelrous/Documents/Capstone/KhalidRoboForce/brainforce-api/config.js">
@@ -41,9 +41,9 @@
       </file>
     </package>
     <package name="brainforce-api.models">
-      <metrics statements="51" coveredstatements="34" conditionals="14" coveredconditionals="10" methods="6" coveredmethods="2"/>
+      <metrics statements="51" coveredstatements="41" conditionals="14" coveredconditionals="10" methods="6" coveredmethods="4"/>
       <file name="user.js" path="/Users/kabouelrous/Documents/Capstone/KhalidRoboForce/brainforce-api/models/user.js">
-        <metrics statements="51" coveredstatements="34" conditionals="14" coveredconditionals="10" methods="6" coveredmethods="2"/>
+        <metrics statements="51" coveredstatements="41" conditionals="14" coveredconditionals="10" methods="6" coveredmethods="4"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
         <line num="3" count="1" type="stmt"/>
@@ -77,19 +77,19 @@
         <line num="97" count="0" type="stmt"/>
         <line num="98" count="0" type="cond" truecount="0" falsecount="2"/>
         <line num="99" count="0" type="stmt"/>
-        <line num="104" count="1" type="stmt"/>
-        <line num="107" count="1" type="stmt"/>
-        <line num="108" count="1" type="cond" truecount="1" falsecount="1"/>
-        <line num="109" count="1" type="stmt"/>
-        <line num="113" count="1" type="cond" truecount="1" falsecount="1"/>
-        <line num="114" count="1" type="stmt"/>
-        <line num="126" count="0" type="stmt"/>
-        <line num="137" count="0" type="stmt"/>
-        <line num="139" count="0" type="stmt"/>
-        <line num="143" count="0" type="stmt"/>
-        <line num="150" count="0" type="stmt"/>
-        <line num="151" count="0" type="stmt"/>
-        <line num="152" count="0" type="stmt"/>
+        <line num="104" count="2" type="stmt"/>
+        <line num="107" count="2" type="stmt"/>
+        <line num="108" count="2" type="cond" truecount="1" falsecount="1"/>
+        <line num="109" count="2" type="stmt"/>
+        <line num="113" count="2" type="cond" truecount="1" falsecount="1"/>
+        <line num="114" count="2" type="stmt"/>
+        <line num="126" count="1" type="stmt"/>
+        <line num="137" count="1" type="stmt"/>
+        <line num="139" count="1" type="stmt"/>
+        <line num="143" count="1" type="stmt"/>
+        <line num="150" count="1" type="stmt"/>
+        <line num="151" count="1" type="stmt"/>
+        <line num="152" count="1" type="stmt"/>
         <line num="156" count="0" type="stmt"/>
         <line num="157" count="0" type="stmt"/>
         <line num="158" count="0" type="stmt"/>
