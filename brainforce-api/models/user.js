@@ -18,14 +18,23 @@ class User {
    **/
 
   static async register(creds) {
-    const { email, password, firstname, lastname, username, points } = creds;
+    const {
+      email,
+      password,
+      firstname,
+      lastname,
+      username,
+      points,
+      totalquiz
+    } = creds;
     const requiredCreds = [
       "email",
       "password",
       "firstname",
       "lastname",
       "username",
-      "points"
+      "points",
+      "totalquiz"
     ];
     try {
       validateFields({
@@ -64,16 +73,25 @@ class User {
           lastname,
           username,
           email,
-          points
+          points,
+          totalquiz
         )
-        VALUES ($1, $2, $3, $4, $5, $6)
+        VALUES ($1, $2, $3, $4, $5, $6, $7)
         RETURNING id,
                   email,            
                   firstname AS "firstname",
                   lastname AS "lastname",
                   username
                   `,
-      [hashedPassword, firstname, lastname, username, normalizedEmail, points]
+      [
+        hashedPassword,
+        firstname,
+        lastname,
+        username,
+        normalizedEmail,
+        points,
+        totalquiz
+      ]
     );
 
     const user = result.rows[0];
@@ -121,7 +139,8 @@ class User {
 
     const result = await db.query(
       `UPDATE users SET
-          points = points + $2
+          points = points + $2 ,
+          totalquiz = totalquiz + 1
           WHERE email = $1
           RETURNING points;
           `,
@@ -131,6 +150,22 @@ class User {
     const user = result.rows[0];
 
     return user;
+  }
+
+  static async fetchAll() {
+    const result = await db.query(
+      `SELECT id,
+              username,
+              points,
+              created,
+              totalquiz
+            FROM users
+            ORDER BY points DESC`
+    );
+
+    const users = result.rows;
+
+    return users;
   }
 
   /**
@@ -163,7 +198,8 @@ class User {
       lastname: user.lastname,
       email: user.email,
       username: user.username,
-      points: user.points
+      points: user.points,
+      totalquiz: user.totalquiz
     };
 
     const token = jwt.sign(payload, secretKey, { expiresIn: "1h" });
