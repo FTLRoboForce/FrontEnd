@@ -22,7 +22,7 @@
   flex-direction: column;
   align-items: center;
   width: 50vw;
-  background: linear-gradient(to right, #a5d8ff, #1864ab)
+  background: linear-gradient(to right, #a5d8ff, #1864ab);
 }
 
 .left-side h3 {
