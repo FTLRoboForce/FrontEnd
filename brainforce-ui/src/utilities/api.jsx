@@ -48,5 +48,9 @@ class Api {
   async user(token) {
     return await this.request("POST", `auth/profile`, token);
   }
+
+  async updatePoints(user) {
+    return await this.request("POST", `auth/update`, user);
+  }
 }
 export default new Api();
