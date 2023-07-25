@@ -18,7 +18,6 @@ import Api from "../../utilities/api";
 import google from "../../images/google.svg";
 import einsteinImage from "../../images/einstein.png";
 
-
 import "./Register.css";
 
 const initialUserState = {
@@ -28,7 +27,8 @@ const initialUserState = {
   lastname: "",
   password: "",
   confirm: "",
-  points: 0
+  points: 0,
+  totalquiz: 0
 };
 
 export function Register({ userGlobal }) {
@@ -90,11 +90,15 @@ export function Register({ userGlobal }) {
         <>
           <div className="left-right-container">
             <div className="left-side">
-              <h3> Unlock your potential with <span id="brainforce">BrainForce</span> the ultimate learning platform</h3>
-              <img src ={einsteinImage}  width={700} />
-
+              <h3>
+                {" "}
+                Unlock your potential with{" "}
+                <span id="brainforce">BrainForce</span> the ultimate learning
+                platform
+              </h3>
+              <img src={einsteinImage} width={700} />
             </div>
-            
+
             <div className="right-container">
               <div className="center-container">
                 <div className="registration-page-container">
@@ -136,12 +140,12 @@ export function Register({ userGlobal }) {
                           value={user.firstname}
                           onChange={handleValueChange}
                           name="firstname"
-                        labelProps ={{
-                          style: {
-                            color: "#004D85",
-                            fontSize: (16),
-                          }
-                        }}
+                          labelProps={{
+                            style: {
+                              color: "#004D85",
+                              fontSize: 16
+                            }
+                          }}
                         />
 
                         <TextInput
@@ -151,10 +155,10 @@ export function Register({ userGlobal }) {
                           value={user.lastname}
                           onChange={handleValueChange}
                           name="lastname"
-                          labelProps ={{
+                          labelProps={{
                             style: {
                               color: "#004D85",
-                              fontSize: (16),
+                              fontSize: 16
                             }
                           }}
                         />
@@ -166,14 +170,16 @@ export function Register({ userGlobal }) {
                           value={user.email}
                           onChange={handleValueChange}
                           name="email"
-                          labelProps ={{
+                          labelProps={{
                             style: {
                               color: "#004D85",
-                              fontSize: (16),
+                              fontSize: 16
                             }
                           }}
                           error={
-                            errortext && errortext.includes("Email") && errortext
+                            errortext &&
+                            errortext.includes("Email") &&
+                            errortext
                           }
                         />
 
@@ -184,10 +190,10 @@ export function Register({ userGlobal }) {
                           value={user.username}
                           onChange={handleValueChange}
                           name="username"
-                          labelProps ={{
+                          labelProps={{
                             style: {
                               color: "#004D85",
-                              fontSize: (16),
+                              fontSize: 16
                             }
                           }}
                           error={
@@ -204,10 +210,10 @@ export function Register({ userGlobal }) {
                           value={user.password}
                           onChange={handleValueChange}
                           name="password"
-                          labelProps ={{
+                          labelProps={{
                             style: {
                               color: "#004D85",
-                              fontSize: (16),
+                              fontSize: 16
                             }
                           }}
                         />
@@ -219,10 +225,10 @@ export function Register({ userGlobal }) {
                           value={user.confirm}
                           onChange={handleValueChange}
                           name="confirm"
-                          labelProps ={{
+                          labelProps={{
                             style: {
                               color: "#004D85",
-                              fontSize: (16),
+                              fontSize: 16
                             }
                           }}
                           error={

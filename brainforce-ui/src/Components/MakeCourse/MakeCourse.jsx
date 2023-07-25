@@ -3,6 +3,7 @@ import "./MakeCourse.css";
 import einstein from "../../images/einstein.png";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 
 // Import images for subjects
 import mathImage from "./math.png";
@@ -33,7 +34,7 @@ export default function MakeCourse({
   setSubject,
   sub,
   difficulty,
-  subject,
+  subject
 }) {
   const navigate = useNavigate();
 
@@ -56,7 +57,7 @@ export default function MakeCourse({
         subject: subject,
         difficultyLevel: difficulty,
         number: 2,
-        optionalSection: sub,
+        optionalSection: sub
       })
       .then((response) => {
         setFlashcards(JSON.parse(response.data.data));
@@ -87,14 +88,39 @@ export default function MakeCourse({
     return sub === selectedSub ? "selected" : "";
   };
 
+  const [isTyping, setIsTyping] = useState(false);
+  const [nameToShow, setNameToShow] = useState("");
+  const username = localStorage.getItem("username");
+
+  const handleTyping = () => {
+    setIsTyping(true);
+    let currentIndex = 0;
+    const name = username;
+    const interval = setInterval(() => {
+      setNameToShow((prev) => prev + name[currentIndex]);
+      currentIndex++;
+      if (currentIndex === name?.length) {
+        clearInterval(interval);
+        setIsTyping(false);
+      }
+    }, 100);
+  };
+
+  useEffect(() => {
+    handleTyping(username); // Start the typewriter animation when the component mounts
+  }, []);
+
   const isSubmitDisabled = !subject || !difficulty || !sub;
 
   return (
     <>
       {userGlobal ? (
         <div className="full-page-container">
+          <h2>
+            Welcome, <span>{nameToShow}</span>
+          </h2>
+          <p>Embark on Your Learning Journey: Choose Your Course!</p>
           <div className="course-options-container">
-            <h2>Choose Course Options</h2>
             <form onSubmit={handleSubmit}>
               <div className="option-row">
                 <label

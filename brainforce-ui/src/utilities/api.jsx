@@ -52,5 +52,9 @@ class Api {
   async updatePoints(user) {
     return await this.request("POST", `auth/update`, user);
   }
+
+  async listUsers() {
+    return await this.request("GET", `auth/list`);
+  }
 }
 export default new Api();
