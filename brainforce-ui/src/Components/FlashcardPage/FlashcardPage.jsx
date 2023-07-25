@@ -11,6 +11,7 @@ export default function FlashcardPage({
   setQuestions,
   subject,
   difficulty,
+  sub,
 }) {
   const [counter, setCounter] = useState(0);
   const navigate = useNavigate();
@@ -39,9 +40,9 @@ export default function FlashcardPage({
     axios
       .post("http://localhost:3002/quiz", {
         subject: subject,
-        difficulty: difficulty,
+        difficultyLevel: difficulty,
         number: 2,
-        optional: "",
+        optionalSection: sub,
       })
       .then((response) => {
         setQuestions(JSON.parse(response.data.data));

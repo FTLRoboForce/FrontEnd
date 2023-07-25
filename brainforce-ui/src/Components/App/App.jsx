@@ -16,6 +16,9 @@ import Creator from "../Creators/Creator";
 function App() {
   const [token, setToken] = useState();
   const [userGlobal, setUserGlobal] = useState();
+  const [subject, setSubject] = useState("");
+  const [difficulty, setDifficulty] = useState("");
+  const [sub, setSub] = useState("");
   const [flashcards, setFlashcards] = useState([
     { answer: "test", question: "test" },
   ]);
@@ -69,6 +72,11 @@ function App() {
               setFlashcards={setFlashcards}
               setQuestions={setQuestions}
               questions={questions}
+              subject={subject}
+              difficulty={difficulty}
+              setDifficulty={setDifficulty}
+              sub={sub}
+              setSub={setSub}
             />
           }
         />
@@ -79,6 +87,12 @@ function App() {
               userGlobal={userGlobal}
               flashcards={flashcards}
               setFlashcards={setFlashcards}
+              subject={subject}
+              setSubject={setSubject}
+              difficulty={difficulty}
+              setDifficulty={setDifficulty}
+              sub={sub}
+              setSub={setSub}
             />
           }
         />
