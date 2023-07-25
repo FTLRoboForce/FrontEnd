@@ -1,7 +1,9 @@
 import React from "react";
 import "./Leaderboard.css";
+import Api from "../../utilities/api";
 
 const LeaderboardRow = ({ data, index }) => {
+  console.log(data);
   return (
     <tr
       key={index}
@@ -9,59 +11,24 @@ const LeaderboardRow = ({ data, index }) => {
     >
       <td>{data.username}</td>
       <td>{data.points}</td>
-      <td>{data.quizzesTaken}</td>
-      <td>{data.dateJoined}</td>
+      <td>{data.totalquiz}</td>
+      <td>{data.created}</td>
     </tr>
   );
 };
 
 export default function Leaderboard({ userGlobal }) {
-  const leaderboardData = [
-    {
-      username: "John",
-      points: 100,
-      quizzesTaken: 5,
-      dateJoined: "2023-01-01"
-    },
-    {
-      username: "Jane",
-      points: 80,
-      quizzesTaken: 3,
-      dateJoined: "2023-02-15"
-    },
-    {
-      username: "John",
-      points: 100,
-      quizzesTaken: 5,
-      dateJoined: "2023-01-01"
-    },
-    {
-      username: "Jane",
-      points: 80,
-      quizzesTaken: 3,
-      dateJoined: "2023-02-15"
-    },
-    {
-      username: "John",
-      points: 100,
-      quizzesTaken: 5,
-      dateJoined: "2023-01-01"
-    },
-    {
-      username: "Jane",
-      points: 80,
-      quizzesTaken: 3,
-      dateJoined: "2023-02-15"
-    },
-    {
-      username: "Bob",
-      points: 120,
-      quizzesTaken: 7,
-      dateJoined: "2023-03-10"
-    }
-    // Add more leaderboard data as needed
-  ];
+  const [leaderboardData, setLeaderboardData] = React.useState([]);
 
+  React.useEffect(() => {
+    try {
+      Api.listUsers().then((response) => {
+        setLeaderboardData(response);
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  }, []);
   return (
     <>
       {userGlobal ? (
