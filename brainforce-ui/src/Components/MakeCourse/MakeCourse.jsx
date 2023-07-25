@@ -34,7 +34,7 @@ export default function MakeCourse({
   setSubject,
   sub,
   difficulty,
-  subject,
+  subject
 }) {
   const navigate = useNavigate();
 
@@ -57,7 +57,7 @@ export default function MakeCourse({
         subject: subject,
         difficultyLevel: difficulty,
         number: 2,
-        optionalSection: sub,
+        optionalSection: sub
       })
       .then((response) => {
         setFlashcards(JSON.parse(response.data.data));
@@ -99,21 +99,16 @@ export default function MakeCourse({
     const interval = setInterval(() => {
       setNameToShow((prev) => prev + name[currentIndex]);
       currentIndex++;
-      if (currentIndex === name.length) {
+      if (currentIndex === name?.length) {
         clearInterval(interval);
         setIsTyping(false);
       }
     }, 100);
-
-
   };
-
 
   useEffect(() => {
     handleTyping(username); // Start the typewriter animation when the component mounts
-  }, []); 
-
-
+  }, []);
 
   const isSubmitDisabled = !subject || !difficulty || !sub;
 
@@ -121,12 +116,11 @@ export default function MakeCourse({
     <>
       {userGlobal ? (
         <div className="full-page-container">
-           <h2>Welcome, <span>
-           {nameToShow}
-            </span></h2>
-            <p>Embark on Your Learning Journey: Choose Your Course!</p>
+          <h2>
+            Welcome, <span>{nameToShow}</span>
+          </h2>
+          <p>Embark on Your Learning Journey: Choose Your Course!</p>
           <div className="course-options-container">
-           
             <form onSubmit={handleSubmit}>
               <div className="option-row">
                 <label

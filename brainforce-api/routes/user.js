@@ -41,4 +41,13 @@ router.post("/update", async function (req, res, next) {
   }
 });
 
+router.get("/list", async function (req, res, next) {
+  try {
+    const users = await User.fetchAll();
+    res.json(users);
+  } catch (err) {
+    next(err);
+  }
+});
+
 module.exports = router;
