@@ -116,6 +116,23 @@ class User {
     }
   }
 
+  static async updateUser(update) {
+    const { email, points } = update;
+
+    const result = await db.query(
+      `UPDATE users SET
+          points = points + $2
+          WHERE email = $1
+          RETURNING points;
+          `,
+      [email, points]
+    );
+
+    const user = result.rows[0];
+
+    return user;
+  }
+
   /**
    * Fetch a user in the database by email
    *
@@ -144,7 +161,9 @@ class User {
       id: user.id,
       firstname: user.firstname,
       lastname: user.lastname,
-      email: user.email
+      email: user.email,
+      username: user.username,
+      points: user.points
     };
 
     const token = jwt.sign(payload, secretKey, { expiresIn: "1h" });

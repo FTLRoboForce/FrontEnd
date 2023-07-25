@@ -2,11 +2,13 @@ import "./Quiz.css";
 import { useState } from "react";
 import QuizQuestion from "../QuizQuestion/QuizQuestion";
 import Particle from "../../ParticleBackground/ParticleBackground";
+import Api from "../../utilities/api";
 
 const Quiz = ({ userGlobal, questions, setQuestions }) => {
   const [points, setPoints] = useState(0);
 
   const [submitted, setSubmitted] = useState(false);
+  const [userPoints, setUserPoints] = useState();
 
   const handleSubmit = () => {
     let totalPoints = 0;
@@ -16,6 +18,16 @@ const Quiz = ({ userGlobal, questions, setQuestions }) => {
       }
     });
     setPoints(totalPoints);
+    console.log(userGlobal.points);
+    try {
+      Api.updatePoints({
+        email: userGlobal.email,
+        points: totalPoints
+      });
+    } catch (err) {
+      console.log(err);
+    }
+
     setSubmitted(true);
   };
 
@@ -23,45 +35,41 @@ const Quiz = ({ userGlobal, questions, setQuestions }) => {
     <>
       {userGlobal ? (
         <>
-        <div className="particle-div">
+          <div className="particle-div">
+            <Particle />
+            <div className="quiz-page">
+              <div className="quiz-container">
+                {questions.map((question, index) => (
+                  <QuizQuestion
+                    key={index}
+                    question={question.question}
+                    options={question.options}
+                    answer={question.answer}
+                    setSelectedOption={(option) => {
+                      const updatedQuestions = [...questions];
+                      updatedQuestions[index].selectedOption = option;
+                      setQuestions(updatedQuestions);
+                    }}
+                    submitted={submitted}
+                  />
+                ))}
 
-        
-          <Particle />
-          <div className="quiz-page">
-            <div className="quiz-container">
-              {questions.map((question, index) => (
-                <QuizQuestion
-                  key={index}
-                  question={question.question}
-                  options={question.options}
-                  answer={question.answer}
-                  setSelectedOption={(option) => {
-                    const updatedQuestions = [...questions];
-                    updatedQuestions[index].selectedOption = option;
-                    setQuestions(updatedQuestions);
-                  }}
-                  submitted={submitted}
-                />
-              ))}
+                <button
+                  className="submit-quiz"
+                  onClick={handleSubmit}
+                  disabled={submitted}
+                >
+                  Submit
+                </button>
 
-              <button
-                className="submit-quiz"
-                onClick={handleSubmit}
-                disabled={submitted}
-              >
-                Submit
-              </button>
-
-              {submitted && <p>Total Points: {points}</p>}
+                {submitted && <p>Total Points: {points}</p>}
+              </div>
             </div>
-          </div>
           </div>
         </>
       ) : (
         <div className="flashcardPage-container">Please Log In</div>
-        
       )}
-      
     </>
   );
 };

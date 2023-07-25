@@ -26,10 +26,16 @@ import javascriptImage from "./javascript.png";
 import pythonImage from "./python.png";
 import javaImage from "./java.png";
 
-export default function MakeCourse({ userGlobal, setFlashcards }) {
-  const [subject, setSubject] = useState("");
-  const [difficulty, setDifficulty] = useState("");
-  const [sub, setSub] = useState("");
+export default function MakeCourse({
+  userGlobal,
+  setFlashcards,
+  setSub,
+  setDifficulty,
+  setSubject,
+  sub,
+  difficulty,
+  subject,
+}) {
   const navigate = useNavigate();
 
   const handleSubjectChange = (selectedSubject) => {
@@ -51,7 +57,7 @@ export default function MakeCourse({ userGlobal, setFlashcards }) {
         subject: subject,
         difficultyLevel: difficulty,
         number: 2,
-        optionalSection: sub
+        optionalSection: sub,
       })
       .then((response) => {
         setFlashcards(JSON.parse(response.data.data));

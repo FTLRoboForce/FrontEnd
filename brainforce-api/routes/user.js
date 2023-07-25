@@ -32,4 +32,13 @@ router.post("/profile", async function (req, res, next) {
   }
 });
 
+router.post("/update", async function (req, res, next) {
+  try {
+    const user = await User.updateUser(req.body);
+    res.json(user);
+  } catch (err) {
+    next(err);
+  }
+});
+
 module.exports = router;
