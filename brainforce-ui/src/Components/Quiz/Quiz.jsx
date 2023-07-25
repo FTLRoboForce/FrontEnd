@@ -23,6 +23,9 @@ const Quiz = ({ userGlobal, questions, setQuestions }) => {
     <>
       {userGlobal ? (
         <>
+        <div className="particle-div">
+
+        
           <Particle />
           <div className="quiz-page">
             <div className="quiz-container">
@@ -52,10 +55,13 @@ const Quiz = ({ userGlobal, questions, setQuestions }) => {
               {submitted && <p>Total Points: {points}</p>}
             </div>
           </div>
+          </div>
         </>
       ) : (
         <div className="flashcardPage-container">Please Log In</div>
+        
       )}
+      
     </>
   );
 };
