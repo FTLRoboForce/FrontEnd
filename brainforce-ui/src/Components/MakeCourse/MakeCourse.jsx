@@ -48,9 +48,9 @@ export default function MakeCourse({ userGlobal, setFlashcards }) {
     axios
       .post("http://localhost:3002/flashcard", {
         subject: subject,
-        difficulty: difficulty,
+        difficultyLevel: difficulty,
         number: 2,
-        optional: sub
+        optionalSection: sub
       })
       .then((response) => {
         setFlashcards(JSON.parse(response.data.data));
