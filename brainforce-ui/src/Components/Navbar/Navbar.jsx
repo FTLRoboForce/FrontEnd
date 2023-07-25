@@ -26,6 +26,7 @@ import {
 
 import { useDisclosure } from "@mantine/hooks";
 import { cx } from "@mantine/core";
+import ParticleBackground from "../../ParticleBackground/ParticleBackground";
 
 const useStyles = createStyles((theme) => ({
   navContainer: {
@@ -33,7 +34,8 @@ const useStyles = createStyles((theme) => ({
     justifyContent: "space-between",
     alignItems: "center",
     padding: theme.spacing.xs,
-    background: `linear-gradient(to right, ${theme.colors.blue[2]}, ${theme.colors.blue[9]})`
+    background: `linear-gradient(to right, ${theme.colors.blue[2]}, ${theme.colors.blue[9]})`,
+    borderBottom: `solid 1px ${theme.colors.blue[2]}`,
   },
   logoContainer: {
     display: "flex",
@@ -118,6 +120,9 @@ export function Navbar({ token, setToken, userGlobal }) {
   }
 
   return (
+    <>
+   
+    <ParticleBackground />
     <header className={classes.navContainer}>
       <div className={classes.logoContainer}>
         <div className={classes.logoImage}>
@@ -224,5 +229,6 @@ export function Navbar({ token, setToken, userGlobal }) {
         </div>
       )}
     </header>
+    </>
   );
 }

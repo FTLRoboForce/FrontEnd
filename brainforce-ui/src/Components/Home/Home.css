@@ -1,0 +1,77 @@
+.centered {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(to right, white, var(--lightgrey), grey);
+  }
+  
+  .home-container {
+
+    width: 80%;
+    max-width: 1200px;
+    margin: 0 auto;
+    border-radius: 12px;
+    box-shadow: var(--shadow-sm);
+    padding: 40px;
+  }
+  
+  .inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  
+    width: 100%;
+  }
+
+  .description {
+    color: #706e6e;
+  }
+  
+  .content {
+    flex: 1; 
+
+  }
+  
+  .title {
+    color: #004d85;
+    font-family: Greycliff CF, sans-serif;
+    font-size: 150px;
+    line-height: 1.2;
+    font-weight: 900;
+  }
+  
+  @media screen and (max-width: 767px) {
+    .title {
+      font-size: 88px;
+    }
+  }
+  
+  .animatedImage {
+    flex: 0 0 40%;
+    max-width: 90%;
+    animation: fadeInOut 6s linear infinite;
+  }
+  
+  @keyframes fadeInOut {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+  }
+  
+  .check-container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  
+  .check-icon {
+    margin-right: 10px;
+    color: var(--lightblue);
+   
+  }
+  
+  .check-text {
+    font-size: 16px;
+    color: #333;
+  }
+  
