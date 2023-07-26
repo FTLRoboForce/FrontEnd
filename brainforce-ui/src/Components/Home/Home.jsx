@@ -18,6 +18,8 @@ export function Home({ userGlobal }) {
     return () => clearInterval(interval);
   }, []);
 
+
+
   return (
     <>
 

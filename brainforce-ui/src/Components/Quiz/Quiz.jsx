@@ -36,7 +36,7 @@ const Quiz = ({ userGlobal, questions, setQuestions }) => {
       {userGlobal ? (
         <>
           <div className="particle-div">
-            <Particle />
+     
             <div className="quiz-page">
               <div className="quiz-container">
                 {questions.map((question, index) => (

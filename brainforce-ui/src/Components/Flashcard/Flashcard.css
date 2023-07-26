@@ -20,16 +20,28 @@
   
   .flashcard__front {
     z-index: 2;
-    background-color: var(--darkblue);
+    background: linear-gradient(to right, white, var(--lightgrey), grey);
     display: flex;
     justify-content: center;
     align-items: center;
     border-radius: 10px;
     transform: rotateY(0deg);
   }
+
+  .flashcard__front p {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #004D85;
+  }
+
+  .flashcard__back p {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #004D85;
+  }
   
   .flashcard__back {
-    background-color: var(--ligtblue);
+    background: linear-gradient(to left, white, var(--lightgrey), grey);
     display: flex;
     justify-content: center;
     align-items: center;

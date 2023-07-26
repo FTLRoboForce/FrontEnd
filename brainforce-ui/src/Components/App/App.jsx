@@ -14,7 +14,7 @@ import { useEffect, useState } from "react";
 import Creator from "../Creators/Creator";
 
 function App() {
-  const [token, setToken] = useState();
+  const [token, setToken] = useState(null);
   const [userGlobal, setUserGlobal] = useState();
   const [subject, setSubject] = useState("");
   const [difficulty, setDifficulty] = useState("");
