@@ -47,8 +47,10 @@
 
 .quiz-option.correct {
   background-color: green;
+  cursor: not-allowed;
 }
 
 .quiz-option.incorrect {
   background-color: red;
+  cursor: not-allowed;
 }
