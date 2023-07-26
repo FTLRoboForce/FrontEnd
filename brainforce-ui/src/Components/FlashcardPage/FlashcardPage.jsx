@@ -4,6 +4,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import "./FlashcardPage.css";
 import { useState } from "react";
+import Api from "../../utilities/api";
 
 export default function FlashcardPage({
   userGlobal,
@@ -11,7 +12,7 @@ export default function FlashcardPage({
   setQuestions,
   subject,
   difficulty,
-  sub,
+  sub
 }) {
   const [counter, setCounter] = useState(0);
   const navigate = useNavigate();
@@ -37,15 +38,14 @@ export default function FlashcardPage({
 
   const createQuiz = (event) => {
     event.preventDefault();
-    axios
-      .post("http://localhost:3002/quiz", {
-        subject: subject,
-        difficultyLevel: difficulty,
-        number: 2,
-        optionalSection: sub,
-      })
+    Api.makeQuiz({
+      subject: subject,
+      difficultyLevel: difficulty,
+      number: 2,
+      optionalSection: sub
+    })
       .then((response) => {
-        setQuestions(JSON.parse(response.data.data));
+        setQuestions(JSON.parse(response.data));
         navigate("/quiz");
       })
       .catch((error) => {
