@@ -50,10 +50,10 @@
   .animatedImage {
     flex: 0 0 40%;
     max-width: 90%;
-    animation: fadeInOut 6s linear infinite;
+    animation: fadeInnOut 6s linear infinite;
   }
   
-  @keyframes fadeInOut {
+  @keyframes fadeInnOut {
     0%, 100% { opacity: 1; }
     50% { opacity: 0; }
   }
