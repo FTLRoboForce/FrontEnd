@@ -16,6 +16,17 @@ const QuizQuestion = ({
     setSelectedOption(option); // Pass the selected option back to the parent component (Quiz)
   };
 
+  const getOptionClass = (option) => {
+    if (submitted) {
+      if (option === answer) {
+        return "correct";
+      } else if (option === selectedOption) {
+        return "incorrect";
+      }
+    }
+    return "";
+  };
+
   return (
     <>
       <div className="quiz-card">
@@ -27,6 +38,7 @@ const QuizQuestion = ({
               option={option}
               isSelected={selectedOption === option}
               handleSelect={() => handleSelectOption(option)}
+              optionClass={getOptionClass(option)} // Pass the option class to indicate correct or incorrect
               disabled={submitted} // Disable options after the user submits the quiz
             />
           ))}
