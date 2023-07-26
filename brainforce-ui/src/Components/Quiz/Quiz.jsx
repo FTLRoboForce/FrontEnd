@@ -1,5 +1,5 @@
 import "./Quiz.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import QuizQuestion from "../QuizQuestion/QuizQuestion";
 import Particle from "../../ParticleBackground/ParticleBackground";
 import Api from "../../utilities/api";
@@ -36,7 +36,6 @@ const Quiz = ({ userGlobal, questions, setQuestions }) => {
       {userGlobal ? (
         <>
           <div className="particle-div">
-     
             <div className="quiz-page">
               <div className="quiz-container">
                 {questions.map((question, index) => (

@@ -1,4 +1,3 @@
-
 .quiz-card {
   color: var(--darkblue);
   border-radius: 8px;
@@ -46,22 +45,10 @@
   background-color: var(--lightblue);
 }
 
-.quiz-button-container {
-  display: flex;
-  justify-content: center;
+.quiz-option.correct {
+  background-color: green;
 }
 
-.quiz-submit {
-  background-color: #4caf50;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  padding: 12px 24px;
-  cursor: pointer;
-  font-size: 18px;
-  font-weight: bold;
-}
-
-.quiz-submit:hover {
-  background-color: #45a049;
+.quiz-option.incorrect {
+  background-color: red;
 }
