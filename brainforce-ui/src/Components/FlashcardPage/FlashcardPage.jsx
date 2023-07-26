@@ -86,7 +86,7 @@ export default function FlashcardPage({
                 </button>
               ) : (
                 <button className="flashcard-button" onClick={createQuiz}>
-                  Last Flashcard Button
+                  Submit
                 </button>
               )}
             </div>

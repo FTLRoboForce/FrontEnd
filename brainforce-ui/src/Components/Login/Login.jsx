@@ -31,8 +31,13 @@ export function Login({ setToken, setUserGlobal, userGlobal }) {
     event.preventDefault();
     Api.login(user)
       .then((response) => {
-        localStorage.setItem("jwt", response.token);
-        setToken(response.token);
+        if (response.token) {
+          localStorage.setItem("jwt", response.token);
+          setToken(response.token);
+          // console.log("Token page", response.token);
+        } else {
+          // console.error("Login failed: No token received from API.");
+        }
       })
       .then(() => {
         Api.user({ token: localStorage.getItem("jwt") }).then((response) => {
@@ -40,11 +45,14 @@ export function Login({ setToken, setUserGlobal, userGlobal }) {
           if (response?.firstname && response?.lastname) {
             setName(response?.firstname + " " + response?.lastname);
             localStorage.setItem("username", response.firstname);
+            navigate("/");
           }
         });
       });
-    navigate("/");
+    
   }
+
+
 
   useEffect(() => {
     if (localStorage.getItem("jwt")) {

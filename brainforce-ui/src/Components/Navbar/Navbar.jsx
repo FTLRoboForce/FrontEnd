@@ -111,14 +111,18 @@ export function Navbar({ token, setToken, userGlobal }) {
   //get username in localstorage
   const username = localStorage.getItem("username");
 
+
   function logOut() {
     localStorage.removeItem("jwt");
     localStorage.removeItem("username"); // Remove the stored username when the user logs out
     setToken(null);
     setUserMenuOpened(false);
     window.location = "/";
+
   }
 
+
+ 
   return (
     <>
    
