@@ -25,6 +25,7 @@ import chemistryImage from "./chemistry.png";
 import javascriptImage from "./javascript.png";
 import pythonImage from "./python.png";
 import javaImage from "./java.png";
+import Api from "../../utilities/api";
 
 export default function MakeCourse({
   userGlobal,
@@ -52,15 +53,15 @@ export default function MakeCourse({
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    axios
-      .post("http://localhost:3002/flashcard", {
-        subject: subject,
-        difficultyLevel: difficulty,
-        number: 2,
-        optionalSection: sub
-      })
+    Api.makeFlashcard({
+      subject: subject,
+      difficultyLevel: difficulty,
+      number: 2,
+      optionalSection: sub
+    })
       .then((response) => {
-        setFlashcards(JSON.parse(response.data.data));
+        console.log(response);
+        setFlashcards(JSON.parse(response.data));
         navigate("/flashcard");
       })
       .catch((error) => {

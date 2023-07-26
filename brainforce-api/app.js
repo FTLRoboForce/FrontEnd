@@ -5,8 +5,7 @@ const morgan = require("morgan");
 const { NotFoundError } = require("./utils/errors");
 const config = require("./config");
 const authRoutes = require("./routes/user");
-
-
+const openaiRoutes = require("./routes/openai");
 
 const app = express();
 
@@ -21,7 +20,7 @@ app.use(morgan("tiny"));
 
 // routes
 app.use("/auth", authRoutes);
-
+app.use("/openai", openaiRoutes);
 
 // health check
 app.get("/", function (req, res) {
