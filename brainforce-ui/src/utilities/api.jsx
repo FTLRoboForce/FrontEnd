@@ -56,5 +56,13 @@ class Api {
   async listUsers() {
     return await this.request("GET", `auth/list`);
   }
+
+  async makeQuiz(quiz) {
+    return await this.request("POST", `openai/quiz`, quiz);
+  }
+
+  async makeFlashcard(flashcard) {
+    return await this.request("POST", `openai/flashcards`, flashcard);
+  }
 }
 export default new Api();
