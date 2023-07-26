@@ -1,5 +1,5 @@
 const express = require("express");
-const flashcards = require("../models/flashcards");
+const openai = require("../models/openai");
 const router = express.Router();
 
 router.post("/", async function (req, res, next) {
