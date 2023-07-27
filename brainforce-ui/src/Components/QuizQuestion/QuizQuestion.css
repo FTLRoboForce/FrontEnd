@@ -48,11 +48,10 @@
 }
 
 .quiz-option.correct {
-  background-color: green;
+  background-color: #c0ff7f;
   cursor: not-allowed;
 }
-
 .quiz-option.incorrect {
-  background-color: red;
+  background-color: #ff7f7f;
   cursor: not-allowed;
 }
