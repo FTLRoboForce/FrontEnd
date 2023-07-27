@@ -13,8 +13,10 @@ const openAi = new OpenAIApi(config);
 router.post("/flashcards", async function (req, res, next) {
   const { number, difficultyLevel, subject, optionalSection } = req.body;
   let content = `Create ${number} unique ${difficultyLevel} flashcard(s) about ${subject} specifically ${optionalSection}.
-  The question(s) are meant for academic uses so don't include too broad question(s).
-   Response should be returned as an array of json objects where the response would look like:
+  Depending on the difficulty level, the questions should be more difficult. Medium should be more difficult than easy.
+   Hard questions should be more difficult than medium questions. 
+  Medium questions should be meant for graduate students and hard questions should be meant for experts.
+  Response should be returned as an array of json objects where the response would look like:
   [{"question" : "What is the general formula for alkane?", "answer": "CnH2n+2"}]`;
   try {
     const response = await openAi.createChatCompletion({
@@ -25,7 +27,7 @@ router.post("/flashcards", async function (req, res, next) {
           content: content
         }
       ],
-      max_tokens: 200,
+      max_tokens: 1000,
       temperature: 0.8,
       top_p: 1.0,
       frequency_penalty: 0,
@@ -49,6 +51,9 @@ router.post("/flashcards", async function (req, res, next) {
 router.post("/quiz", async function (req, res, next) {
   const { number, difficultyLevel, subject, optionalSection } = req.body;
   let content = `Create ${number} unique ${difficultyLevel} multiple-choice questions about ${subject} specifically ${optionalSection}.
+  Depending on the difficulty level, the questions should be more difficult. Hard questions should be more difficult than medium questions. 
+  Medium questions should be meant for graduate students and hard questions should be meant for experienced professionals in their respective fields .
+   Easy questions should be meant for high school students.
   The answer should be a string (the answer must be 
       in the options and not as an index of the options)
       and the options should be an array of strings. 
@@ -70,7 +75,7 @@ router.post("/quiz", async function (req, res, next) {
         }
       ],
       temperature: 0.6,
-      max_tokens: 200,
+      max_tokens: 1000,
       top_p: 1.0,
       frequency_penalty: 0,
       presence_penalty: 0

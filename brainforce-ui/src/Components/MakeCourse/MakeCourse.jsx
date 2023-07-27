@@ -33,10 +33,11 @@ export default function MakeCourse({
   sub,
   difficulty,
   subject,
+  questionOption,
+  setQuestionOption,
 }) {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
-  const [questionOption, setQuestionOption] = useState(2);
 
   const handleSubjectChange = (selectedSubject) => {
     setSubject(selectedSubject);
@@ -58,7 +59,7 @@ export default function MakeCourse({
       const response = await Api.makeFlashcard({
         subject: subject,
         difficultyLevel: difficulty,
-        number: 4,
+        number: questionOption,
         optionalSection: sub,
       });
 
