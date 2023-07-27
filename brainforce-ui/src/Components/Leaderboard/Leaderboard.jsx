@@ -4,6 +4,15 @@ import Api from "../../utilities/api";
 
 const LeaderboardRow = ({ data, index }) => {
   console.log(data);
+
+  const dateString = data.created;
+  const date = new Date(dateString);
+
+  const formattedDate = date.toLocaleDateString("en-US", {
+    month: "2-digit", // MM
+    day: "2-digit", // DD
+    year: "numeric" // YYYY
+  });
   return (
     <tr
       key={index}
@@ -12,7 +21,7 @@ const LeaderboardRow = ({ data, index }) => {
       <td>{data.username}</td>
       <td>{data.points}</td>
       <td>{data.totalquiz}</td>
-      <td>{data.created}</td>
+      <td>{formattedDate}</td>
     </tr>
   );
 };
