@@ -20,7 +20,10 @@
   
   .flashcard__front {
     z-index: 2;
-    background: linear-gradient(to right, white, var(--lightgrey), grey);
+    /* background: linear-gradient(to right, white, var(--lightgrey), grey); */
+
+    box-shadow: 0 0 100px #000;
+    background-color: white;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -41,7 +44,9 @@
   }
   
   .flashcard__back {
-    background: linear-gradient(to left, white, var(--lightgrey), grey);
+    /* background: linear-gradient(to left, white, var(--lightgrey), grey); */
+    box-shadow: 0 0 100px #000;
+    background-color: white;
     display: flex;
     justify-content: center;
     align-items: center;

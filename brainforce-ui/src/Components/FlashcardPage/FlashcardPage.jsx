@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import "./FlashcardPage.css";
 import { useState } from "react";
 import Api from "../../utilities/api";
+import Loader from "../Loader/Loader";
 
 export default function FlashcardPage({
   userGlobal,
@@ -14,9 +15,12 @@ export default function FlashcardPage({
   difficulty,
   sub
 }) {
+
+  
   const [counter, setCounter] = useState(0);
   const navigate = useNavigate();
   console.log("flashcards", flashcards);
+  const [loading, setLoading] = useState(false);
 
   // make sure counter doesn't go more than the number of flashcards
 
@@ -36,27 +40,41 @@ export default function FlashcardPage({
     }
   };
 
-  const createQuiz = (event) => {
+
+  
+  
+
+
+  const createQuiz = async (event) => {
     event.preventDefault();
-    Api.makeQuiz({
-      subject: subject,
-      difficultyLevel: difficulty,
-      number: 2,
-      optionalSection: sub
-    })
-      .then((response) => {
-        setQuestions(JSON.parse(response.data));
-        navigate("/quiz");
-      })
-      .catch((error) => {
-        console.log(error);
-        console.error("There was an error!", error);
+    setLoading(true);
+
+
+    try {
+      const response = await Api.makeQuiz({
+        subject: subject,
+        difficultyLevel: difficulty,
+        number: 2,
+        optionalSection: sub
       });
+      setQuestions(JSON.parse(response.data));
+      navigate("/quiz");
+    } catch (error) {
+      console.log(error);
+      console.error("There was an error!", error);
+    } finally { 
+      setLoading(false);
+    }
+
+    // Handle form submission
+    // You can perform additional actions based on the selected subject and difficulty
+
   };
 
   return (
     <>
       {userGlobal ? (
+        loading ? ( <Loader /> ) : (
         <div className="flashcardPage-container">
           <div className="flashcard-container">
             <div className="flash-content">
@@ -92,7 +110,7 @@ export default function FlashcardPage({
             </div>
           </div>
         </div>
-      ) : (
+      ) ) : (
         <div className="flashcardPage-container">Please Log In</div>
       )}
     </>

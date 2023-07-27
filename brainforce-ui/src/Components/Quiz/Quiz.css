@@ -1,13 +1,21 @@
+
 .quiz-page {
+  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
-  width: 100vw;
-  background: linear-gradient(to right, white, var(--lightgrey), grey);
+  background: #b6ddfd;
 }
 
+
 .submit-quiz {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.submit-quiz button {
   padding: 10px 20px;
   font-size: 1rem;
   font-weight: bold;
@@ -16,25 +24,30 @@
   border: none;
   cursor: pointer;
   border-radius: 5px;
-  margin-top: 20px;
 }
 
-.submit-quiz:hover {
-  background-color: var(--lightblue);
+.submit-quiz button:hover {
+  background-color: var(--lightblue); /* Change to the desired hover color */
 }
+
+
+
+.submit-quiz:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
 
 .quiz-container {
-  margin: 100px auto;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  margin-top: 100px;
   max-width: 600px;
-  width: 100%;
+
+  max-height: 70vh; 
   padding: 20px;
-  z-index: 1;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 88px #000;
   border-radius: 10px;
-  overflow: hidden;
-  background: linear-gradient(to left, #f8f9fa, #005eb8);
-  border: 4px solid #005eb8;
+  overflow-y: auto; 
+  background: linear-gradient(to left, #028cc4, #b1d1ef);
 }
+
+/* Rest of the CSS remains the same */

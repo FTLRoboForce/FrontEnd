@@ -42,17 +42,23 @@ export function Navbar({ token, setToken }) {
       </div>
       {token ? (
         <div className="navLinksContainer">
+              <button
+            onClick={() => (window.location = "/creators")}
+            className="userActivityButton"
+          >
+            Creators
+          </button>
           <Link to="/makecourse" className="navLink">
             Make Course
           </Link>
           <Link to="/flashcard" className="navLink">
-            Previous Flashcard
+            Learn
           </Link>
           <Link to="/quiz" className="navLink">
-            Previous Quizzes
+           Quiz
           </Link>
           <Link to="/leaderboard" className="navLink">
-            Leaderboard
+            Conquer
           </Link>
 
           <Menu>

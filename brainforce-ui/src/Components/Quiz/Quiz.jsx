@@ -35,7 +35,7 @@ const Quiz = ({ userGlobal, questions, setQuestions }) => {
     <>
       {userGlobal ? (
         <>
-          <div className="particle-div">
+        
             <div className="quiz-page">
               <div className="quiz-container">
                 {questions.map((question, index) => (
@@ -52,19 +52,23 @@ const Quiz = ({ userGlobal, questions, setQuestions }) => {
                     submitted={submitted}
                   />
                 ))}
-
+                <div  className="submit-quiz">
                 <button
-                  className="submit-quiz"
+                 
                   onClick={handleSubmit}
                   disabled={submitted}
                 >
                   Submit
                 </button>
 
+                </div>
+
+              
+
                 {submitted && <p>Total Points: {points}</p>}
               </div>
             </div>
-          </div>
+          
         </>
       ) : (
         <div className="flashcardPage-container">Please Log In</div>
