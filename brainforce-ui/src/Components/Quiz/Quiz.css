@@ -1,5 +1,7 @@
 
 .quiz-page {
+  width: 100vw;
+  position: fixed;
   height: 100vh;
   display: flex;
   justify-content: center;
@@ -7,12 +9,20 @@
   background: #b6ddfd;
 }
 
-
 .submit-quiz {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   margin-top: 20px;
+}
+
+.submit-quiz p {
+  color: #003455;
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+
 }
 
 .submit-quiz button {
@@ -37,17 +47,17 @@
   cursor: not-allowed;
 }
 
-
 .quiz-container {
-  margin-top: 100px;
-  max-width: 600px;
 
-  max-height: 70vh; 
+  
+  box-shadow: 0px 0px 10px 5px #003455;
+  border: 18px solid #b7daf9;
+  /* margin-top: 100px; */
+  max-width: 600px;
+  max-height: 70vh;
   padding: 20px;
-  box-shadow: 0 4px 88px #000;
-  border-radius: 10px;
-  overflow-y: auto; 
+  box-shadow: 0 px 88px #000;
+  border-radius: 27px;
+  overflow-y: auto;
   background: linear-gradient(to left, #028cc4, #b1d1ef);
 }
-
-/* Rest of the CSS remains the same */
