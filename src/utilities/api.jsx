@@ -2,7 +2,7 @@ import axios from "axios";
 
 class Api {
   constructor() {
-    this.url = "brainforce-api-6474d5ae3ec4.herokuapp.com";
+    this.url = "http://brainforce-api-6474d5ae3ec4.herokuapp.com";
     this.token = localStorage.getItem("token") || null;
     this.tokenName = "token";
   }
