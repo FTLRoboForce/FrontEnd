@@ -133,6 +133,7 @@ function App() {
         ></Route>
         <Route path="/loader" element={<Loader userGlobal={userGlobal} />} 
         ></Route>
+        <Route path="/loader" element={<Loader />} />
       </Routes>
     </BrowserRouter>
    
