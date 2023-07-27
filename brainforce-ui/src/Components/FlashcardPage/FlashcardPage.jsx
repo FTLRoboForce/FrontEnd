@@ -13,10 +13,10 @@ export default function FlashcardPage({
   setQuestions,
   subject,
   difficulty,
-  sub
+  sub,
+  questionOption,
+  setQuestionOption,
 }) {
-
-  
   const [counter, setCounter] = useState(0);
   const navigate = useNavigate();
   console.log("flashcards", flashcards);
@@ -40,77 +40,73 @@ export default function FlashcardPage({
     }
   };
 
-
-  
-  
-
-
   const createQuiz = async (event) => {
     event.preventDefault();
     setLoading(true);
-
 
     try {
       const response = await Api.makeQuiz({
         subject: subject,
         difficultyLevel: difficulty,
-        number: 2,
-        optionalSection: sub
+        number: questionOption,
+        optionalSection: sub,
       });
       setQuestions(JSON.parse(response.data));
       navigate("/quiz");
     } catch (error) {
       console.log(error);
       console.error("There was an error!", error);
-    } finally { 
+    } finally {
       setLoading(false);
     }
 
     // Handle form submission
     // You can perform additional actions based on the selected subject and difficulty
-
   };
 
   return (
     <>
       {userGlobal ? (
-        loading ? ( <Loader /> ) : (
-        <div className="flashcardPage-container">
-          <div className="flashcard-container">
-            <div className="flash-content">
-              <Flashcard flashcard={flashcards[counter]} />
-            </div>
+        loading ? (
+          <Loader />
+        ) : (
+          <div className="flashcardPage-container">
+            <div className="flashcard-container">
+              <div className="flash-content">
+                <Flashcard flashcard={flashcards[counter]} />
+              </div>
 
-            <div className="flash-buttons">
-              {counter > 0 && (
-                <button
-                  className="flashcard-button"
-                  onClick={() => {
-                    handlePreviousClick();
-                  }}
-                >
-                  Previous
-                </button>
-              )}
+              <div className="flash-buttons">
+                {counter > 0 && (
+                  <button
+                    className="flashcard-button"
+                    onClick={() => {
+                      handlePreviousClick();
+                    }}
+                  >
+                    Previous
+                  </button>
+                )}
 
-              {counter < flashcards.length - 1 ? (
-                <button
-                  className="flashcard-button"
-                  onClick={() => {
-                    handleNextClick();
-                  }}
-                >
-                  Next
-                </button>
-              ) : (
-                <button className="flashcard-button" onClick={createQuiz}>
-                  Submit
-                </button>
-              )}
+                {counter < flashcards.length - 1 ? (
+                  <button
+                    className="flashcard-button"
+                    onClick={() => {
+                      handleNextClick();
+                    }}
+                  >
+                    Next
+                  </button>
+                ) : (
+                  <button className="flashcard-button" onClick={createQuiz}>
+                    Submit
+                  </button>
+                )}
+              </div>
             </div>
           </div>
-        </div>
-      ) ) : (
+        )
+      ) : (
         <div className="flashcardPage-container">Please Log In</div>
       )}
     </>

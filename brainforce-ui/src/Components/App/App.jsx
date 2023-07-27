@@ -21,27 +21,26 @@ function App() {
   const [difficulty, setDifficulty] = useState("");
   const [sub, setSub] = useState("");
   const [flashcards, setFlashcards] = useState([
-    { answer: "test", question: "test" }
+    { answer: "test", question: "test" },
   ]);
-
-  
+  const [questionOption, setQuestionOption] = useState(2);
 
   const [questions, setQuestions] = useState([
     {
       question: "What is the capital of France?",
       options: ["New York", "London", "Paris", "Dublin"],
-      answer: "Paris"
+      answer: "Paris",
     },
     {
       question: "What is the capital of France?",
       options: ["New York", "London", "Paris", "Dublin"],
-      answer: "Paris"
+      answer: "Paris",
     },
     {
       question: "What is the capital of France?",
       options: ["New York", "London", "Paris", "Dublin"],
-      answer: "Paris"
-    }
+      answer: "Paris",
+    },
   ]);
 
   const handleAnswer = (selectedOption) => {
@@ -60,84 +59,88 @@ function App() {
 
   return (
     <>
-    <BrowserRouter>
-      <Navbar token={token} setToken={setToken} userGlobal={userGlobal} />
-      <Routes>
-        <Route path="/" element={<Home userGlobal={userGlobal} />} />
-        <Route
-          path="/register"
-          element={<Register userGlobal={userGlobal} />}
-        />
+      <BrowserRouter>
+        <Navbar token={token} setToken={setToken} userGlobal={userGlobal} />
+        <Routes>
+          <Route path="/" element={<Home userGlobal={userGlobal} />} />
+          <Route
+            path="/register"
+            element={<Register userGlobal={userGlobal} />}
+          />
 
-        <Route
-          path="/login"
-          element={
-            <Login
-              setToken={setToken}
-              setUserGlobal={setUserGlobal}
-              userGlobal={userGlobal}
-            />
-          }
-        />
-        <Route
-          path="/flashcard"
-          element={
-            <FlashcardPage
-              userGlobal={userGlobal}
-              flashcards={flashcards}
-              setFlashcards={setFlashcards}
-              setQuestions={setQuestions}
-              questions={questions}
-              subject={subject}
-              difficulty={difficulty}
-              setDifficulty={setDifficulty}
-              sub={sub}
-              setSub={setSub}
-            />
-          }
-        />
-        <Route
-          path="/makecourse"
-          element={
-            <MakeCourse
-              userGlobal={userGlobal}
-              flashcards={flashcards}
-              setFlashcards={setFlashcards}
-              subject={subject}
-              setSubject={setSubject}
-              difficulty={difficulty}
-              setDifficulty={setDifficulty}
-              sub={sub}
-              setSub={setSub}
-            />
-          }
-        />
-        <Route
-          path="/leaderboard"
-          element={<Leaderboard userGlobal={userGlobal} />}
-        />
-        <Route
-          path="/quiz"
-          element={
-            <Quiz
-              userGlobal={userGlobal}
-              questions={questions}
-              setQuestions={setQuestions}
-            />
-          }
-        ></Route>
-        <Route path="/report" element={<Report userGlobal={userGlobal} />} />
-        <Route
-          path="/creators"
-          element={<Creator userGlobal={userGlobal} />}
-        ></Route>
-        <Route path="/loader" element={<Loader userGlobal={userGlobal} />} 
-        ></Route>
-        <Route path="/loader" element={<Loader />} />
-      </Routes>
-    </BrowserRouter>
-   
-   
+          <Route
+            path="/login"
+            element={
+              <Login
+                setToken={setToken}
+                setUserGlobal={setUserGlobal}
+                userGlobal={userGlobal}
+              />
+            }
+          />
+          <Route
+            path="/flashcard"
+            element={
+              <FlashcardPage
+                userGlobal={userGlobal}
+                flashcards={flashcards}
+                setFlashcards={setFlashcards}
+                setQuestions={setQuestions}
+                questions={questions}
+                subject={subject}
+                difficulty={difficulty}
+                setDifficulty={setDifficulty}
+                sub={sub}
+                setSub={setSub}
+                questionOption={questionOption}
+                setQuestionOption={setQuestionOption}
+              />
+            }
+          />
+          <Route
+            path="/makecourse"
+            element={
+              <MakeCourse
+                userGlobal={userGlobal}
+                flashcards={flashcards}
+                setFlashcards={setFlashcards}
+                subject={subject}
+                setSubject={setSubject}
+                difficulty={difficulty}
+                setDifficulty={setDifficulty}
+                sub={sub}
+                setSub={setSub}
+                questionOption={questionOption}
+                setQuestionOption={setQuestionOption}
+              />
+            }
+          />
+          <Route
+            path="/leaderboard"
+            element={<Leaderboard userGlobal={userGlobal} />}
+          />
+          <Route
+            path="/quiz"
+            element={
+              <Quiz
+                userGlobal={userGlobal}
+                questions={questions}
+                setQuestions={setQuestions}
+              />
+            }
+          ></Route>
+          <Route path="/report" element={<Report userGlobal={userGlobal} />} />
+          <Route
+            path="/creators"
+            element={<Creator userGlobal={userGlobal} />}
+          ></Route>
+          <Route
+            path="/loader"
+            element={<Loader userGlobal={userGlobal} />}
+          ></Route>
+          <Route path="/loader" element={<Loader />} />
+        </Routes>
+      </BrowserRouter>
     </>
   );
 }
