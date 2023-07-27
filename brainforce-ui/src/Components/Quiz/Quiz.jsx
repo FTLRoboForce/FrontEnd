@@ -53,6 +53,7 @@ const Quiz = ({ userGlobal, questions, setQuestions }) => {
                   />
                 ))}
                 <div  className="submit-quiz">
+                {submitted && <p>Total Points: {points}</p>}
                 <button
                  
                   onClick={handleSubmit}
@@ -60,12 +61,13 @@ const Quiz = ({ userGlobal, questions, setQuestions }) => {
                 >
                   Submit
                 </button>
+              
 
                 </div>
 
               
 
-                {submitted && <p>Total Points: {points}</p>}
+
               </div>
             </div>
           
