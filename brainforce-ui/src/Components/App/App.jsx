@@ -31,6 +31,16 @@ function App() {
       question: "What is the capital of France?",
       options: ["New York", "London", "Paris", "Dublin"],
       answer: "Paris"
+    },
+    {
+      question: "What is the capital of France?",
+      options: ["New York", "London", "Paris", "Dublin"],
+      answer: "Paris"
+    },
+    {
+      question: "What is the capital of France?",
+      options: ["New York", "London", "Paris", "Dublin"],
+      answer: "Paris"
     }
   ]);
 
