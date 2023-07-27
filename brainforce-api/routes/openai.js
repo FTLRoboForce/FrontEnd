@@ -59,12 +59,7 @@ router.post("/quiz", async function (req, res, next) {
       and the options should be an array of strings. 
       All keys and values must be enclosed in double quotes.
   ### store as an array of json objects where the question,options and answer are keys:
-  {
-      "question": "What is the capital of France?",
-      "options": ["New York", "London", "Paris", "Dublin"],
-      "answer": "Paris"
-    }
-  `;
+  {"question": "What is the capital of France?","options": ["New York", "London", "Paris", "Dublin"],"answer": "Paris"}`;
   try {
     const response = await openAi.createChatCompletion({
       model: "gpt-3.5-turbo",
