@@ -1,7 +1,7 @@
 .flashcardPage-container {
   height: 100vh;
   width: 100%;
-  background: linear-gradient(to right, white, var(--lightgrey), grey);
+background-color: #b6ddfd;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -12,10 +12,10 @@
   width: 40%;
   margin: 50px auto;
   padding: 40px;
-  background: linear-gradient(to left, #f8f9fa, #005eb8);
-  border: 4px solid #005eb8;
+
+
   border-radius: 15px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+
   color: black;
   text-align: center;
 }

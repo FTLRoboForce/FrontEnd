@@ -26,6 +26,7 @@ import javascriptImage from "./javascript.png";
 import pythonImage from "./python.png";
 import javaImage from "./java.png";
 import Api from "../../utilities/api";
+import Loader from "../Loader/Loader";
 
 export default function MakeCourse({
   userGlobal,
@@ -38,6 +39,7 @@ export default function MakeCourse({
   subject
 }) {
   const navigate = useNavigate();
+  const [loading, setLoading] = useState(false);
 
   const handleSubjectChange = (selectedSubject) => {
     setSubject(selectedSubject);
@@ -51,23 +53,28 @@ export default function MakeCourse({
     setSub(selectedSub);
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit  =  async (event) => {
     event.preventDefault();
-    Api.makeFlashcard({
-      subject: subject,
-      difficultyLevel: difficulty,
-      number: 2,
-      optionalSection: sub
-    })
-      .then((response) => {
-        console.log(response);
-        setFlashcards(JSON.parse(response.data));
-        navigate("/flashcard");
-      })
-      .catch((error) => {
-        console.log(error);
-        console.error("There was an error!", error);
+    setLoading(true);
+
+    try {
+      const response = await Api.makeFlashcard({
+        subject: subject,
+        difficultyLevel: difficulty,
+        number: 2,
+        optionalSection: sub,
       });
+
+      setFlashcards(JSON.parse(response.data));
+      navigate("/flashcard");
+    } catch (error) {
+      console.log(error);
+      console.error("There was an error!", error);
+    } finally {
+      setLoading(false);
+    }
+
+ 
 
     // Handle form submission
     // You can perform additional actions based on the selected subject and difficulty
@@ -92,6 +99,7 @@ export default function MakeCourse({
   const [isTyping, setIsTyping] = useState(false);
   const [nameToShow, setNameToShow] = useState("");
   const username = localStorage.getItem("username");
+ 
 
   const handleTyping = () => {
     setIsTyping(true);
@@ -116,7 +124,9 @@ export default function MakeCourse({
   return (
     <>
       {userGlobal ? (
+        loading ? ( <Loader /> ) : (
         <div className="full-page-container">
+      
           <h2>
             Welcome, <span>{nameToShow}</span>
           </h2>
@@ -274,7 +284,7 @@ export default function MakeCourse({
             </form>
           </div>
         </div>
-      ) : (
+      )) : (
         <div className="flashcardPage-container">Please Log In</div>
       )}
     </>

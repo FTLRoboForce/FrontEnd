@@ -12,6 +12,7 @@ import Quiz from "../Quiz/Quiz";
 import Api from "../../utilities/api";
 import { useEffect, useState } from "react";
 import Creator from "../Creators/Creator";
+import Loader from "../Loader/Loader";
 
 function App() {
   const [token, setToken] = useState(null);
@@ -22,6 +23,9 @@ function App() {
   const [flashcards, setFlashcards] = useState([
     { answer: "test", question: "test" }
   ]);
+
+  
+
   const [questions, setQuestions] = useState([
     {
       question: "What is the capital of France?",
@@ -45,6 +49,7 @@ function App() {
   }, []);
 
   return (
+    <>
     <BrowserRouter>
       <Navbar token={token} setToken={setToken} userGlobal={userGlobal} />
       <Routes>
@@ -116,8 +121,13 @@ function App() {
           path="/creators"
           element={<Creator userGlobal={userGlobal} />}
         ></Route>
+        <Route path="/loader" element={<Loader userGlobal={userGlobal} />} 
+        ></Route>
       </Routes>
     </BrowserRouter>
+   
+   
+    </>
   );
 }
 

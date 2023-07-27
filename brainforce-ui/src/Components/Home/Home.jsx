@@ -24,6 +24,8 @@ export function Home({ userGlobal }) {
     <>
 
 
+
+
       <div className="centered">
         <div className="home-container">
           <div className="inner">

@@ -1,10 +1,11 @@
 .centered {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background: linear-gradient(to right, white, var(--lightgrey), grey);
-  }
+  background: #b6ddfd;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+
+}
   
   .home-container {
 
@@ -34,13 +35,12 @@
   }
   
   .title {
-    color: #004d85;
+    color: #003455;
     font-family: Greycliff CF, sans-serif;
     font-size: 150px;
     line-height: 1.2;
     font-weight: 900;
-  }
-  
+}
   @media screen and (max-width: 767px) {
     .title {
       font-size: 88px;
