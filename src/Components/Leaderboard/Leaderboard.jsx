@@ -1,8 +1,10 @@
 import React from "react";
 import "./Leaderboard.css";
 import Api from "../../utilities/api";
+import { Progress } from "@mantine/core";
+import ProgressBar from "../ProgressBar/ProgressBar";
 
-const LeaderboardRow = ({ data, index }) => {
+const LeaderboardRow = ({ data, index} ) => {
   console.log(data);
 
   const dateString = data.created;
@@ -26,7 +28,7 @@ const LeaderboardRow = ({ data, index }) => {
   );
 };
 
-export default function Leaderboard({ userGlobal }) {
+export default function Leaderboard({ userGlobal, progressBar, setProgressBar }) {
   const [leaderboardData, setLeaderboardData] = React.useState([]);
 
   React.useEffect(() => {
@@ -38,10 +40,13 @@ export default function Leaderboard({ userGlobal }) {
       console.log(error);
     }
   }, []);
+
+  setProgressBar("conquer");
   return (
     <>
       {userGlobal ? (
         <div className="leaderboardPage-container">
+          <ProgressBar progressBar={progressBar} />
           <div className="leaderboard-container">
             <h2>Leaderboard</h2>
             <table className="leaderboard-table">

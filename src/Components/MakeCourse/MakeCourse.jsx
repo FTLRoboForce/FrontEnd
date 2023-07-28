@@ -35,6 +35,7 @@ export default function MakeCourse({
   subject,
   questionOption,
   setQuestionOption,
+  setProgressBar,
 }) {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
@@ -75,6 +76,7 @@ export default function MakeCourse({
     // Reset state after form submission
     setSubject("");
     setDifficulty("");
+  
   };
 
   const isSubjectSelected = (selectedSubject) => {

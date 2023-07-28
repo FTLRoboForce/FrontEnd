@@ -1,5 +1,7 @@
 
 .leaderboardPage-container {
+  display: flex;
+  flex-direction: column;
   background: #b6ddfd;
   height: 100vh;
   width: 100vw;
