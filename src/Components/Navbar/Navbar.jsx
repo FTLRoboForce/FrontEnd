@@ -3,19 +3,8 @@ import logo from "../../images/bf.png";
 import { Link } from "react-router-dom";
 
 import "./Navbar.css";
-import {
-  Image,
-  UnstyledButton,
-  Avatar,
-  Menu
-} from "@mantine/core";
-
-import {
-  IconLogout,
-  IconHeart,
-  IconChevronDown
-} from "@tabler/icons-react";
-
+import { Image, UnstyledButton, Avatar, Menu } from "@mantine/core";
+import { IconLogout, IconHeart, IconChevronDown } from "@tabler/icons-react";
 import { useDisclosure } from "@mantine/hooks";
 
 export function Navbar({ token, setToken }) {
@@ -42,45 +31,27 @@ export function Navbar({ token, setToken }) {
       </div>
       {token ? (
         <div className="navLinksContainer">
-              <button
+          <button
             onClick={() => (window.location = "/creators")}
             className="userActivityButton"
           >
             Creators
           </button>
-          <Link to="/makecourse" className="navLink">
-            Make Course
-          </Link>
-          <Link to="/flashcard" className="navLink">
-            Learn
-          </Link>
-          <Link to="/quiz" className="navLink">
-           Quiz
-          </Link>
-          <Link to="/leaderboard" className="navLink">
-            Conquer
-          </Link>
+
+          {/* You can add other navigation links here if needed */}
 
           <Menu>
             <Menu.Target>
               <UnstyledButton className="userActivityButton">
                 <div className="userActivityContainer">
-                  <Avatar
-                    src={logo}
-                    alt={username}
-                    radius="xl"
-                    size={20}
-                 
-                  />
+                  <Avatar src={logo} alt={username} radius="xl" size={20} />
                   <div className="menu-item">{username}</div>
                   <IconChevronDown size={16} />
                 </div>
               </UnstyledButton>
             </Menu.Target>
             <Menu.Dropdown>
-              <Menu.Item icon={<IconHeart size="0.9rem" />}>
-                Points
-              </Menu.Item>
+              <Menu.Item icon={<IconHeart size="0.9rem" />}>Points</Menu.Item>
 
               <Menu.Divider />
 
@@ -115,3 +86,5 @@ export function Navbar({ token, setToken }) {
     </header>
   );
 }
+
+// ... (rest of the styles)

@@ -1,10 +1,9 @@
-import React from "react";
+import React, { useEffect, useState, useRef } from "react";
 import "./Leaderboard.css";
 import Api from "../../utilities/api";
+import ProgressBar from "../ProgressBar/ProgressBar";
 
 const LeaderboardRow = ({ data, index }) => {
-  console.log(data);
-
   const dateString = data.created;
   const date = new Date(dateString);
 
@@ -13,23 +12,24 @@ const LeaderboardRow = ({ data, index }) => {
     day: "2-digit", // DD
     year: "numeric" // YYYY
   });
+
   return (
-    <tr
-      key={index}
+    <div
       className={`leaderboard-row ${index % 2 === 0 ? "even-row" : "odd-row"}`}
     >
-      <td>{data.username}</td>
-      <td>{data.points}</td>
-      <td>{data.totalquiz}</td>
-      <td>{formattedDate}</td>
-    </tr>
+      <p>{data.username}</p>
+      <p>{data.points}</p>
+      <p>{data.totalquiz}</p>
+      <p>{formattedDate}</p>
+    </div>
   );
 };
 
-export default function Leaderboard({ userGlobal }) {
-  const [leaderboardData, setLeaderboardData] = React.useState([]);
+export default function Leaderboard({ userGlobal, progressBar, setProgressBar }) {
+  const [leaderboardData, setLeaderboardData] = useState([]);
+  const leaderboardContainerRef = useRef(null);
 
-  React.useEffect(() => {
+  useEffect(() => {
     try {
       Api.listUsers().then((response) => {
         setLeaderboardData(response);
@@ -38,27 +38,34 @@ export default function Leaderboard({ userGlobal }) {
       console.log(error);
     }
   }, []);
+
+  useEffect(() => {
+    // Add a cool animation when the user gets on the page
+    if (leaderboardContainerRef.current) {
+      leaderboardContainerRef.current.classList.add("appear-animation");
+    }
+  }, []);
+
+  setProgressBar("conquer");
+
   return (
     <>
       {userGlobal ? (
         <div className="leaderboardPage-container">
-          <div className="leaderboard-container">
+          <ProgressBar progressBar={progressBar} />
+          <div className="leaderboard-container" ref={leaderboardContainerRef}>
             <h2>Leaderboard</h2>
-            <table className="leaderboard-table">
-              <thead>
-                <tr>
-                  <th>Username</th>
-                  <th>Points</th>
-                  <th>Total Quizzes Taken</th>
-                  <th>Date Joined</th>
-                </tr>
-              </thead>
-              <tbody>
-                {leaderboardData.map((data, index) => (
-                  <LeaderboardRow data={data} index={index} />
-                ))}
-              </tbody>
-            </table>
+            <div className="leaderboard-titles">
+              <p className="leaderboard-title">Username</p>
+              <p className="leaderboard-title">Points</p>
+              <p className="leaderboard-title">Total Quizzes Taken</p>
+              <p className="leaderboard-title">Date Joined</p>
+            </div>
+            <div className="leaderboard-content">
+              {leaderboardData.map((data, index) => (
+                <LeaderboardRow key={index} data={data} index={index} />
+              ))}
+            </div>
           </div>
         </div>
       ) : (

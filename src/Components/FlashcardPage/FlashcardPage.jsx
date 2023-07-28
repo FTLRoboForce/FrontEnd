@@ -6,6 +6,7 @@ import "./FlashcardPage.css";
 import { useState } from "react";
 import Api from "../../utilities/api";
 import Loader from "../Loader/Loader";
+import ProgressBar from "../ProgressBar/ProgressBar";
 
 export default function FlashcardPage({
   userGlobal,
@@ -16,6 +17,8 @@ export default function FlashcardPage({
   sub,
   questionOption,
   setQuestionOption,
+  setProgressBar,
+  progressBar,
 }) {
   const [counter, setCounter] = useState(0);
   const navigate = useNavigate();
@@ -64,13 +67,19 @@ export default function FlashcardPage({
     // You can perform additional actions based on the selected subject and difficulty
   };
 
+  setProgressBar("learn")
+  console.log("this is the progress bar" , progressBar)
+
   return (
     <>
+      
       {userGlobal ? (
         loading ? (
           <Loader />
         ) : (
           <div className="flashcardPage-container">
+        
+            <ProgressBar progressBar={progressBar}/>
             <div className="flashcard-container">
               <div className="flash-content">
                 <Flashcard flashcard={flashcards[counter]} />

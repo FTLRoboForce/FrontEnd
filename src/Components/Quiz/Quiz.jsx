@@ -1,11 +1,15 @@
+
 import "./Quiz.css";
 import { useEffect, useState } from "react";
 import QuizQuestion from "../QuizQuestion/QuizQuestion";
 import Particle from "../../ParticleBackground/ParticleBackground";
 import Api from "../../utilities/api";
+import ProgressBar from "../ProgressBar/ProgressBar";
 
-const Quiz = ({ userGlobal, questions, setQuestions }) => {
+const Quiz = ({ userGlobal, questions, setQuestions, progressBar,
+  setProgressBar}) => {
   const [points, setPoints] = useState(0);
+  setProgressBar("quiz");
 
   const [submitted, setSubmitted] = useState(false);
   const [userPoints, setUserPoints] = useState();
@@ -28,7 +32,11 @@ const Quiz = ({ userGlobal, questions, setQuestions }) => {
       console.log(err);
     }
 
+
     setSubmitted(true);
+    setTimeout(() => {
+      window.location = "/leaderboard";
+    }, 1000);
   };
 
   return (
@@ -37,6 +45,7 @@ const Quiz = ({ userGlobal, questions, setQuestions }) => {
         <>
         
             <div className="quiz-page">
+            <ProgressBar progressBar={progressBar} />
               <div className="quiz-container">
                 {questions.map((question, index) => (
                   <QuizQuestion

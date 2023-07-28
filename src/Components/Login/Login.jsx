@@ -45,7 +45,7 @@ export function Login({ setToken, setUserGlobal, userGlobal }) {
           if (response?.firstname && response?.lastname) {
             setName(response?.firstname + " " + response?.lastname);
             localStorage.setItem("username", response.firstname);
-            navigate("/");
+            navigate("/makecourse");
           }
         });
       });

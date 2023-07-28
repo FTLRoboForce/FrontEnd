@@ -13,8 +13,11 @@ import Api from "../../utilities/api";
 import { useEffect, useState } from "react";
 import Creator from "../Creators/Creator";
 import Loader from "../Loader/Loader";
+import ProgressBar from "../ProgressBar/ProgressBar";
 
 function App() {
+  const [progressBar, setProgressBar] = useState(null); 
+  
   const [token, setToken] = useState(null);
   const [userGlobal, setUserGlobal] = useState();
   const [subject, setSubject] = useState("");
@@ -94,6 +97,8 @@ function App() {
                 setSub={setSub}
                 questionOption={questionOption}
                 setQuestionOption={setQuestionOption}
+                setProgressBar={setProgressBar}
+                progressBar={progressBar}
               />
             }
           />
@@ -112,12 +117,18 @@ function App() {
                 setSub={setSub}
                 questionOption={questionOption}
                 setQuestionOption={setQuestionOption}
+                setProgressBar={setProgressBar}
               />
             }
           />
           <Route
             path="/leaderboard"
-            element={<Leaderboard userGlobal={userGlobal} />}
+            element={<Leaderboard userGlobal={userGlobal}
+            
+            setProgressBar={setProgressBar}
+            progressBar={progressBar}
+            />}
+           
           />
           <Route
             path="/quiz"
@@ -126,6 +137,8 @@ function App() {
                 userGlobal={userGlobal}
                 questions={questions}
                 setQuestions={setQuestions}
+                setProgressBar={setProgressBar}
+                progressBar={progressBar}
               />
             }
           ></Route>
@@ -135,10 +148,16 @@ function App() {
             element={<Creator userGlobal={userGlobal} />}
           ></Route>
           <Route
-            path="/loader"
-            element={<Loader userGlobal={userGlobal} />}
+            
+            element={<Loader userGlobal={userGlobal}  />}
           ></Route>
-          <Route path="/loader" element={<Loader />} />
+            <Route
+            path="/progress"
+            
+            element={<ProgressBar userGlobal={userGlobal} progressBar={progressBar}  setProgressBar={setProgressBar} />}
+          ></Route>
+
+         
         </Routes>
       </BrowserRouter>
     </>
