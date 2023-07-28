@@ -26,8 +26,9 @@
 }
 
 #progressbar li {
+  color: #084461;
   list-style-type: none;
-  color: #aaa;
+
   text-transform: uppercase;
   font-size: 16px;
   padding: 10px 0;
@@ -66,23 +67,24 @@
 /* Mobile Styles */
 @media (max-width: 600px) {
   .progressBar {
-    width: 90%; /* Adjust the width for mobile devices */
+    width: 90%;
   }
 
   #progressbar {
-    margin-bottom: 20px; /* Reduce spacing between steps for mobile */
+    margin-bottom: 20px; 
   }
 
   #progressbar li.active { 
-    font-size: 24px; /* Adjust font size for mobile devices */
+    font-size: 24px;
   }
 
   #progressbar li {
-    font-size: 14px; /* Adjust font size for mobile devices */
-    padding: 5px 0; /* Reduce padding for mobile devices */
+    font-size: 14px; 
+    padding: 5px 0; 
+    color: #084461;
   }
 
   .progress-line {
-    height: 4px; /* Reduce the height of the progress line for mobile */
+    height: 4px; 
   }
 }

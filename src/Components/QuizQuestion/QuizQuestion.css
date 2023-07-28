@@ -4,21 +4,20 @@
   border-radius: 27px;
   box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
   padding: 16px;
-  width: 90%; /* Adjust the width for smaller screens */
-  max-width: 500px; /* Set a maximum width for larger screens */
-  height: 350px;
-  margin: 50px auto; /* Center the quiz card horizontally */
+  width: 90%; 
+  max-width: 500px; 
+  margin: 50px auto; 
   display: flex;
   flex-direction: column;
   align-items: center;
-  overflow-y: scroll;
+  overflow-y: auto; 
 }
 
 .quiz-question {
   font-size: 24px;
   margin-bottom: 16px;
   font-weight: bold;
-  text-align: center; /* Center the question text */
+  text-align: center;
 }
 
 .quiz-options {
@@ -28,6 +27,7 @@
   display: flex;
   flex-direction: column;
   gap: 8px;
+  flex-grow: 1;
 }
 
 .quiz-option {
@@ -42,22 +42,39 @@
   font-size: 16px;
   color: var(--darkblue);
   font-weight: bold;
-  text-align: center; /* Center the option text */
+  text-align: center; 
 }
 
-/* Media query for smaller screens */
+.quiz-option.selected {
+  background-color: var(--lightblue);
+}
+
+.quiz-option.correct {
+  background-color: #c0ff7f;
+  cursor: not-allowed;
+}
+
+.quiz-option.incorrect {
+  background-color: #ff7f7f;
+  cursor: not-allowed;
+}
+
+
 @media (max-width: 600px) {
   .quiz-card {
-    height: auto; /* Allow the quiz card to grow vertically based on content */
-    padding: 12px; /* Adjust the padding for smaller screens */
+
+    padding: 12px;
   }
 
   .quiz-question {
-    font-size: 20px; /* Adjust font size for smaller screens */
+   
+    font-size: 20px;
   }
 
   .quiz-option {
-    padding: 10px; /* Adjust padding for smaller screens */
-    font-size: 14px; /* Adjust font size for smaller screens */
+
+    padding: 10px;
+  
+    font-size: 14px;
   }
 }

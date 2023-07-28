@@ -1,15 +1,13 @@
 import React, { useState } from "react";
 import "./QuizQuestion.css";
 import QuestionOption from "../QuestionOption/QuestionOption";
-import ProgressBar from "../ProgressBar/ProgressBar";
 
 const QuizQuestion = ({
   question,
   options,
   answer,
   setSelectedOption,
-  submitted,
- 
+  submitted
 }) => {
   const [selectedOption, setSelectedOptionLocal] = useState("");
 
@@ -29,11 +27,9 @@ const QuizQuestion = ({
     return "";
   };
 
-
   return (
     <>
       <div className="quiz-card">
-       
         <h3 className="quiz-question">{question}</h3>
         <ul className="quiz-options">
           {options.map((option, index) => (
