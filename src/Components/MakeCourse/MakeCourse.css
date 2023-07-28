@@ -1,7 +1,7 @@
 /* Add this to your MakeCourse.css */
 .full-page-container {
   background: #b6ddfd;
-  height: 100vh;
+
   width: 100vw;
   /* background: linear-gradient(to right, white, var(--lightgrey), grey); */
   display: flex;
@@ -174,3 +174,29 @@ form {
 }
 
 
+@media (max-width: 768px) {
+  .course-options-container {
+    max-width: 70%; /* Adjust the maximum width for mobile screens */
+  }
+
+  .option-row img {
+    width: 80px;
+    height: 100px;
+  }
+
+  .option-row .option {
+    padding-top: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-right: 20px;
+    text-align: center;
+    width: 28%;
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: border-color 0.3s ease-in-out;
+    border-radius: 15px;
+}
+
+
+}

@@ -23,6 +23,9 @@ import chemistryImage from "./chemistry.png";
 import javascriptImage from "./javascript.png";
 import pythonImage from "./python.png";
 import javaImage from "./java.png";
+import five from "./5.png";
+import ten from "./10.png";
+import fifteen from "./15.png";
 
 export default function MakeCourse({
   userGlobal,
@@ -278,8 +281,12 @@ export default function MakeCourse({
                     }`}
                     onClick={() => setQuestionOption(5)}
                   >
-                    5
+                    <img src={five} alt="five" />
+                    Questions
+                    
                   </label>
+
+                  
                   <label
                     htmlFor="question-10"
                     className={`option ${
@@ -287,7 +294,8 @@ export default function MakeCourse({
                     }`}
                     onClick={() => setQuestionOption(10)}
                   >
-                    10
+                     <img src={ten} alt="five" />
+                     Questions
                   </label>
                   <label
                     htmlFor="question-15"
@@ -296,7 +304,8 @@ export default function MakeCourse({
                     }`}
                     onClick={() => setQuestionOption(15)}
                   >
-                    15
+                    <img src={fifteen} alt="five" />
+                    Questions
                   </label>
                 </div>
 
