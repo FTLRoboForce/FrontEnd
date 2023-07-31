@@ -7,7 +7,7 @@ import { Image, UnstyledButton, Avatar, Menu } from "@mantine/core";
 import { IconLogout, IconHeart, IconChevronDown } from "@tabler/icons-react";
 import { useDisclosure } from "@mantine/hooks";
 
-export function Navbar({ token, setToken }) {
+export function Navbar({ token, setToken, userGlobal, setUserGlobal }) {
   const [opened, { toggle }] = useDisclosure(false);
   const [userMenuOpened, setUserMenuOpened] = useState(false);
 
@@ -20,6 +20,7 @@ export function Navbar({ token, setToken }) {
     setUserMenuOpened(false);
     window.location = "/";
   }
+console.log(userGlobal)
 
   return (
     <header className="navContainer">
@@ -44,7 +45,7 @@ export function Navbar({ token, setToken }) {
             <Menu.Target>
               <UnstyledButton className="userActivityButton">
                 <div className="userActivityContainer">
-                  <Avatar src={logo} alt={username} radius="xl" size={20} />
+                  <Avatar src={userGlobal?.photo} alt={username} radius="xl" size={20} />
                   <div className="menu-item">{username}</div>
                   <IconChevronDown size={16} />
                 </div>
