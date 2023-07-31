@@ -2,8 +2,9 @@ import React, { useEffect, useState, useRef } from "react";
 import "./Leaderboard.css";
 import Api from "../../utilities/api";
 import ProgressBar from "../ProgressBar/ProgressBar";
+import { Image, UnstyledButton, Avatar, Menu } from "@mantine/core";
 
-const LeaderboardRow = ({ data, index }) => {
+const LeaderboardRow = ({ data, index, userGlobal }) => {
   const dateString = data.created;
   const date = new Date(dateString);
 
@@ -17,10 +18,13 @@ const LeaderboardRow = ({ data, index }) => {
     <div
       className={`leaderboard-row ${index % 2 === 0 ? "even-row" : "odd-row"}`}
     >
-      <p>{data.username}</p>
-      <p>{data.points}</p>
-      <p>{data.totalquiz}</p>
-      <p>{formattedDate}</p>
+     <div style={{ display: "flex", alignItems: "center" }}>
+        <Avatar src={data?.photo} radius="xl" size={30} />
+        <p style={{ marginLeft: "10px" }}>{data?.username}</p>
+      </div>
+      <p style= {{marginLeft:"70px"}}>{data.points}</p>
+      <p style= {{marginLeft:"30px"}}>{data.totalquiz}</p>
+      <p style= {{marginLeft:"30px"}}> {formattedDate}</p>
     </div>
   );
 };
@@ -65,10 +69,11 @@ export default function Leaderboard({
               <p className="leaderboard-title">Points</p>
               <p className="leaderboard-title">Total Quizzes Taken</p>
               <p className="leaderboard-title">Date Joined</p>
+            
             </div>
             <div className="leaderboard-content">
               {leaderboardData.map((data, index) => (
-                <LeaderboardRow key={index} data={data} index={index} />
+                <LeaderboardRow key={index} data={data} index={index} userGlobal={userGlobal} />
               ))}
             </div>
           </div>
