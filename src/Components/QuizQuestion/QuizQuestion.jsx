@@ -1,19 +1,48 @@
 import React, { useState } from "react";
 import "./QuizQuestion.css";
 import QuestionOption from "../QuestionOption/QuestionOption";
+import Api from "../../utilities/api";
 
 const QuizQuestion = ({
   question,
   options,
   answer,
   setSelectedOption,
-  submitted
+  submitted,
+  points,
+  setPoints
 }) => {
   const [selectedOption, setSelectedOptionLocal] = useState("");
+  const [showChallengeButton, setShowChallengeButton] = useState(false);
 
   const handleSelectOption = (option) => {
     setSelectedOptionLocal(option);
-    setSelectedOption(option); // Pass the selected option back to the parent component (Quiz)
+    setSelectedOption(option);
+    setShowChallengeButton(option !== answer);
+  };
+
+  const handleChallenge = async () => {
+    try {
+      const challengeResult = await Api.challenge({
+        question,
+        selectedOption,
+        options
+      });
+      console.log(challengeResult);
+      if (challengeResult.data.toLowerCase() == "true") {
+        setPoints(points + 1);
+        console.log("Challenge accepted! You gained 1 point.");
+      } else if (challengeResult.data.toLowerCase() == "false") {
+        setPoints(points - 2);
+        console.log("Challenge denied! You were penalized 2 points.");
+      }
+
+      // Set the challenge result in the parent component
+      // Hide the challenge button after the challenge is resolved
+      setShowChallengeButton(false);
+    } catch (error) {
+      console.log("Error during challenge:", error);
+    }
   };
 
   const getOptionClass = (option) => {
@@ -38,11 +67,21 @@ const QuizQuestion = ({
               option={option}
               isSelected={selectedOption === option}
               handleSelect={() => handleSelectOption(option)}
-              optionClass={getOptionClass(option)} // Pass the option class to indicate correct or incorrect
-              disabled={submitted} // Disable options after the user submits the quiz
+              optionClass={getOptionClass(option)}
+              disabled={submitted}
             />
           ))}
         </ul>
+        {showChallengeButton && submitted ? (
+          <p>
+            You will be given the change to challenge. If the challenge is
+            successful you will receive 1 point. If it is not, you will be
+            penalized 2 points.
+          </p>
+        ) : null}
+        {showChallengeButton && submitted ? (
+          <button onClick={handleChallenge}>Challenge</button>
+        ) : null}
       </div>
     </>
   );
