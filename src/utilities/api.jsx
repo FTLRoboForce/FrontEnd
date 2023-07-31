@@ -15,7 +15,7 @@ class Api {
   async request(method, path, data) {
     const url = `${this.url}/${path}`;
     const headers = {
-      "Content-Type": "application/json",
+      "Content-Type": "application/json"
     };
 
     if (this.token) {
@@ -27,7 +27,7 @@ class Api {
         method,
         url,
         data,
-        headers,
+        headers
       });
       return response.data;
     } catch (error) {
@@ -63,6 +63,10 @@ class Api {
 
   async makeFlashcard(flashcard) {
     return await this.request("POST", `openai/flashcards`, flashcard);
+  }
+
+  async challenge(challenge) {
+    return await this.request("POST", `openai/challenge`, challenge);
   }
 }
 export default new Api();
