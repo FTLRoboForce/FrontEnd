@@ -32,6 +32,7 @@ export default function Leaderboard({
 }) {
   const [leaderboardData, setLeaderboardData] = useState([]);
   const leaderboardContainerRef = useRef(null);
+  console.log(userGlobal?.photo)
 
   useEffect(() => {
     try {
