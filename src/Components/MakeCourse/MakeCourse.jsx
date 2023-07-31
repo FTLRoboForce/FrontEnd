@@ -38,10 +38,12 @@ export default function MakeCourse({
   subject,
   questionOption,
   setQuestionOption,
-  setProgressBar,
+  setProgressBar
 }) {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
+
+  console.log("userGlobal", userGlobal);
 
   const handleSubjectChange = (selectedSubject) => {
     setSubject(selectedSubject);
@@ -64,7 +66,7 @@ export default function MakeCourse({
         subject: subject,
         difficultyLevel: difficulty,
         number: questionOption,
-        optionalSection: sub,
+        optionalSection: sub
       });
 
       setFlashcards(JSON.parse(response.data));
@@ -79,7 +81,6 @@ export default function MakeCourse({
     // Reset state after form submission
     setSubject("");
     setDifficulty("");
-  
   };
 
   const isSubjectSelected = (selectedSubject) => {
@@ -125,6 +126,11 @@ export default function MakeCourse({
           <Loader />
         ) : (
           <div className="full-page-container">
+            {userGlobal.photo ? (
+              <img src={userGlobal.photo} alt="User" />
+            ) : (
+              <img src="https://avatar-management--avatars.us-west-2.prod.public.atl-paas.net/default-avatar.png" />
+            )}
             <h2>
               Welcome, <span>{nameToShow}</span>
             </h2>
@@ -283,10 +289,8 @@ export default function MakeCourse({
                   >
                     <img src={five} alt="five" />
                     Questions
-                    
                   </label>
 
-                  
                   <label
                     htmlFor="question-10"
                     className={`option ${
@@ -294,8 +298,8 @@ export default function MakeCourse({
                     }`}
                     onClick={() => setQuestionOption(10)}
                   >
-                     <img src={ten} alt="five" />
-                     Questions
+                    <img src={ten} alt="five" />
+                    Questions
                   </label>
                   <label
                     htmlFor="question-15"
