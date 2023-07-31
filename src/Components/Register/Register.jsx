@@ -168,6 +168,12 @@ export function Register({ userGlobal }) {
                     error={
                       errortext && errortext.includes("Email") && errortext
                     }
+                    errorProps={{
+                      style: {
+                        color: "rgb(0, 52, 85)",
+                        fontSize: 14
+                      }
+                    }}
                   />
 
                   <TextInput
@@ -187,6 +193,12 @@ export function Register({ userGlobal }) {
                     error={
                       errortext && errortext.includes("username") && errortext
                     }
+                    errorProps={{
+                      style: {
+                        color: "rgb(0, 52, 85)",
+                        fontSize: 14
+                      }
+                    }}
                   />
 
                   <PasswordInput
@@ -222,6 +234,12 @@ export function Register({ userGlobal }) {
                     error={
                       errortext && errortext.includes("Passwords") && errortext
                     }
+                    errorProps={{
+                      style: {
+                        color: "rgb(0, 52, 85)",
+                        fontSize: 14
+                      }
+                    }}
                   />
 
                   <Checkbox
