@@ -1,5 +1,12 @@
 import React, { useState } from "react";
-import { TextInput, PasswordInput, Checkbox, Text, Button, Divider } from "@mantine/core";
+import {
+  TextInput,
+  PasswordInput,
+  Checkbox,
+  Text,
+  Button,
+  Divider
+} from "@mantine/core";
 import { useNavigate } from "react-router-dom";
 import ParticleBackground from "../../ParticleBackground/ParticleBackground";
 import Api from "../../utilities/api";
@@ -27,10 +34,17 @@ export function Register({ userGlobal }) {
   function handleOnSubmit(event) {
     event.preventDefault();
 
-    if (verifyPassword(user.password, user.confirm) && verifyEmail(user.email)) {
-      Api.register(user);
-      setUser(initialUserState);
-      setErrortext(""); // Clear any previous error messages
+    try {
+      if (
+        verifyPassword(user.password, user.confirm) &&
+        verifyEmail(user.email)
+      ) {
+        Api.register(user);
+        setUser(initialUserState);
+        setErrortext(""); // Clear any previous error messages
+      }
+    } catch (err) {
+      setErrortext(err.message);
     }
   }
 
@@ -94,12 +108,19 @@ export function Register({ userGlobal }) {
                   Register with
                 </Text>
 
-                <Button className="google-btn" leftIcon={<img src={google} alt="Google Icon" width={20} />} />
-                <Divider label="Or continue with email" labelPosition="center" my="lg" />
+                <Button
+                  className="google-btn"
+                  leftIcon={<img src={google} alt="Google Icon" width={20} />}
+                />
+                <Divider
+                  label="Or continue with email"
+                  labelPosition="center"
+                  my="lg"
+                />
 
                 <form onSubmit={handleOnSubmit}>
                   <TextInput
-                   classNames={{ label: 'white-text' }}
+                    classNames={{ label: "white-text" }}
                     required
                     label="First Name"
                     placeholder="Enter your first name"
@@ -115,7 +136,7 @@ export function Register({ userGlobal }) {
                   />
 
                   <TextInput
-                   classNames={{ label: 'white-text' }}
+                    classNames={{ label: "white-text" }}
                     required
                     label="Last Name"
                     placeholder="Enter your last name"
@@ -131,7 +152,7 @@ export function Register({ userGlobal }) {
                   />
 
                   <TextInput
-                   classNames={{ label: 'white-text' }}
+                    classNames={{ label: "white-text" }}
                     required
                     label="Email"
                     placeholder="Enter your email"
@@ -144,11 +165,13 @@ export function Register({ userGlobal }) {
                         fontSize: 16
                       }
                     }}
-                    error={errortext && errortext.includes("Email") && errortext}
+                    error={
+                      errortext && errortext.includes("Email") && errortext
+                    }
                   />
 
                   <TextInput
-                   classNames={{ label: 'white-text' }}
+                    classNames={{ label: "white-text" }}
                     required
                     label="Username"
                     placeholder="Enter your username"
@@ -161,11 +184,13 @@ export function Register({ userGlobal }) {
                         fontSize: 16
                       }
                     }}
-                    error={errortext && errortext.includes("username") && errortext}
+                    error={
+                      errortext && errortext.includes("username") && errortext
+                    }
                   />
 
                   <PasswordInput
-                   classNames={{ label: 'white-text' }}
+                    classNames={{ label: "white-text" }}
                     required
                     label="Password"
                     placeholder="Enter your password"
@@ -181,7 +206,7 @@ export function Register({ userGlobal }) {
                   />
 
                   <PasswordInput
-                   classNames={{ label: 'white-text' }}
+                    classNames={{ label: "white-text" }}
                     required
                     label="Confirm Password"
                     placeholder="Confirm your password"
@@ -194,17 +219,22 @@ export function Register({ userGlobal }) {
                         fontSize: 16
                       }
                     }}
-                    error={errortext && errortext.includes("Passwords") && errortext}
+                    error={
+                      errortext && errortext.includes("Passwords") && errortext
+                    }
                   />
 
-                  <Checkbox classNames={{ label: 'white-text-reg', input: 'white-text-reg' }}  required label="I accept terms and conditions" />
+                  <Checkbox
+                    classNames={{
+                      label: "white-text-reg",
+                      input: "white-text-reg"
+                    }}
+                    required
+                    label="I accept terms and conditions"
+                  />
                   <Button type="submit" radius="xl" className="submit-button">
                     Register
                   </Button>
-
-                  {errortext && !errortext.includes("Passwords") && !errortext.includes("Email") && (
-                    <p className="error-text">{errortext}</p>
-                  )}
                 </form>
               </div>
             </div>
