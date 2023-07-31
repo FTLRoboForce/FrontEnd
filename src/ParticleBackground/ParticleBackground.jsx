@@ -14,8 +14,8 @@ function ParticleBackground() {
   const particlesLoaded = useCallback(async (container) => {
   }, []);
 
+  
   return (
-
     <Particles
       id="tsparticles"
       init={particlesInit}
@@ -23,7 +23,7 @@ function ParticleBackground() {
       options={{
         background: {
           color: {
-            value: "transparent",
+            value: [ "#b6ddfd"]
           },
         },
         fpsLimit: 60,
@@ -54,7 +54,7 @@ function ParticleBackground() {
             value: "#004D85",
           },
           links: {
-            color: "#00A1E0",
+            color: "#ffffff",
             distance: 100,
             enable: true,
             opacity: 1,
@@ -80,25 +80,30 @@ function ParticleBackground() {
           },
           opacity: {
             value: 0.5,
+            random: false,
           },
           shape: {
-            type: "images",
-            image:[
-              { 
-                src: brain,
-                width: 100,
-                height: 100
-              }
-            ]
+            type: "edge",
+          stroke: { color: "#b6ddfd", width: 1 },
+          polygon: { nb_sides: 5 },
+          image: { src: brain, width: 100, height: 100 },
+          
           },
           size: {
-            value: { min: 10, max: 15 },
+            value: { min: 5, max: 4 },
+            random: true,
+            animation: {
+              enable: false,
+              speed: 40,
+              minimumValue: 0.1,
+              sync: false,
+            },
           },
         },
         detectRetina: true,
       }}
     />
-  )
+  );
 }
 
 export default ParticleBackground;

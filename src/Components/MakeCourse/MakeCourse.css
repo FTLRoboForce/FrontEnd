@@ -179,6 +179,10 @@ form {
     max-width: 70%; /* Adjust the maximum width for mobile screens */
   }
 
+  .full-page-container > h2 {
+    margin-top: 20%;
+  }
+
   .option-row img {
     width: 80px;
     height: 100px;

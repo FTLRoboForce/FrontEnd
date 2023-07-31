@@ -5,7 +5,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background: #b6ddfd; /* Set the background color to #b6ddfd */
+  background: transparent; /* Set the background color to #b6ddfd */
+
 }
 
 .home-container {
@@ -71,7 +72,7 @@
   font-size: 18px;
   font-weight: bold;
   background-color: var(--lightblue);
-  color: white;
+  color:#003455;
   border: none;
   border-radius: 5px;
   padding: 1px 4px;
@@ -112,7 +113,7 @@
   }
 
   .title {
-    font-size: 64px;
+    font-size:120px;
     color: #003455;
   }
 
