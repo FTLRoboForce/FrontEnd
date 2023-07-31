@@ -22,6 +22,7 @@ const initialUserState = {
   lastname: "",
   password: "",
   confirm: "",
+  photo: "",
   points: 0,
   totalquiz: 0
 };
@@ -46,6 +47,7 @@ export function Register({ userGlobal }) {
     } catch (err) {
       setErrortext(err.message);
     }
+    console.log(user);
   }
 
   function handleValueChange(event) {
@@ -197,6 +199,21 @@ export function Register({ userGlobal }) {
                       style: {
                         color: "rgb(0, 52, 85)",
                         fontSize: 14
+                      }
+                    }}
+                  />
+
+                  <TextInput
+                    classNames={{ label: "white-text" }}
+                    label="Photo URL"
+                    placeholder="Enter your photo URL"
+                    value={user.photo}
+                    onChange={handleValueChange}
+                    name="photo"
+                    labelProps={{
+                      style: {
+                        color: "#ffffff",
+                        fontSize: 16
                       }
                     }}
                   />
