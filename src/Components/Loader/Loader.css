@@ -1,4 +1,4 @@
-/* Loader container styles */
+
 .loader-container {
   display: flex;
   flex-direction: column;
@@ -8,7 +8,6 @@
   background-color: #b6ddfd;
 }
 
-/* Loader title styles */
 .loader-title {
   display: flex;
   align-items: center;
@@ -36,7 +35,7 @@
   color: var(--darkblue);
 }
 
-/* Loader image styles */
+
 .loader-image {
   width: 50px;
   height: 50px;
@@ -78,7 +77,7 @@
   }
 }
 
-/* Add more CSS animation here to make the loading more visually appealing */
+
 
 /* Rotate loader title and images */
 @keyframes rotateTitle {
@@ -283,3 +282,65 @@
       opacity:0;
     }
   }
+
+
+@media only screen and (max-width: 767px) {
+  .loader-container {
+    
+    padding: 20px;
+  }
+}
+
+
+@media only screen and (max-width: 767px) {
+  .loader-title {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+
+@media only screen and (max-width: 767px) {
+  .loader-text {
+    font-size: 20px;
+    margin-bottom: 15px;
+  }
+}
+
+
+@media only screen and (max-width: 767px) {
+  .loader-image {
+    width: 30px;
+    height: 30px;
+    margin: 10px 0;
+  }
+}
+
+
+@media only screen and (max-width: 767px) {
+  @keyframes rotateTitle {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  @keyframes bounceText {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+
+  @keyframes moveImages {
+    0%, 100% {
+      transform: translateX(0);
+    }
+    50% {
+      transform: translateX(-5px);
+    }
+  }
+}
+
+

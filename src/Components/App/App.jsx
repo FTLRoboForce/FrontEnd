@@ -148,8 +148,9 @@ function App() {
             element={<Creator userGlobal={userGlobal} />}
           ></Route>
           <Route
+           path="/loader"
             
-            element={<Loader userGlobal={userGlobal}  />}
+            element={<Loader userGlobal={userGlobal} />}
           ></Route>
             <Route
             path="/progress"
