@@ -26,6 +26,7 @@ import javaImage from "./java.png";
 import five from "./5.png";
 import ten from "./10.png";
 import fifteen from "./15.png";
+import { Image, UnstyledButton, Avatar, Menu } from "@mantine/core";
 
 export default function MakeCourse({
   userGlobal,
@@ -126,11 +127,12 @@ export default function MakeCourse({
           <Loader />
         ) : (
           <div className="full-page-container">
-            {userGlobal.photo ? (
-              <img src={userGlobal.photo} alt="User" />
+            <Avatar src={userGlobal?.photo} alt={username} radius="xl" size={80} />
+            {/* {userGlobal.photo ? (
+              <Avatar src={userGlobal?.photo} alt={username} radius="xl" size={20} />
             ) : (
               <img src="https://avatar-management--avatars.us-west-2.prod.public.atl-paas.net/default-avatar.png" />
-            )}
+            )} */}
             <h2>
               Welcome, <span>{nameToShow}</span>
             </h2>
