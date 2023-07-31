@@ -15,26 +15,32 @@ const PastQuizzesTable = ({ userGlobal }) => {
   }, [userGlobal]);
 
   return (
-    <div>
-      <h2>Past Quizzes</h2>
-      <table>
-        <thead>
-          <tr>
-            <th>Quiz ID</th>
-            <th>Difficulty</th>
-            <th>Subject</th>
-          </tr>
-        </thead>
-        <tbody>
-          {pastQuizzes?.map((quiz) => (
-            <tr key={quiz.quiz_id}>
-              <td>{quiz.quiz_id}</td>
-              <td>{quiz.difficulty}</td>
-              <td>{quiz.subject}</td>
-            </tr>
+    <div className="leaderboardPage-container">
+      <div className="leaderboard-container appear-animation">
+        <h2>Past Quizzes</h2>
+        <div className="leaderboard-titles">
+          <div className="leaderboard-title">Quiz ID</div>
+          <div className="leaderboard-title">Difficulty</div>
+          <div className="leaderboard-title">Subject</div>
+        </div>
+        <div className="leaderboard-content">
+          {pastQuizzes.map((quiz, index) => (
+            <div
+              key={quiz.quizId}
+              className={`leaderboard-row ${
+                index % 2 === 0 ? "even-row-color" : "odd-row-color"
+              }`}
+              onClick={() => {
+                window.location = `/quiz/${quiz.quiz_id}`;
+              }}
+            >
+              <div>{quiz.quiz_id}</div>
+              <div>{quiz.difficulty}</div>
+              <div>{quiz.subject}</div>
+            </div>
           ))}
-        </tbody>
-      </table>
+        </div>
+      </div>
     </div>
   );
 };
