@@ -25,7 +25,11 @@ const LeaderboardRow = ({ data, index }) => {
   );
 };
 
-export default function Leaderboard({ userGlobal, progressBar, setProgressBar }) {
+export default function Leaderboard({
+  userGlobal,
+  progressBar,
+  setProgressBar
+}) {
   const [leaderboardData, setLeaderboardData] = useState([]);
   const leaderboardContainerRef = useRef(null);
 
