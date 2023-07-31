@@ -10,15 +10,31 @@ const Quiz = ({
   questions,
   setQuestions,
   progressBar,
-  setProgressBar
+  setProgressBar,
+  subject,
+  difficulty
 }) => {
   const [points, setPoints] = useState(0);
   const [submitted, setSubmitted] = useState(false);
   const [challengeResult, setChallengeResult] = useState(null);
+  const [quiz, setQuiz] = useState({
+    userid: userGlobal.id,
+    questions: questions,
+    points: points,
+    subject: subject,
+    difficulty: difficulty
+  });
 
   useEffect(() => {
     setProgressBar("quiz");
-  }, []);
+    setQuiz({
+      userid: userGlobal.id,
+      questions: questions,
+      points: points,
+      subject: subject,
+      difficulty: difficulty
+    });
+  }, [points]);
 
   useEffect(() => {}, []);
 
@@ -31,21 +47,24 @@ const Quiz = ({
         }
       });
       setPoints(totalPoints);
-      setSubmitted(true);
       console.log(points);
+      setSubmitted(true);
     }
   };
 
   const sendPoints = async () => {
     try {
+      console.log(points);
+      const result = await Api.addQuiz(quiz);
       const response = await Api.updatePoints({
         email: userGlobal.email,
         points: points
       });
+      console.log(quiz);
     } catch (error) {
       console.log(error);
     }
-    window.location = "/leaderboard";
+    // window.location = "/leaderboard";
   };
 
   return (

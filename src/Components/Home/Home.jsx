@@ -30,19 +30,22 @@ export function Home({ userGlobal }) {
           <div className="check-container">
             <IconCheck size={28} stroke={3} className="check-icon" />
             <p className="check-text">
-              <b>Learn</b> – from an extensive collection of courses on various topics to enhance your knowledge.
+              <b>Learn</b> – from an extensive collection of courses on various
+              topics to enhance your knowledge.
             </p>
           </div>
           <div className="check-container">
             <IconCheck size={28} stroke={3} className="check-icon" />
             <p className="check-text">
-              <b>Quiz</b> – yourself with interactive quizzes to reinforce your understanding of the concepts.
+              <b>Quiz</b> – yourself with interactive quizzes to reinforce your
+              understanding of the concepts.
             </p>
           </div>
           <div className="check-container">
             <IconCheck size={28} stroke={3} className="check-icon" />
             <p className="check-text">
-              <b>Conquer</b> – your learning journey and achieve your goals with BrainForce's personalized learning path.
+              <b>Conquer</b> – your learning journey and achieve your goals with
+              BrainForce's personalized learning path.
             </p>
           </div>
 
@@ -50,7 +53,7 @@ export function Home({ userGlobal }) {
             {userGlobal ? (
               <button
                 className="control"
-                onClick={() => (window.location = "/makecourse")}
+                onClick={() => (window.location = "/past")}
               >
                 Make a Course
               </button>

@@ -14,17 +14,18 @@ import { useEffect, useState } from "react";
 import Creator from "../Creators/Creator";
 import Loader from "../Loader/Loader";
 import ProgressBar from "../ProgressBar/ProgressBar";
+import PastQuizzesTable from "../PreviousQuiz/PreviousQuiz";
 
 function App() {
-  const [progressBar, setProgressBar] = useState(null); 
-  
+  const [progressBar, setProgressBar] = useState(null);
+
   const [token, setToken] = useState(null);
   const [userGlobal, setUserGlobal] = useState();
   const [subject, setSubject] = useState("");
   const [difficulty, setDifficulty] = useState("");
   const [sub, setSub] = useState("");
   const [flashcards, setFlashcards] = useState([
-    { answer: "test", question: "test" },
+    { answer: "test", question: "test" }
   ]);
   const [questionOption, setQuestionOption] = useState(2);
 
@@ -32,18 +33,18 @@ function App() {
     {
       question: "What is the capital of France?",
       options: ["New York", "London", "Paris", "Dublin"],
-      answer: "Paris",
+      answer: "Paris"
     },
     {
       question: "What is the capital of France?",
       options: ["New York", "London", "Paris", "Dublin"],
-      answer: "Paris",
+      answer: "Paris"
     },
     {
       question: "What is the capital of France?",
       options: ["New York", "London", "Paris", "Dublin"],
-      answer: "Paris",
-    },
+      answer: "Paris"
+    }
   ]);
 
   const handleAnswer = (selectedOption) => {
@@ -80,6 +81,10 @@ function App() {
                 userGlobal={userGlobal}
               />
             }
+          />
+          <Route
+            path="/past"
+            element={<PastQuizzesTable userGlobal={userGlobal} />}
           />
           <Route
             path="/flashcard"
@@ -123,12 +128,13 @@ function App() {
           />
           <Route
             path="/leaderboard"
-            element={<Leaderboard userGlobal={userGlobal}
-            
-            setProgressBar={setProgressBar}
-            progressBar={progressBar}
-            />}
-           
+            element={
+              <Leaderboard
+                userGlobal={userGlobal}
+                setProgressBar={setProgressBar}
+                progressBar={progressBar}
+              />
+            }
           />
           <Route
             path="/quiz"
@@ -139,6 +145,8 @@ function App() {
                 setQuestions={setQuestions}
                 setProgressBar={setProgressBar}
                 progressBar={progressBar}
+                subject={subject}
+                difficulty={difficulty}
               />
             }
           ></Route>
@@ -148,17 +156,19 @@ function App() {
             element={<Creator userGlobal={userGlobal} />}
           ></Route>
           <Route
-           path="/loader"
-            
+            path="/loader"
             element={<Loader userGlobal={userGlobal} />}
           ></Route>
-            <Route
+          <Route
             path="/progress"
-            
-            element={<ProgressBar userGlobal={userGlobal} progressBar={progressBar}  setProgressBar={setProgressBar} />}
+            element={
+              <ProgressBar
+                userGlobal={userGlobal}
+                progressBar={progressBar}
+                setProgressBar={setProgressBar}
+              />
+            }
           ></Route>
-
-         
         </Routes>
       </BrowserRouter>
     </>
