@@ -1,0 +1,217 @@
+/* Profile.css */
+
+/* Import the fonts used in the CSS inspiration */
+@import url('https://fonts.googleapis.com/css2?family=Hind+Guntur:wght@400;700&display=swap');
+
+/* Add media queries for mobile devices */
+@media screen and (max-width: 768px) {
+  .profile-container {
+    flex-direction: column;
+    align-items: center;
+  }
+  .avatar-container {
+    margin-top: 40px;
+  }
+  .info {
+    margin-top: 40px;
+  }
+}
+
+/* Apply the CSS inspiration styles to the profile page */
+.profile-page {
+  font-family: 'Hind Guntur', sans-serif;
+  color: #054231;
+  display: flex;
+  justify-content: center;
+  /* background: #49afa8; */
+  /* background-image: url(https://github.com/OlgaKoplik/CodePen/blob/master/leaf.png?raw=true); */
+  background-repeat: no-repeat, no-repeat;
+  background-position: 200% -40%;
+  background-size: 80%;
+}
+
+
+
+
+.profile-container {
+  height: 600px;
+  /* margin-top: 100%; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 310px;
+  margin-top: 15%;
+  border-radius: 25px;
+  box-shadow: 15px 10px 25px 0px #006299;
+  background: #fff;
+  background-image: url(https://www.salesforce.com/blog/wp-content/uploads/sites/2/2021/12/2021-12-360Blog-2D-IndividualIllustrations-Einstien.png);
+  background-repeat: no-repeat, no-repeat;
+  background-position: 120% -5%, 200% -40%;
+  background-size: 40%, 80%;
+  animation: open .5s;
+}
+
+.info {
+  text-align: center;
+  margin-top: 40px;
+}
+.info h2 {
+  font-size: 14px;
+  color: black;
+}
+
+.avatar-container {
+  position: relative;
+  margin-top: -40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.user-photo {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.change-photo-button {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  color: #fff;
+  background: #00a1e0;
+  border-radius: 25px;
+  padding: 10px;
+}
+
+.user-name {
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: #676767;
+  max-width: 220px;
+  overflow-wrap: break-word;
+}
+
+.user-email {
+  text-align: center;
+  max-width: 220px;
+  overflow-wrap: break-word;
+}
+
+.photo-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.photo-form input {
+  border-radius: 15px;
+  border: 1px solid #b7b7b7;
+  padding: 5px 5px 5px 10px;
+  font-size: 18px;
+  transition: 0.2s;
+  width: 200px;
+}
+
+.photo-form input:focus {
+  outline: none;
+  border: 1px solid #00a1e0;
+}
+
+.photo-form input::placeholder {
+  color: #bebebe;
+}
+
+.user-details {
+  list-style: none;
+  padding: 0;
+}
+
+.user-details li {
+  margin-bottom: 10px;
+}
+
+.user-points,
+.user-quiz {
+  text-align: center;
+  font-weight: 500;
+}
+
+.change-photo-button {
+  color: #0a211b;
+  letter-spacing: 1px;
+  margin: 20px;
+  font-size: 18px;
+  padding: 10px;
+  text-align: center;
+  transition: 0.5s;
+  border-radius: 10px;
+  cursor: pointer;
+  border-radius: 25px;
+  border: none;
+  background: #00a1e0;
+}
+
+.save {
+background-color: #00a1e0;
+ 
+}
+
+.save:hover{
+  background-color: #004d85;
+   
+  }
+
+.edit {
+  color: #fff;
+  width: 180px;
+}
+
+.change-photo-button:hover {
+  background-color: #004d85;
+  color: #fff;
+  width: 180px;
+  box-shadow: 0px 0px 20px 0px #00a1e0;
+}
+
+.change-photo-button:focus{
+  outline: none;
+}
+
+.lds-ripple {
+  display: inline-block;
+  position: relative;
+  width: 64px;
+  height: 64px;
+}
+
+.lds-ripple div {
+  position: absolute;
+  border: 4px solid #fff;
+  opacity: 1;
+  border-radius: 50%;
+  animation: lds-ripple 1s cubic-bezier(0, 0.2, 0.8, 1) infinite;
+}
+
+.lds-ripple div:nth-child(2) {
+  animation-delay: -0.5s;
+}
+
+/* .fa-instagram {
+  position: absolute;
+  color: #79f1a4;
+  top: 3%;
+  right: 2%;
+  font-size: 38px;
+} */
+
+/* .fa-instagram:hover {
+  font-size: 42px;
+  color: #caff81;
+  transition: all .1s linear;
+  cursor: pointer;
+} */

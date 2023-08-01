@@ -16,6 +16,7 @@ import Loader from "../Loader/Loader";
 import ProgressBar from "../ProgressBar/ProgressBar";
 import PastQuizzesTable from "../PreviousQuiz/PreviousQuiz";
 import PastQuiz from "../PastQuiz/PastQuiz";
+import Profile from "../Profile/Profile"
 
 function App() {
   const [progressBar, setProgressBar] = useState(null);
@@ -52,22 +53,25 @@ function App() {
   const handleAnswer = (selectedOption) => {
     console.log("Selected Option:", selectedOption);
   };
-
   useEffect(() => {
     if (localStorage.getItem("jwt")) {
       setToken(localStorage.getItem("jwt"));
-      Api.user({ token: localStorage.getItem("jwt") })
-        .then((response) => {
-          setUserGlobal(response);
-          console.log(userGlobal);
-        })
-        .then(() => {
-          Api.listQuiz({ userid: userGlobal?.id }).then((result) => {
-            setPastQuizzes(result);
-          });
-        });
+      Api.user({ token: localStorage.getItem("jwt") }).then((response) => {
+        setUserGlobal(response);
+        console.log(response); 
+      });
     }
-  }, [userGlobal?.id]);
+  }, [setToken]);
+
+  useEffect(() => {
+    if (userGlobal?.id) {
+      Api.listQuiz({ userid: userGlobal.id }).then((result) => {
+        setPastQuizzes(result);
+      });
+    }
+  }, [userGlobal]);
+
+
 
   return (
     <>
@@ -188,6 +192,16 @@ function App() {
               />
             }
           ></Route>
+        <Route
+        path="/profile"
+        element={
+          <Profile
+            userGlobal={userGlobal}
+            setUserGlobal={setUserGlobal}
+            progressBar={progressBar}
+          />
+        }
+      ></Route>
         </Routes>
       </BrowserRouter>
     </>
