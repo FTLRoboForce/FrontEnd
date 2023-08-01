@@ -4,7 +4,8 @@ import { Link } from "react-router-dom";
 
 import "./Navbar.css";
 import { Image, UnstyledButton, Avatar, Menu } from "@mantine/core";
-import { IconLogout, IconHeart, IconChevronDown, Icon360View} from "@tabler/icons-react";
+import { IconLogout, IconHeart, IconChevronDown, Icon3dRotate} from "@tabler/icons-react";
+
 import { useDisclosure } from "@mantine/hooks";
 
 export function Navbar({ token, setToken, userGlobal, setUserGlobal }) {
@@ -57,8 +58,8 @@ console.log(userGlobal)
               </UnstyledButton>
             </Menu.Target>
             <Menu.Dropdown>
-              <Menu.Item  onClick={() => (window.location = "/profile")} icon={<IconHeart size="0.9rem" />}>Profile</Menu.Item>
-              <Menu.Item  onClick={() => (window.location = "/leaderboard")} icon={<Icon360View size="0.9rem" />}>Leaderboard</Menu.Item>
+            <Menu.Item  onClick={() => (window.location = "/profile")} icon={<IconHeart size="0.9rem" />}>Profile</Menu.Item>
+            <Menu.Item  onClick={() => (window.location = "/leaderboard")} icon={<Icon3dRotate size="0.9rem" />}>Leaderboard</Menu.Item>
 
               <Menu.Divider />
 
