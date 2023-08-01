@@ -5,7 +5,15 @@ export default function PastQuizOption({ option, answer, selectedOption }) {
   return (
     <>
       <li
-        className={`quiz-option ${selectedOption === option ? "selected" : ""}`}
+        className={`quiz-option ${
+          selectedOption === option && selectedOption === answer
+            ? "correct"
+            : ""
+        } ${
+          selectedOption === option && selectedOption != answer
+            ? "incorrect"
+            : ""
+        } `}
       >
         {option}
         {selectedOption === option && (

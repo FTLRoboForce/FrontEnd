@@ -64,7 +64,7 @@ const Quiz = ({
     } catch (error) {
       console.log(error);
     }
-    // window.location = "/leaderboard";
+    window.location = "/leaderboard";
   };
 
   return (

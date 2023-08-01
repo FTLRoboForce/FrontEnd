@@ -30,6 +30,7 @@ const PastQuiz = ({ pastQuizzes, userGlobal }) => {
                   question={question.question}
                   options={question.options}
                   answer={question.answer}
+                  selectedOption={question.selectedOption}
                 />
               ))}
             </div>

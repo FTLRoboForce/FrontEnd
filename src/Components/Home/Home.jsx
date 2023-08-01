@@ -53,7 +53,7 @@ export function Home({ userGlobal }) {
             {userGlobal ? (
               <button
                 className="control"
-                onClick={() => (window.location = "/past")}
+                onClick={() => (window.location = "/makecourse")}
               >
                 Make a Course
               </button>

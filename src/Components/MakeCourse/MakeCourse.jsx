@@ -79,8 +79,8 @@ export default function MakeCourse({
     }
 
     // Reset state after form submission
-    setSubject("");
-    setDifficulty("");
+    // setSubject("");
+    // setDifficulty("");
   };
 
   const isSubjectSelected = (selectedSubject) => {
