@@ -75,9 +75,9 @@ const QuizQuestion = ({
         </ul>
         {showChallengeButton && submitted ? (
           <p>
-            You will be given the change to challenge. If the challenge is
-            successful you will receive 1 point. If it is not, you will be
-            penalized 2 points.
+            You will be given the chance to challenge. If the challenge is
+            successful you will receive the point(s). If it is not, you will be
+            penalized double the points' worth.
           </p>
         ) : null}
         {showChallengeButton && submitted ? (
