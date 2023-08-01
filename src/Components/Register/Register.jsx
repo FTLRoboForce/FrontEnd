@@ -1,19 +1,20 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import {
   TextInput,
   PasswordInput,
   Checkbox,
   Text,
   Button,
-  Divider
+  Divider,
 } from "@mantine/core";
 import { useNavigate } from "react-router-dom";
 import ParticleBackground from "../../ParticleBackground/ParticleBackground";
 import Api from "../../utilities/api";
-import google from "../../images/google.svg";
+import googleImg from "../../images/google.svg";
 import einsteinImage from "../../images/einstein.png";
-
+import jwt_decode from "jwt-decode";
 import "./Register.css";
+import { useEffect } from "react";
 
 const initialUserState = {
   email: "",
@@ -24,7 +25,7 @@ const initialUserState = {
   confirm: "",
   photo: "",
   points: 0,
-  totalquiz: 0
+  totalquiz: 0,
 };
 
 export function Register({ userGlobal }) {
@@ -54,7 +55,7 @@ export function Register({ userGlobal }) {
     const { name, value } = event.target;
     setUser((prevUser) => ({
       ...prevUser,
-      [name]: value
+      [name]: value,
     }));
   }
 
@@ -84,6 +85,57 @@ export function Register({ userGlobal }) {
     return true;
   }
 
+  const handleRegister = () => {
+    navigate("/login");
+  };
+
+  function handleCredentialResponse(response) {
+    const decoded = jwt_decode(response.credential);
+    console.log(decoded);
+    setUser({
+      email: decoded.email,
+      firstname: decoded.given_name,
+      lastname: decoded.family_name || "Deafult",
+      photo: decoded.picture,
+      username: decoded.name,
+      points: 0,
+      totalquiz: 0,
+      password: decoded.sub,
+      confirm: decoded.sub,
+    });
+    document.getElementById("terms").checked = true;
+    document.getElementById("register-button").click();
+    handleRegister();
+  }
+
+  const IdConfiguration = {
+    client_id:
+      "362928511290-jkl6t80prk20o4u9igun7t9fq9aof3nb.apps.googleusercontent.com",
+    callback: handleCredentialResponse,
+    context: "signup",
+    ux_mode: "popup",
+    auto_select: false,
+  };
+
+  const GsiButtonConfiguration = {
+    type: "standard",
+    theme: "filled_blue",
+    text: "signup_with",
+    shape: "circle",
+    ux_mode: "popup",
+  };
+
+  useEffect(() => {
+    /* global google */
+    window.onload = function () {
+      google.accounts.id.initialize(IdConfiguration);
+      google.accounts.id.renderButton(
+        document.getElementById("google-signup"),
+        GsiButtonConfiguration
+      );
+    };
+  }, []);
+
   return (
     <>
       {userGlobal ? (
@@ -101,7 +153,7 @@ export function Register({ userGlobal }) {
                   sx={(theme) => ({
                     fontFamily: `Greycliff CF, ${theme.fontFamily}`,
                     fontWeight: 900,
-                    fontSize: 26
+                    fontSize: 26,
                   })}
                 >
                   Welcome to Brainforce!
@@ -111,8 +163,10 @@ export function Register({ userGlobal }) {
                 </Text>
 
                 <Button
-                  className="google-btn"
-                  leftIcon={<img src={google} alt="Google Icon" width={20} />}
+                  id="google-signup"
+                  leftIcon={
+                    <img src={googleImg} alt="Google Icon" width={20} />
+                  }
                 />
                 <Divider
                   label="Or continue with email"
@@ -132,8 +186,8 @@ export function Register({ userGlobal }) {
                     labelProps={{
                       style: {
                         color: "#ffffff",
-                        fontSize: 16
-                      }
+                        fontSize: 16,
+                      },
                     }}
                   />
 
@@ -148,8 +202,8 @@ export function Register({ userGlobal }) {
                     labelProps={{
                       style: {
                         color: "#ffffff",
-                        fontSize: 16
-                      }
+                        fontSize: 16,
+                      },
                     }}
                   />
 
@@ -164,8 +218,8 @@ export function Register({ userGlobal }) {
                     labelProps={{
                       style: {
                         color: "#ffffff",
-                        fontSize: 16
-                      }
+                        fontSize: 16,
+                      },
                     }}
                     error={
                       errortext && errortext.includes("Email") && errortext
@@ -173,8 +227,8 @@ export function Register({ userGlobal }) {
                     errorProps={{
                       style: {
                         color: "rgb(0, 52, 85)",
-                        fontSize: 14
-                      }
+                        fontSize: 14,
+                      },
                     }}
                   />
 
@@ -189,8 +243,8 @@ export function Register({ userGlobal }) {
                     labelProps={{
                       style: {
                         color: "#ffffff",
-                        fontSize: 16
-                      }
+                        fontSize: 16,
+                      },
                     }}
                     error={
                       errortext && errortext.includes("username") && errortext
@@ -198,8 +252,8 @@ export function Register({ userGlobal }) {
                     errorProps={{
                       style: {
                         color: "rgb(0, 52, 85)",
-                        fontSize: 14
-                      }
+                        fontSize: 14,
+                      },
                     }}
                   />
 
@@ -213,8 +267,8 @@ export function Register({ userGlobal }) {
                     labelProps={{
                       style: {
                         color: "#ffffff",
-                        fontSize: 16
-                      }
+                        fontSize: 16,
+                      },
                     }}
                   />
 
@@ -229,8 +283,8 @@ export function Register({ userGlobal }) {
                     labelProps={{
                       style: {
                         color: "#ffffff",
-                        fontSize: 16
-                      }
+                        fontSize: 16,
+                      },
                     }}
                   />
 
@@ -245,8 +299,8 @@ export function Register({ userGlobal }) {
                     labelProps={{
                       style: {
                         color: "#ffffff",
-                        fontSize: 16
-                      }
+                        fontSize: 16,
+                      },
                     }}
                     error={
                       errortext && errortext.includes("Passwords") && errortext
@@ -254,20 +308,26 @@ export function Register({ userGlobal }) {
                     errorProps={{
                       style: {
                         color: "rgb(0, 52, 85)",
-                        fontSize: 14
-                      }
+                        fontSize: 14,
+                      },
                     }}
                   />
 
                   <Checkbox
+                    id="terms"
                     classNames={{
                       label: "white-text-reg",
-                      input: "white-text-reg"
+                      input: "white-text-reg",
                     }}
                     required
                     label="I accept terms and conditions"
                   />
-                  <Button type="submit" radius="xl" className="submit-button">
+                  <Button
+                    type="submit"
+                    radius="xl"
+                    id="register-button"
+                    className="submit-button"
+                  >
                     Register
                   </Button>
                 </form>
