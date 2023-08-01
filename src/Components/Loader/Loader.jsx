@@ -13,13 +13,12 @@ const Loader = () => {
   return (
     <div className="loader-container">
       <div className="loader-title">
-
         <div className="loader-text">
           A moment, <span className="loading-username">{username}</span>!
         </div>
         <img className="loader-image" src={bfImage} alt="BF" />
       </div>
-      <div id="load">
+      <div role="presentation" id="load">
         <div>G</div>
         <div>N</div>
         <div>I</div>

@@ -18,9 +18,10 @@ export function Navbar({ token, setToken, userGlobal, setUserGlobal }) {
     localStorage.removeItem("username");
     setToken(null);
     setUserMenuOpened(false);
+    /*global google */
+    google.accounts.id.disableAutoSelect();
     window.location = "/";
   }
-console.log(userGlobal)
 
   return (
     <header className="navContainer">
@@ -38,19 +39,19 @@ console.log(userGlobal)
           >
             Creators
           </button>
-          <button
-            onClick={() => (window.location = "/past")}
-            className="userActivityButton"
-          >
-            Past Quizzes
-          </button>
+
           {/* You can add other navigation links here if needed */}
 
           <Menu>
             <Menu.Target>
               <UnstyledButton className="userActivityButton">
                 <div className="userActivityContainer">
-                  <Avatar src={userGlobal?.photo} alt={username} radius="xl" size={20} />
+                  <Avatar
+                    src={userGlobal?.photo}
+                    alt={username}
+                    radius="xl"
+                    size={20}
+                  />
                   <div className="menu-item">{username}</div>
                   <IconChevronDown size={16} />
                 </div>
@@ -61,7 +62,11 @@ console.log(userGlobal)
 
               <Menu.Divider />
 
-              <Menu.Item onClick={logOut} icon={<IconLogout size="0.9rem" />}>
+              <Menu.Item
+                className="g_id_signout"
+                onClick={logOut}
+                icon={<IconLogout size="0.9rem" />}
+              >
                 Logout
               </Menu.Item>
             </Menu.Dropdown>

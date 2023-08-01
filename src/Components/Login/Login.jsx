@@ -6,7 +6,7 @@ import {
   Anchor,
   Title,
   Text,
-  Button
+  Button,
 } from "@mantine/core";
 import { useNavigate } from "react-router-dom";
 import Api from "../../utilities/api";
@@ -14,6 +14,8 @@ import ParticleBackground from "../../ParticleBackground/ParticleBackground";
 import { IconCheck } from "@tabler/icons-react";
 import logo from "../../images/bf.png";
 import "./Login.css";
+import googleImg from "../../images/google.svg";
+import jwt_decode from "jwt-decode";
 
 export function Login({ setToken, setUserGlobal, userGlobal }) {
   const [email, setEmail] = useState("");
@@ -60,6 +62,64 @@ export function Login({ setToken, setUserGlobal, userGlobal }) {
     }
   }, []);
 
+  const IdConfiguration = {
+    client_id:
+      "362928511290-jkl6t80prk20o4u9igun7t9fq9aof3nb.apps.googleusercontent.com",
+    callback: handleCredentialResponse,
+    context: "signup",
+    ux_mode: "popup",
+    auto_select: false,
+  };
+
+  const GsiButtonConfiguration = {
+    type: "standard",
+    theme: "filled_blue",
+    text: "signup_with",
+    shape: "circle",
+    ux_mode: "popup",
+  };
+
+  useEffect(() => {
+    /* global google */
+    window.onload = function () {
+      google.accounts.id.initialize(IdConfiguration);
+      google.accounts.id.renderButton(
+        document.getElementById("google-signin"),
+        GsiButtonConfiguration
+      );
+    };
+  }, []);
+
+  function handleCredentialResponse(response) {
+    const decoded = jwt_decode(response.credential);
+    console.log(decoded);
+    const user = { email: decoded.email, password: decoded.sub };
+    try {
+      Api.login(user)
+        .then((response) => {
+          if (response.token) {
+            localStorage.setItem("jwt", response.token);
+            setToken(response.token);
+            setError(""); // Reset the error state if login is successful
+          } else {
+            setError("Invalid email or password"); // Set the error message for login failure
+          }
+        })
+        .then(() => {
+          Api.user({ token: localStorage.getItem("jwt") }).then((response) => {
+            setUserGlobal(response);
+            if (response?.firstname && response?.lastname) {
+              setName(`${response?.firstname} ${response?.lastname}`);
+              localStorage.setItem("username", response.firstname);
+              navigate("/makecourse");
+            }
+          });
+        });
+    } catch {
+      setError("An error occurred. Please try again later."); // Set a generic error message for any other error
+    }
+  }
+
   return (
     <>
       <ParticleBackground />
@@ -77,7 +137,7 @@ export function Login({ setToken, setUserGlobal, userGlobal }) {
                 color="#ffffff"
                 sx={(theme) => ({
                   fontFamily: `Greycliff CF, ${theme.fontFamily}`,
-                  fontWeight: 900
+                  fontWeight: 900,
                 })}
               >
                 Welcome back!
@@ -93,6 +153,7 @@ export function Login({ setToken, setUserGlobal, userGlobal }) {
                   Create account
                 </Anchor>
               </Text>
+              <Button id="google-signin" />
               <form className="login-form">
                 <div className="form-group">
                   <TextInput
