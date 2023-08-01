@@ -18,7 +18,7 @@ const LeaderboardRow = ({ data, index, userGlobal }) => {
     <div
       className={`leaderboard-row ${index % 2 === 0 ? "even-row" : "odd-row"}`}
     >
-     <div style={{ display: "flex", alignItems: "center" }}>
+     <div style={{ display: "flex", alignItems: "center"  ,marginLeft:"30px"}}>
         <Avatar src={data?.photo} radius="xl" size={30} />
         <p style={{ marginLeft: "10px" }}>{data?.username}</p>
       </div>
