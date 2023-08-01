@@ -17,6 +17,7 @@ const Quiz = ({
   const [points, setPoints] = useState(0);
   const [submitted, setSubmitted] = useState(false);
   const [challengeResult, setChallengeResult] = useState(null);
+  const [pointWorth, setPointWorth] = useState(0);
   const [quiz, setQuiz] = useState({
     userid: userGlobal.id,
     questions: questions,
@@ -26,6 +27,14 @@ const Quiz = ({
   });
 
   useEffect(() => {
+    if (difficulty === "hard") {
+      setPointWorth(5);
+    } else if (difficulty === "medium") {
+      setPointWorth(3);
+    } else {
+      setPointWorth(1);
+    }
+
     setProgressBar("quiz");
     setQuiz({
       userid: userGlobal.id,
@@ -43,7 +52,7 @@ const Quiz = ({
       let totalPoints = 0;
       questions.forEach((question) => {
         if (question.answer === question.selectedOption) {
-          totalPoints++;
+          totalPoints += pointWorth;
         }
       });
       setPoints(totalPoints);
@@ -80,6 +89,7 @@ const Quiz = ({
                   question={question.question}
                   options={question.options}
                   answer={question.answer}
+                  worth={pointWorth}
                   setSelectedOption={(option) => {
                     const updatedQuestions = [...questions];
                     updatedQuestions[index].selectedOption = option;
