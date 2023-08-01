@@ -2,7 +2,7 @@ import axios from "axios";
 
 class Api {
   constructor() {
-    this.url = "https://brainforce-api-6474d5ae3ec4.herokuapp.com";
+    this.url = "http://localhost:3001";
     this.token = localStorage.getItem("token") || null;
     this.tokenName = "token";
   }
@@ -75,6 +75,10 @@ class Api {
 
   async listQuiz(user) {
     return await this.request("POST", `auth/listquiz`, user);
+  }
+
+  async uploadPhoto(user) { 
+    return await this.request("POST", `auth/photo`, user);
   }
 }
 export default new Api();
