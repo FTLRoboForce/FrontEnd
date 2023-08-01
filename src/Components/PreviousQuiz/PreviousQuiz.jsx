@@ -3,16 +3,8 @@ import { useEffect, useState } from "react";
 import Api from "../../utilities/api";
 import "./PreviousQuiz.css";
 
-const PastQuizzesTable = ({ userGlobal }) => {
-  const [pastQuizzes, setPastQuizzes] = useState([]);
-
-  useEffect(() => {
-    console.log(userGlobal);
-    Api.listQuiz({ userid: userGlobal?.id }).then((result) => {
-      setPastQuizzes(result);
-    });
-    console.log(pastQuizzes);
-  }, [userGlobal]);
+const PastQuizzesTable = ({ pastQuizzes, userGlobal }) => {
+  useEffect(() => {}, [userGlobal]);
 
   return (
     <div className="leaderboardPage-container">
@@ -31,7 +23,7 @@ const PastQuizzesTable = ({ userGlobal }) => {
                 index % 2 === 0 ? "even-row-color" : "odd-row-color"
               }`}
               onClick={() => {
-                window.location = `/quiz/${quiz.quiz_id}`;
+                window.location = `/past/${quiz.quiz_id}`;
               }}
             >
               <div>{quiz.quiz_id}</div>

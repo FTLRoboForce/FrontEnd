@@ -15,6 +15,7 @@ import Creator from "../Creators/Creator";
 import Loader from "../Loader/Loader";
 import ProgressBar from "../ProgressBar/ProgressBar";
 import PastQuizzesTable from "../PreviousQuiz/PreviousQuiz";
+import PastQuiz from "../PastQuiz/PastQuiz";
 
 function App() {
   const [progressBar, setProgressBar] = useState(null);
@@ -24,6 +25,7 @@ function App() {
   const [subject, setSubject] = useState("");
   const [difficulty, setDifficulty] = useState("");
   const [sub, setSub] = useState("");
+  const [pastQuizzes, setPastQuizzes] = useState([]);
   const [flashcards, setFlashcards] = useState([
     { answer: "test", question: "test" }
   ]);
@@ -54,12 +56,18 @@ function App() {
   useEffect(() => {
     if (localStorage.getItem("jwt")) {
       setToken(localStorage.getItem("jwt"));
-      Api.user({ token: localStorage.getItem("jwt") }).then((response) => {
-        setUserGlobal(response);
-        console.log(userGlobal);
-      });
+      Api.user({ token: localStorage.getItem("jwt") })
+        .then((response) => {
+          setUserGlobal(response);
+          console.log(userGlobal);
+        })
+        .then(() => {
+          Api.listQuiz({ userid: userGlobal?.id }).then((result) => {
+            setPastQuizzes(result);
+          });
+        });
     }
-  }, []);
+  }, [userGlobal?.id]);
 
   return (
     <>
@@ -83,8 +91,19 @@ function App() {
             }
           />
           <Route
+            path="/past/:id"
+            element={
+              <PastQuiz pastQuizzes={pastQuizzes} userGlobal={userGlobal} />
+            }
+          />
+          <Route
             path="/past"
-            element={<PastQuizzesTable userGlobal={userGlobal} />}
+            element={
+              <PastQuizzesTable
+                pastQuizzes={pastQuizzes}
+                userGlobal={userGlobal}
+              />
+            }
           />
           <Route
             path="/flashcard"
