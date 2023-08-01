@@ -38,7 +38,12 @@ console.log(userGlobal)
           >
             Creators
           </button>
-
+          <button
+            onClick={() => (window.location = "/past")}
+            className="userActivityButton"
+          >
+            Past Quizzes
+          </button>
           {/* You can add other navigation links here if needed */}
 
           <Menu>

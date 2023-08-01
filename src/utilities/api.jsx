@@ -68,5 +68,13 @@ class Api {
   async challenge(challenge) {
     return await this.request("POST", `openai/challenge`, challenge);
   }
+
+  async addQuiz(quiz) {
+    return await this.request("POST", `auth/addquiz`, quiz);
+  }
+
+  async listQuiz(user) {
+    return await this.request("POST", `auth/listquiz`, user);
+  }
 }
 export default new Api();
