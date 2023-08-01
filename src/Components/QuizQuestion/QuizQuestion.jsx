@@ -7,6 +7,7 @@ const QuizQuestion = ({
   question,
   options,
   answer,
+  worth,
   setSelectedOption,
   submitted,
   points,
@@ -30,10 +31,10 @@ const QuizQuestion = ({
       });
       console.log(challengeResult);
       if (challengeResult.data.toLowerCase() == "true") {
-        setPoints(points + 1);
+        setPoints(points + worth);
         console.log("Challenge accepted! You gained 1 point.");
       } else if (challengeResult.data.toLowerCase() == "false") {
-        setPoints(points - 2);
+        setPoints(points - worth * 2);
         console.log("Challenge denied! You were penalized 2 points.");
       }
 
