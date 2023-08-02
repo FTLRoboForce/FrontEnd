@@ -66,7 +66,7 @@ export function Login({ setToken, setUserGlobal, userGlobal }) {
     client_id:
       "362928511290-jkl6t80prk20o4u9igun7t9fq9aof3nb.apps.googleusercontent.com",
     callback: handleCredentialResponse,
-    context: "signup",
+    context: "signin",
     ux_mode: "popup",
     auto_select: false,
   };
@@ -74,7 +74,7 @@ export function Login({ setToken, setUserGlobal, userGlobal }) {
   const GsiButtonConfiguration = {
     type: "standard",
     theme: "filled_blue",
-    text: "signup_with",
+    text: "signin_with",
     shape: "circle",
     ux_mode: "popup",
   };

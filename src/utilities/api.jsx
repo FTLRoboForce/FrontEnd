@@ -15,7 +15,7 @@ class Api {
   async request(method, path, data) {
     const url = `${this.url}/${path}`;
     const headers = {
-      "Content-Type": "application/json"
+      "Content-Type": "application/json",
     };
 
     if (this.token) {
@@ -27,7 +27,7 @@ class Api {
         method,
         url,
         data,
-        headers
+        headers,
       });
       return response.data;
     } catch (error) {
@@ -69,6 +69,10 @@ class Api {
     return await this.request("POST", `openai/challenge`, challenge);
   }
 
+  async explain(explain) {
+    return await this.request("POST", `openai/explain`, explain);
+  }
+
   async addQuiz(quiz) {
     return await this.request("POST", `auth/addquiz`, quiz);
   }
@@ -77,7 +81,7 @@ class Api {
     return await this.request("POST", `auth/listquiz`, user);
   }
 
-  async uploadPhoto(user) { 
+  async uploadPhoto(user) {
     return await this.request("POST", `auth/photo`, user);
   }
 }
