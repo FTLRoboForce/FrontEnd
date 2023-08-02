@@ -81,7 +81,7 @@ const QuizQuestion = ({
           </p>
         ) : null}
         {showChallengeButton && submitted ? (
-          <button onClick={handleChallenge}>Challenge</button>
+          <button className= "submit-quiz-button" onClick={handleChallenge}>Challenge</button>
         ) : null}
       </div>
     </>
