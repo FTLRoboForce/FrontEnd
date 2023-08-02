@@ -11,15 +11,19 @@ const QuizQuestion = ({
   setSelectedOption,
   submitted,
   points,
-  setPoints
+  setPoints,
 }) => {
   const [selectedOption, setSelectedOptionLocal] = useState("");
   const [showChallengeButton, setShowChallengeButton] = useState(false);
+  const [showExplanationButton, setShowExplanationButton] = useState(false);
+  const [showPopup, setShowPopup] = useState(false);
+  const [explanationData, setExplanationData] = useState("");
 
   const handleSelectOption = (option) => {
     setSelectedOptionLocal(option);
     setSelectedOption(option);
     setShowChallengeButton(option !== answer);
+    setShowExplanationButton(option !== answer);
   };
 
   const handleChallenge = async () => {
@@ -27,7 +31,7 @@ const QuizQuestion = ({
       const challengeResult = await Api.challenge({
         question,
         selectedOption,
-        options
+        options,
       });
       console.log(challengeResult);
       if (challengeResult.data.toLowerCase() == "true") {
@@ -44,6 +48,26 @@ const QuizQuestion = ({
     } catch (error) {
       console.log("Error during challenge:", error);
     }
+  };
+
+  const handleExplanation = async () => {
+    try {
+      const explanation = await Api.explain({
+        question,
+        selectedOption,
+        options,
+      });
+      console.log(explanation.data);
+      setExplanationData(explanation.data);
+      setShowPopup(true);
+      setShowExplanationButton(false);
+    } catch (error) {
+      console.log("Error during explanation:", error);
+    }
+  };
+
+  const handleClosePopup = () => {
+    setShowPopup(false);
   };
 
   const getOptionClass = (option) => {
@@ -80,9 +104,29 @@ const QuizQuestion = ({
             penalized double the points' worth.
           </p>
         ) : null}
-        {showChallengeButton && submitted ? (
-          <button className= "submit-quiz-button" onClick={handleChallenge}>Challenge</button>
-        ) : null}
+        <span>
+          {showChallengeButton && submitted ? (
+            <button className="submit-quiz-button" onClick={handleChallenge}>
+              Challenge
+            </button>
+          ) : null}
+
+          {showExplanationButton && submitted && (
+            <button className="submit-quiz-button" onClick={handleExplanation}>
+              Explain
+            </button>
+          )}
+          {showPopup && (
+            <div className="popup-overlay">
+              <div className="popup-content">
+                <span className="close-button" onClick={handleClosePopup}>
+                  X
+                </span>
+                <p>{explanationData}</p>
+              </div>
+            </div>
+          )}
+        </span>
       </div>
     </>
   );
