@@ -11,7 +11,7 @@ import {
 import { useNavigate } from "react-router-dom";
 import Api from "../../utilities/api";
 import ParticleBackground from "../../ParticleBackground/ParticleBackground";
-import { IconCheck } from "@tabler/icons-react";
+import { IconCheck, IconBrandLinkedin } from "@tabler/icons-react";
 import logo from "../../images/bf.png";
 import "./Login.css";
 import googleImg from "../../images/google.svg";

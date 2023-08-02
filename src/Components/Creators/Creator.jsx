@@ -7,6 +7,7 @@ import oj from "./oj.png";
 import fiu from "./fiu.png";
 import hassani from "./hassani.png";
 import ParticleBackground from "../../ParticleBackground/ParticleBackground";
+import { IconCheck, IconBrandLinkedin } from "@tabler/icons-react";
 
 const Card = () => {
   const [activeSection, setActiveSection] = useState("#about");
@@ -55,7 +56,11 @@ const Card = () => {
             </p>
           </div>
           <div className="card-social">
-            {/* Social media icons here */}
+            <a href ="https://www.linkedin.com/in/ojakanbi/" target="_blank">   <i href="www.github.com" class="fa-brands fa-linkedin fa-"></i></a>
+            <a id="github" href = "https:www.github.com/ojakanbi" target="_blank"><i class="fa-brands fa-square-github"></i></a>
+         
+       
+      
           </div>
         </div>
         <div
@@ -205,7 +210,8 @@ const Card = () => {
           </p>
         </div>
         <div className="card-social">
-          {/* Social media icons here */}
+        <a href = "https://www.linkedin.com/in/khalidabouelrous/" target="_blank">   <i href="www.github.com" class="fa-brands fa-linkedin fa-"></i></a>
+        <a id="github" href = "https:www.github.com/khalidh7" target="_blank"><i class="fa-brands fa-square-github"></i></a>
         </div>
       </div>
       <div
@@ -276,7 +282,7 @@ const Card = () => {
               >
                 <path d="M12 19v-6M12 8c0-2.2 3.6-4 8-4s8 1.8 8 4-3.6 4-8 4-8-1.8-8-4z" />
               </svg>
-              khalidemail@mail.com
+              kabouelrous@gmail.com
             </div>
             <div className="card-contact">
               <svg
@@ -356,7 +362,8 @@ const Card = () => {
         </p>
       </div>
       <div className="card-social">
-        {/* Social media icons here */}
+      <a href ="https://www.linkedin.com/in/wissam-hassani/" target="_blank">   <i href="www.github.com" class="fa-brands fa-linkedin fa-"></i></a>
+      <a id="github" href = "https:www.github.com/khalidh7" target="_blank"><i class="fa-brands fa-square-github"></i></a>
       </div>
     </div>
     <div
@@ -427,7 +434,7 @@ const Card = () => {
             >
               <path d="M12 19v-6M12 8c0-2.2 3.6-4 8-4s8 1.8 8 4-3.6 4-8 4-8-1.8-8-4z" />
             </svg>
-            oakanbi13@gmail.com
+            wissamhassani15@gmail.com
           </div>
           <div className="card-contact">
             <svg
