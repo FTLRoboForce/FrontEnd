@@ -23,7 +23,12 @@ function ParticleBackground() {
       options={{
         background: {
           color: {
-            value: [ "#b6ddfd"]
+            value: "#b6ddfd", // Color background value
+          },
+          image: {
+            src: "https://www.salesforce.com/blog/wp-content/uploads/sites/2/2021/12/2021-12-360Blog-2D-IndividualIllustrations-Einstien.png", // Background image URL
+            width: "100%", // Width of the background image
+            height: "100%", // Height of the background image
           },
         },
         fpsLimit: 60,

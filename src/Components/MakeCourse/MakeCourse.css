@@ -109,13 +109,14 @@ form {
 }
 
 .make-course-button {
+  color: #fff;
   align-self: center;
   margin-top: 50px;
   padding: 10px 20px;
   font-size: 1.2rem;
   font-weight: bold;
   background-color: var(--darkblue);
-  color: var(--ligtblue);
+
   border: none;
   cursor: pointer;
   width: 10rem;

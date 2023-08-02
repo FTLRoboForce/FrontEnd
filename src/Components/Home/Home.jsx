@@ -17,7 +17,7 @@ export function Home({ userGlobal }) {
   }, []);
 
   return (
-    <div className="home-page">
+    <div className="home-page ">
       <ParticleBackground />
       <div className="home-container">
         <div className="content">
@@ -69,7 +69,7 @@ export function Home({ userGlobal }) {
         </div>
         <div className="image-container">
           <img
-            src={isBrainImage ? brainImage : einsteinImage}
+            src={isBrainImage ? brainImage : brainImage}
             className="animatedImage"
             alt="Brain"
           />

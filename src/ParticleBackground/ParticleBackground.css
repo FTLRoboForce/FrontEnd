@@ -2,10 +2,11 @@
 #tsparticles {
     position: absolute;
     overflow-y: scroll ;
+    background-image: url(https://www.salesforce.com/blog/wp-content/uploads/sites/2/2021/12/2021-12-360Blog-2D-IndividualIllustrations-Einstien.png);
   
- 
+
    
-    background: transparent;
+ 
     z-index: -1;
   }
   
