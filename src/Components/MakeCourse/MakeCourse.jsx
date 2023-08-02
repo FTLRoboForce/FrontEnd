@@ -127,7 +127,7 @@ export default function MakeCourse({
           <Loader />
         ) : (
           <div className="full-page-container">
-            <Avatar src={userGlobal?.photo} alt={username} radius="xl" size={80} />
+            {/* <Avatar src={userGlobal?.photo} alt={username} radius="xl" size={80} /> */}
             {/* {userGlobal.photo ? (
               <Avatar src={userGlobal?.photo} alt={username} radius="xl" size={20} />
             ) : (

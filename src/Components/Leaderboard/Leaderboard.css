@@ -1,4 +1,3 @@
-/* Global styles */
 body {
   margin: 0;
   padding: 0;
@@ -14,16 +13,16 @@ body {
 }
 
 /* Modern redesign styles */
-.leaderboardPage-container {
+.leaderboardPage-container2 {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   min-height: 100vh;
-  background: #b6ddfd; /* Baby blue background color */
+  background: #b6ddfd;
 }
 
-.leaderboard-container {
+.leaderboard-container2 {
   max-width: 90%;
   margin: 30px auto;
   padding: 20px;
@@ -31,19 +30,66 @@ body {
   border-radius: 30px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
   color: var(--text-color);
-  animation: slideIn 0.8s ease, fadeIn 1s ease;
+  animation: slideIn2 0.8s ease, fadeIn2 1s ease;
 }
-.leaderboard-container h2 {
+
+.leaderboard-container2 h2 {
   animation-delay: 0.5s;
   color: #003455;
   font-weight: bold;
   text-align: center;
-  
+}
 
+.leaderboard-titles2 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  background-color: var(--primary-color);
+  grid-template-columns: repeat(4, 1fr);
+  color: white;
+  border-radius: 5px;
+  font-weight: bold;
+}
+
+.leaderboard-row2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  align-items: center;
+  padding: 10px;
+  border-radius: 5px;
+  background-color: var(--even-row-color);
+  transition: background-color 0.3s;
+}
+
+.leaderboard-row2:nth-child(odd) {
+  background-color: var(--odd-row-color);
+}
+
+/* Hover effect for leaderboard rows */
+.leaderboard-row2:hover {
+  background-color: var(--primary-color);
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.user-info2 {
+  display: flex;
+  align-items: center;
+}
+
+.username2{
+  padding-left:20px ;
+  padding-right:20px ;
+}
+
+.date-joined2 {
+  text-align: right;
 }
 
 /* Animation for the leaderboard container */
-@keyframes slideIn {
+@keyframes slideIn2 {
   from {
     transform: translateY(-50%);
     opacity: 0;
@@ -55,12 +101,12 @@ body {
 }
 
 /* Animation for the leaderboard appearance */
-.appear-animation {
-  animation: appear 1s ease;
+.appear-animation2 {
+  animation: appear2 1s ease;
 }
 
 /* Animation for the leaderboard content */
-@keyframes appear {
+@keyframes appear2 {
   from {
     transform: translateY(-20px);
     opacity: 0;
@@ -71,54 +117,9 @@ body {
   }
 }
 
-.leaderboard-titles {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 10px;
-  align-items: center;
-  padding: 10px;
-  background-color: var(--primary-color);
-  color: white;
-  border-radius: 5px;
-  font-weight: bold;
-}
-
-.leaderboard-title {
-  text-align: center;
-}
-
-.leaderboard-content {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.leaderboard-row {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 10px;
-  align-items: center;
-  padding: 10px;
-  border-radius: 5px;
-  background-color: var(--even-row-color);
-  transition: background-color 0.3s;
-}
-
-.leaderboard-row:nth-child(odd) {
-  background-color: var(--odd-row-color);
-}
-
-/* Hover effect for leaderboard rows */
-.leaderboard-row:hover {
-  background-color: var(--primary-color);
-  color: white;
-  cursor: pointer;
-  transition: background-color 0.3s, color 0.3s;
-}
-
 /* Responsive styles */
 @media (max-width: 768px) {
-  .leaderboard-container {
+  .leaderboard-container2 {
     max-width: 95%;
     margin: 20px auto;
     padding: 15px;
@@ -126,40 +127,40 @@ body {
 }
 
 @media (max-width: 480px) {
-  .leaderboard-container {
+  .leaderboard-container2 {
     max-width: 100%;
     margin: 10px auto;
     padding: 10px;
   }
 
-  .leaderboard-titles {
+  .leaderboard-titles2 {
     font-size: 14px;
   }
 
-  .leaderboard-title {
+  .leaderboard-title2 {
     padding: 5px;
   }
 
-  .leaderboard-content {
+  .leaderboard-content2 {
     gap: 5px;
   }
 
-  .leaderboard-row {
+  .leaderboard-row2 {
     font-size: 14px;
     padding: 5px;
   }
 }
 
 @media (max-width: 360px) {
-  .leaderboard-titles {
+  .leaderboard-titles2 {
     font-size: 12px;
   }
 
-  .leaderboard-title {
+  .leaderboard-title2 {
     padding: 3px;
   }
 
-  .leaderboard-row {
+  .leaderboard-row2 {
     font-size: 12px;
     padding: 3px;
   }
