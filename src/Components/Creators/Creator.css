@@ -552,3 +552,17 @@ body {
 }
 
 /* Add any other custom styles as needed */
+@media (max-width: 768px) {
+  .card-container {
+    flex-direction: column;
+    justify-content: flex-start;
+    margin-top: 20%;
+  }
+  
+  .card {
+    width: 90%; /* Adjust the width as needed */
+    margin-bottom: 20px; /* Add some margin between cards */
+  }
+  
+  /* Update any other styles for mobile here */
+}

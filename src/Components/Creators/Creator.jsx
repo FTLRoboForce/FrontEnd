@@ -51,7 +51,7 @@ const Card = () => {
           <div className="card-content">
             <div className="card-subtitle">ABOUT</div>
             <p className="card-desc">
-              I am a Software Engineer with a passion for building scalable
+              I am a junior at The pennsylvania State University majoring in Information Science and Technology
             </p>
           </div>
           <div className="card-social">
@@ -182,13 +182,13 @@ const Card = () => {
           backgroundImage:
             "url('https://play-lh.googleusercontent.com/tP1lwh_oLWW3XuX9qBKdKKNIBUNfQ_chTM_1GxuTxhnNb_fXYtMzB4gKBoVJx7RviSk')",
         }}
-      ></div>
+      ></div>  
       <img
         className="card-avatar"
-        src="https://media.licdn.com/dms/image/D4E03AQFeh3JOjHO7eQ/profile-displayphoto-shrink_400_400/0/1689808542545?e=1696464000&v=beta&t=sa9cAbUKEHR7mcqLCRGLI6Lp6u86R2VD2rIqEDpv9vM"
+        src="https://media.licdn.com/dms/image/D5603AQFuXePpwAmKTw/profile-displayphoto-shrink_400_400/0/1688008440450?e=1696464000&v=beta&t=C9HQhgOqvWr3Byc-75SN3ozT7jPyA3s9QVUvG38cGcE"
         alt="avatar"
       />
-      <h1 className="card-fullname">Oyindamola J Akanbi</h1>
+      <h1 className="card-fullname">Khalid Abouelrous</h1>
       <h2 className="card-jobtitle">Software Engineer</h2>
     </div>
     <div className="card-main">
@@ -201,7 +201,7 @@ const Card = () => {
         <div className="card-content">
           <div className="card-subtitle">ABOUT</div>
           <p className="card-desc">
-            I am a Software Engineer with a passion for building scalable
+            I am a Junior  at Sacramento State University majoring in Computer Science
           </p>
         </div>
         <div className="card-social">
@@ -276,7 +276,7 @@ const Card = () => {
               >
                 <path d="M12 19v-6M12 8c0-2.2 3.6-4 8-4s8 1.8 8 4-3.6 4-8 4-8-1.8-8-4z" />
               </svg>
-              oakanbi13@gmail.com
+              khalidemail@mail.com
             </div>
             <div className="card-contact">
               <svg
@@ -336,10 +336,10 @@ const Card = () => {
     ></div>
     <img
       className="card-avatar"
-      src="https://media.licdn.com/dms/image/D4E03AQFeh3JOjHO7eQ/profile-displayphoto-shrink_400_400/0/1689808542545?e=1696464000&v=beta&t=sa9cAbUKEHR7mcqLCRGLI6Lp6u86R2VD2rIqEDpv9vM"
+      src="https://media.licdn.com/dms/image/C5603AQEDePpp2IJ6DQ/profile-displayphoto-shrink_400_400/0/1630001125401?e=1696464000&v=beta&t=SrmNuA8deBFa3pGNCgWiqBV-jew9wApJ08pWaDsJ4iQ"
       alt="avatar"
     />
-    <h1 className="card-fullname">Oyindamola J Akanbi</h1>
+    <h1 className="card-fullname">Wissam Hassani</h1>
     <h2 className="card-jobtitle">Software Engineer</h2>
   </div>
   <div className="card-main">
@@ -352,7 +352,7 @@ const Card = () => {
       <div className="card-content">
         <div className="card-subtitle">ABOUT</div>
         <p className="card-desc">
-          I am a Software Engineer with a passion for building scalable
+          I am a senior at Florida International University majoring in Computer Science. 
         </p>
       </div>
       <div className="card-social">
