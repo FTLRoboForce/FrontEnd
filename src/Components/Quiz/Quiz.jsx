@@ -103,13 +103,13 @@ const Quiz = ({
               ))}
               <div className="submit-quiz">
                 {submitted && <p>Total Points: {points}</p>}
-                <button onClick={handleSubmit} disabled={submitted}>
+                <button className="submit-quiz-button" onClick={handleSubmit} disabled={submitted}>
                   Submit
                 </button>
                 {submitted ? (
                   <>
                     <p>Go to Leaderboard to Update Points</p>
-                    <button onClick={sendPoints}>Leaderboard</button>
+                    <button className="submit-quiz-button" onClick={sendPoints}>Leaderboard</button>
                   </>
                 ) : null}
               </div>

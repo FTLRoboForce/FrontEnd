@@ -26,7 +26,7 @@
 
 }
 
-.submit-quiz button {
+.submit-quiz-button {
   padding: 10px 20px;
   font-size: 1rem;
   font-weight: bold;
@@ -37,7 +37,7 @@
   border-radius: 5px;
 }
 
-.submit-quiz button:hover {
+.submit-quiz-button:hover {
   background-color: var(--lightblue); /* Change to the desired hover color */
 }
 
