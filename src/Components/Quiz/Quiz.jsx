@@ -19,7 +19,7 @@ const Quiz = ({
   const [challengeResult, setChallengeResult] = useState(null);
   const [pointWorth, setPointWorth] = useState(0);
   const [quiz, setQuiz] = useState({
-    userid: userGlobal.id,
+    userid: userGlobal?.id || 0,
     questions: questions,
     points: points,
     subject: subject,
@@ -37,7 +37,7 @@ const Quiz = ({
 
     setProgressBar("quiz");
     setQuiz({
-      userid: userGlobal.id,
+      userid: userGlobal?.id,
       questions: questions,
       points: points,
       subject: subject,
@@ -79,43 +79,63 @@ const Quiz = ({
   return (
     <>
       {userGlobal ? (
-        <>
-          <div className="quiz-page">
-            <ProgressBar progressBar={progressBar} className="margin-down" />
-            <div className="quiz-container">
-              {questions.map((question, index) => (
-                <QuizQuestion
-                  key={index}
-                  question={question.question}
-                  options={question.options}
-                  answer={question.answer}
-                  worth={pointWorth}
-                  setSelectedOption={(option) => {
-                    const updatedQuestions = [...questions];
-                    updatedQuestions[index].selectedOption = option;
-                    setQuestions(updatedQuestions);
-                  }}
-                  submitted={submitted}
-                  setChallengeResult={setChallengeResult}
-                  points={points}
-                  setPoints={setPoints}
-                />
-              ))}
-              <div className="submit-quiz">
-                {submitted && <p>Total Points: {points}</p>}
-                <button className="submit-quiz-button" onClick={handleSubmit} disabled={submitted}>
-                  Submit
-                </button>
-                {submitted ? (
-                  <>
-                    <p>Go to Leaderboard to Update Points</p>
-                    <button className="submit-quiz-button" onClick={sendPoints}>Leaderboard</button>
-                  </>
-                ) : null}
+        questions.length > 0 ? (
+          <>
+            <div className="quiz-page">
+              <ProgressBar progressBar={progressBar} />
+              <div className="quiz-container">
+                {questions.map((question, index) => (
+                  <QuizQuestion
+                    key={index}
+                    question={question.question}
+                    options={question.options}
+                    answer={question.answer}
+                    worth={pointWorth}
+                    setSelectedOption={(option) => {
+                      const updatedQuestions = [...questions];
+                      updatedQuestions[index].selectedOption = option;
+                      setQuestions(updatedQuestions);
+                    }}
+                    submitted={submitted}
+                    setChallengeResult={setChallengeResult}
+                    points={points}
+                    setPoints={setPoints}
+                  />
+                ))}
+                <div className="submit-quiz">
+                  {submitted && <p>Total Points: {points}</p>}
+                  <button
+                    className="submit-quiz-button"
+                    onClick={handleSubmit}
+                    disabled={submitted}
+                  >
+                    Submit
+                  </button>
+                  {submitted ? (
+                    <>
+                      <p>Go to Leaderboard to Update Points</p>
+                      <button
+                        className="submit-quiz-button"
+                        onClick={sendPoints}
+                      >
+                        Leaderboard
+                      </button>
+                    </>
+                  ) : null}
+                </div>
               </div>
             </div>
+          </>
+        ) : (
+          <div className="flashcardPage-container">
+            <button
+              className="userActivityButton"
+              onClick={() => (window.location = "/makecourse")}
+            >
+              Please Make a Course...
+            </button>
           </div>
-        </>
+        )
       ) : (
         <div className="flashcardPage-container">Please Log In</div>
       )}

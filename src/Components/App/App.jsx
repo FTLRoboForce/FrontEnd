@@ -16,7 +16,7 @@ import Loader from "../Loader/Loader";
 import ProgressBar from "../ProgressBar/ProgressBar";
 import PastQuizzesTable from "../PreviousQuiz/PreviousQuiz";
 import PastQuiz from "../PastQuiz/PastQuiz";
-import Profile from "../Profile/Profile"
+import Profile from "../Profile/Profile";
 
 function App() {
   const [progressBar, setProgressBar] = useState(null);
@@ -27,28 +27,10 @@ function App() {
   const [difficulty, setDifficulty] = useState("");
   const [sub, setSub] = useState("");
   const [pastQuizzes, setPastQuizzes] = useState([]);
-  const [flashcards, setFlashcards] = useState([
-    { answer: "test", question: "test" }
-  ]);
+  const [flashcards, setFlashcards] = useState([]);
   const [questionOption, setQuestionOption] = useState(2);
 
-  const [questions, setQuestions] = useState([
-    {
-      question: "What is the capital of France?",
-      options: ["New York", "London", "Paris", "Dublin"],
-      answer: "Paris"
-    },
-    {
-      question: "What is the capital of France?",
-      options: ["New York", "London", "Paris", "Dublin"],
-      answer: "Paris"
-    },
-    {
-      question: "What is the capital of France?",
-      options: ["New York", "London", "Paris", "Dublin"],
-      answer: "Paris"
-    }
-  ]);
+  const [questions, setQuestions] = useState([]);
 
   const handleAnswer = (selectedOption) => {
     console.log("Selected Option:", selectedOption);
@@ -58,7 +40,7 @@ function App() {
       setToken(localStorage.getItem("jwt"));
       Api.user({ token: localStorage.getItem("jwt") }).then((response) => {
         setUserGlobal(response);
-        console.log(response); 
+        console.log(response);
       });
     }
   }, [setToken]);
@@ -70,8 +52,6 @@ function App() {
       });
     }
   }, [userGlobal]);
-
-
 
   return (
     <>
@@ -192,16 +172,16 @@ function App() {
               />
             }
           ></Route>
-        <Route
-        path="/profile"
-        element={
-          <Profile
-            userGlobal={userGlobal}
-            setUserGlobal={setUserGlobal}
-            progressBar={progressBar}
-          />
-        }
-      ></Route>
+          <Route
+            path="/profile"
+            element={
+              <Profile
+                userGlobal={userGlobal}
+                setUserGlobal={setUserGlobal}
+                progressBar={progressBar}
+              />
+            }
+          ></Route>
         </Routes>
       </BrowserRouter>
     </>
