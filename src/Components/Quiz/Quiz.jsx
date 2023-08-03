@@ -27,6 +27,7 @@ const Quiz = ({
   });
 
   useEffect(() => {
+    //sets points worth depending on difficulty
     if (difficulty === "hard") {
       setPointWorth(5);
     } else if (difficulty === "medium") {
@@ -35,7 +36,10 @@ const Quiz = ({
       setPointWorth(1);
     }
 
+    //sets progress bar to the quiz checkpoint
     setProgressBar("quiz");
+
+    //sets quiz object to the accurate current value
     setQuiz({
       userid: userGlobal?.id,
       questions: questions,
@@ -46,6 +50,7 @@ const Quiz = ({
   }, [points]);
   
   const handleSubmit = async () => {
+    //if quiz was not already submitted calculate points
     if (!submitted) {
       let totalPoints = 0;
       questions.forEach((question) => {
@@ -60,6 +65,8 @@ const Quiz = ({
   };
 
   const sendPoints = async () => {
+    //make api request to add quiz to previous quiz table
+    //make api request to add poitns to the users table
     try {
       console.log(points);
       const result = await Api.addQuiz(quiz);
