@@ -7,6 +7,13 @@
   align-items: center;
   background: #b6ddfd;
   overflow: hidden;
+  background-image: url(https://www.salesforce.com/blog/wp-content/uploads/sites/2/2021/12/2021-12-360Blog-2D-IndividualIllustrations-Einstien.png);
+
+  background-repeat: no-repeat no-repeat;
+  
+  background-position: 113% 80%, -100% 80%;
+
+
 }
 
 .submit-quiz {
@@ -64,11 +71,15 @@
 @media (max-width: 768px) {
   .quiz-page {
     justify-content: flex-start; /* Adjust the alignment for smaller screens */
+    
   }
+
+ 
 
   .quiz-container {
     max-width: 90%; /* Adjust the max width for smaller screens */
     max-height: calc(100vh - 200px); /* Adjust the max height for smaller screens */
+    margin-top: 90px;
   }
 
   #progressbar {

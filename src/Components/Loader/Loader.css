@@ -6,6 +6,12 @@
   align-items: center;
   height: 100vh;
   background-color: #b6ddfd;
+  background-image: url(https://www.salesforce.com/blog/wp-content/uploads/sites/2/2021/12/2021-12-360Blog-2D-IndividualIllustrations-Einstien.png);
+
+  background-repeat: no-repeat no-repeat;
+  
+  background-position: 113% 80%, -100% 80%;
+
 }
 
 .loader-title {

@@ -81,7 +81,7 @@ const Quiz = ({
       {userGlobal ? (
         <>
           <div className="quiz-page">
-            <ProgressBar progressBar={progressBar} />
+            <ProgressBar progressBar={progressBar} className="margin-down" />
             <div className="quiz-container">
               {questions.map((question, index) => (
                 <QuizQuestion
