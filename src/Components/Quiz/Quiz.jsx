@@ -19,7 +19,7 @@ const Quiz = ({
   const [challengeResult, setChallengeResult] = useState(null);
   const [pointWorth, setPointWorth] = useState(0);
   const [quiz, setQuiz] = useState({
-    userid: userGlobal?.id || 0,
+    userid: userGlobal?.id,
     questions: questions,
     points: points,
     subject: subject,
