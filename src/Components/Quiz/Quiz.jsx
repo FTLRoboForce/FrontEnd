@@ -44,9 +44,7 @@ const Quiz = ({
       difficulty: difficulty
     });
   }, [points]);
-
-  useEffect(() => {}, []);
-
+  
   const handleSubmit = async () => {
     if (!submitted) {
       let totalPoints = 0;
