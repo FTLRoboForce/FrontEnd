@@ -33,12 +33,14 @@ export function Navbar({ token, setToken, userGlobal, setUserGlobal }) {
         <div className="logoText">BrainForce</div>
       </div>
       {token ? (
-        <div className="navLinksContainer">
-          <button
-            onClick={() => (window.location = "/creators")}
+        <>
+        
+        <div>
+             <button
+            onClick={() => (window.location = "/makecourse")}
             className="userActivityButton"
           >
-            Creators
+            Make A Course
           </button>
 
           <button
@@ -47,6 +49,16 @@ export function Navbar({ token, setToken, userGlobal, setUserGlobal }) {
           >
             Past Quizzes
           </button>
+
+        </div>
+        <div className="navLinksContainer">
+          <button
+            onClick={() => (window.location = "/creators")}
+            className="userActivityButton"
+          >
+            Creators
+          </button>
+       
 
           {/* You can add other navigation links here if needed */}
 
@@ -81,6 +93,7 @@ export function Navbar({ token, setToken, userGlobal, setUserGlobal }) {
             </Menu.Dropdown>
           </Menu>
         </div>
+        </>
       ) : (
         <div className="userActivityContainer">
           <button
@@ -102,9 +115,13 @@ export function Navbar({ token, setToken, userGlobal, setUserGlobal }) {
             Sign Up
           </button>
         </div>
+        
       )}
+      
     </header>
+    
   );
+  
 }
 
 // ... (rest of the styles)
