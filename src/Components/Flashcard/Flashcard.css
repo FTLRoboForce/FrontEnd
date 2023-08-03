@@ -57,4 +57,31 @@
   .flashcard.is-flipped {
     transform: rotateY(180deg);
   }
-  
+ 
+@media only screen and (max-width: 767px) {
+  .flashcard__back {
+    /* background: linear-gradient(to left, white, var(--lightgrey), grey); */
+    box-shadow: 0 0 100px #000;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    transform: rotateY(180deg);
+  }
+
+  .flashcard_front {
+    z-index: 2;
+    /* background: linear-gradient(to right, white, var(--lightgrey), grey); */
+
+    box-shadow: 0 0 100px #000;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    transform: rotateY(0deg);
+  }
+
+
+}
