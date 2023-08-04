@@ -14,7 +14,6 @@
     "@testing-library/user-event": "^13.5.0",
     "axios": "^1.4.0",
     "dotenv": "^16.3.1",
-    "@babel/plugin-proposal-private-property-in-object" : "^7.21.11",
     "framer-motion": "^10.13.0",
     "jwt-decode": "^3.1.2",
     "react": "^18.2.0",
@@ -32,7 +31,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "postinstall": "npm install build && npm run build && npm install --save-dev @babel/plugin-transform-private-property-in-object"
+    "postinstall": "npm install build && npm run build && npm install"
   },
   "eslintConfig": {
     "extends": [
@@ -55,7 +54,7 @@
   "devDependencies": {
     "@babel/core": "^7.10.1",
     "@babel/node": "^7.10.1",
-    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.10",
     "@babel/polyfill": "^7.10.1",
     "@babel/preset-env": "^7.10.2",
     "@babel/preset-react": "^7.10.1",
