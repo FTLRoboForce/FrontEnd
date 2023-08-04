@@ -27,11 +27,11 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "react-scripts start && npm install --save-dev @babel/plugin-transform-private-property-in-object",
+    "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "postinstall": "npm run build"
+    "postinstall": "npm install build && npm run"
   },
   "eslintConfig": {
     "extends": [
