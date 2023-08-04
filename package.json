@@ -32,7 +32,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "postinstall": "npm install build && npm run"
+    "postinstall": "npm install build && npm run build && npm install --save-dev @babel/plugin-transform-private-property-in-object"
   },
   "eslintConfig": {
     "extends": [
