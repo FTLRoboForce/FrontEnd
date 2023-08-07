@@ -11,11 +11,12 @@ const QuizQuestion = ({
   setSelectedOption,
   submitted,
   points,
-  setPoints,
+  setPoints
 }) => {
   const [selectedOption, setSelectedOptionLocal] = useState("");
   const [showChallengeButton, setShowChallengeButton] = useState(false);
   const [showExplanationButton, setShowExplanationButton] = useState(false);
+  const [challengeResult, setChallengeResult] = useState(); // ["", "success", "failure"
   const [showPopup, setShowPopup] = useState(false);
   const [explanationData, setExplanationData] = useState("");
 
@@ -31,13 +32,15 @@ const QuizQuestion = ({
       const challengeResult = await Api.challenge({
         question,
         selectedOption,
-        options,
+        options
       });
       console.log(challengeResult);
       if (challengeResult.data.toLowerCase() == "true") {
+        setChallengeResult("success");
         setPoints(points + worth);
         console.log("Challenge accepted! You gained 1 point.");
       } else if (challengeResult.data.toLowerCase() == "false") {
+        setChallengeResult("failure");
         setPoints(points - worth * 2);
         console.log("Challenge denied! You were penalized 2 points.");
       }
@@ -55,7 +58,7 @@ const QuizQuestion = ({
       const explanation = await Api.explain({
         question,
         selectedOption,
-        options,
+        options
       });
       console.log(explanation.data);
       setExplanationData(explanation.data);
@@ -126,6 +129,13 @@ const QuizQuestion = ({
               </div>
             </div>
           )}
+          {challengeResult ? (
+            <p>
+              {challengeResult === "success"
+                ? "Challenge accepted!"
+                : "Challenge denied!"}
+            </p>
+          ) : null}
         </span>
       </div>
     </>
