@@ -11,7 +11,7 @@ const QuizQuestion = ({
   setSelectedOption,
   submitted,
   points,
-  setPoints
+  setPoints,
 }) => {
   const [selectedOption, setSelectedOptionLocal] = useState("");
   const [showChallengeButton, setShowChallengeButton] = useState(false);
@@ -19,6 +19,7 @@ const QuizQuestion = ({
   const [challengeResult, setChallengeResult] = useState(); // ["", "success", "failure"
   const [showPopup, setShowPopup] = useState(false);
   const [explanationData, setExplanationData] = useState("");
+  const [explainLoading, setExplainLoading] = useState(false);
 
   const handleSelectOption = (option) => {
     setSelectedOptionLocal(option);
@@ -32,7 +33,7 @@ const QuizQuestion = ({
       const challengeResult = await Api.challenge({
         question,
         selectedOption,
-        options
+        options,
       });
       console.log(challengeResult);
       if (challengeResult.data.toLowerCase() == "true") {
@@ -55,17 +56,21 @@ const QuizQuestion = ({
 
   const handleExplanation = async () => {
     try {
+      setExplainLoading(true); // Start loading animation
       const explanation = await Api.explain({
         question,
         selectedOption,
-        options
+        options,
       });
-      console.log(explanation.data);
       setExplanationData(explanation.data);
       setShowPopup(true);
-      setShowExplanationButton(false);
+      setTimeout(() => {
+        setExplainLoading(false); // Stop loading animation
+        setShowExplanationButton(false);
+      }, 100);
     } catch (error) {
       console.log("Error during explanation:", error);
+      setExplainLoading(false); // Stop loading animation in case of an error
     }
   };
 
@@ -114,11 +119,17 @@ const QuizQuestion = ({
             </button>
           ) : null}
 
-          {showExplanationButton && submitted && (
-            <button className="submit-quiz-button" onClick={handleExplanation}>
-              Explain
+          {showExplanationButton && submitted ? (
+            <button
+              className={`loading-button ${
+                explainLoading ? "loading" : ""
+              } submit-quiz-button`}
+              onClick={handleExplanation}
+              disabled={explainLoading}
+            >
+              {explainLoading ? "Loading..." : "Explain"}
             </button>
-          )}
+          ) : null}
           {showPopup && (
             <div className="popup-overlay">
               <div className="popup-content">
