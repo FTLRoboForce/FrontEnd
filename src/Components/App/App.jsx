@@ -17,6 +17,7 @@ import ProgressBar from "../ProgressBar/ProgressBar";
 import PastQuizzesTable from "../PreviousQuiz/PreviousQuiz";
 import PastQuiz from "../PastQuiz/PastQuiz";
 import Profile from "../Profile/Profile";
+import NotFound from "../NotFound/NotFound";
 
 function App() {
   const [progressBar, setProgressBar] = useState(null);
@@ -182,6 +183,7 @@ function App() {
               />
             }
           ></Route>
+          <Route path="/*" element={<NotFound></NotFound>}></Route>
         </Routes>
       </BrowserRouter>
     </>
