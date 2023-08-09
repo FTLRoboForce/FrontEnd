@@ -71,6 +71,7 @@ export function Navbar({ token, setToken, userGlobal, setUserGlobal }) {
                     alt={username}
                     radius="xl"
                     size={20}
+                    style={{ marginRight: 10 }}
                   />
                   <div className="menu-item">{username}</div>
                   <IconChevronDown size={16} />
