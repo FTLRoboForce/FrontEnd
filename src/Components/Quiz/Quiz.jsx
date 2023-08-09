@@ -48,7 +48,7 @@ const Quiz = ({
       difficulty: difficulty
     });
   }, [points]);
-  
+
   const handleSubmit = async () => {
     //if quiz was not already submitted calculate points
     if (!submitted) {
@@ -88,6 +88,13 @@ const Quiz = ({
           <>
             <div className="quiz-page">
               <ProgressBar progressBar={progressBar} />
+              {difficulty === "hard" ? (
+                <h1 className="quiz-points">Questions are worth 5 points</h1>
+              ) : difficulty === "medium" ? (
+                <h1 className="quiz-points">Questions are worth 3 points</h1>
+              ) : (
+                <h1 className="quiz-points">Questions are worth 1 point</h1>
+              )}
               <div className="quiz-container">
                 {questions.map((question, index) => (
                   <QuizQuestion
