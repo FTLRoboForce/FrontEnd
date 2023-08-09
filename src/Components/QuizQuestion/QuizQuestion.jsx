@@ -58,9 +58,9 @@ const QuizQuestion = ({
     try {
       setExplainLoading(true); // Start loading animation
       const explanation = await Api.explain({
-        question,
-        selectedOption,
-        options,
+        question: question,
+        selectedOption: selectedOption,
+        options: options,
       });
       setExplanationData(explanation.data);
       setShowPopup(true);

@@ -16,6 +16,12 @@
 
 }
 
+.quiz-points{
+  size: 50px;
+  color : #003455;
+  margin: 30px;
+}
+
 .submit-quiz {
   display: flex;
   flex-direction: column;
