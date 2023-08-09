@@ -76,11 +76,11 @@ background-position: 113% 80%, -100% 80%;
 .control {
   font-size: 18px;
   font-weight: bold;
-  background-color: var(--lightblue);
-  color:#003455;
+  background-color: #daeefb;
+  color: #003455;
   border: none;
-  border-radius: 5px;
-  padding: 1px 4px;
+  border-radius: 9px;
+  padding: 20px 23px;
   cursor: pointer;
   transition: background-color 0.3s;
 }
