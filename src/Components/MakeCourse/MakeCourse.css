@@ -3,6 +3,7 @@
   height: 100vh;
   background: #b6ddfd;
   width: 100vw;
+
   /* background: linear-gradient(to right, white, var(--lightgrey), grey); */
   display: flex;
   flex-direction: column;
@@ -17,6 +18,7 @@
 
 .course-options-container {
   max-width: 75%;
+ 
   margin: 50px auto;
   padding: 20px;
   background: linear-gradient(to left, #028cc4, #b1d1ef);
@@ -26,13 +28,15 @@
   color: black;
 }
 
-.full-page-container h2 {
+
+.full-page-container>h2 {
   text-align: center;
   color: #003455;
   margin-bottom: 2px;
   font-weight: bolder;
   font-size: 3rem;
   font-family: "Roboto", sans-serif;
+  margin-top: 10%;
 }
 @keyframes typing {
   from {
@@ -187,7 +191,7 @@ form {
   }
 
   .full-page-container > h2 {
-    margin-top: 20%;
+    margin-top: 29%;
   }
 
   .option-row img {
